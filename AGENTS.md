@@ -22,6 +22,15 @@ Reglas:
 - `web` usa la ruta relativa desde la raíz del repo: `index`, `ruso/index`, `jardin-vertical/index`, etc.
 - El `resumen` siempre debe ser no técnico: explicar el resultado visible para el usuario, no los detalles del código.
 
+## Marcadores de cambio
+
+Dentro de cada componente, cada cambio se marca así:
+
+- `+` agregar: `+imagen`, `+precios`
+- `-` eliminar: `-imagen`, `-precios`
+- `/` modificar: `/precios`
+- `*` permanente: `*precios`
+
 Ejemplo:
 
 ```text
