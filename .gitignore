@@ -1,0 +1,20 @@
+# Backend y lógica interna (no se publica)
+soy/server/
+**/logicaPagos.md
+.env
+.env.*
+!.env.example
+node_modules/
+npm-debug.log*
+.wrangler/
+.dev.vars
+dist/
+
+# Material fuente y archivos de trabajo
+pictures/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
