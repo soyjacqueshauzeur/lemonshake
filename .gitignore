@@ -10,11 +10,14 @@ npm-debug.log*
 .dev.vars
 dist/
 
-# Material fuente y archivos de trabajo
-pictures/
+# Fotos fuente (no se publican; los logos sí)
+pictures/*.jpeg
 
 # Sistema y editores
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+
+# Artefactos de pruebas locales
+.playwright-mcp/

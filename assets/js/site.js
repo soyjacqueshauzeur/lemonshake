@@ -1,0 +1,179 @@
+/* SoyJacquesHauzeur — free HTML template. Minimal vanilla JS: mobile drawer + scroll-reveal. */
+(function () {
+  'use strict';
+
+  // Mobile drawer
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const closeBtn = drawer && drawer.querySelector('.drawer-close');
+
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if (toggle) toggle.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // Reveal on intersect (respects prefers-reduced-motion)
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && 'IntersectionObserver' in window) {
+    const els = document.querySelectorAll('.reveal');
+    if (els.length) {
+      els.forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)';
+      });
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    }
+  }
+
+  // Sticky header subtle shadow on scroll
+  const header = document.querySelector('.site-header');
+  if (header) {
+    let last = 0;
+    window.addEventListener('scroll', function () {
+      const y = window.scrollY;
+      if (y > 4 && last <= 4) header.style.boxShadow = '0 8px 24px -16px rgba(0,0,0,0.6)';
+      if (y <= 4 && last > 4) header.style.boxShadow = 'none';
+      last = y;
+    }, { passive: true });
+  }
+})();
+
+/* Language preference (EN default · ES under /es/) */
+(function () {
+  'use strict';
+
+  function setLang(lang) {
+    try {
+      document.cookie = 'lang=' + lang + ';path=/;max-age=31536000;SameSite=Lax';
+    } catch (e) {}
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('.lang-switch a[data-lang]') : null;
+    if (!link) return;
+    setLang(link.getAttribute('data-lang'));
+  });
+
+  function getLang() {
+    var m = document.cookie.match(/(?:^|;\s*)lang=([^;]+)/);
+    return m ? m[1] : null;
+  }
+
+  // Remembered Spanish users landing on the EN homepage go straight to /es/.
+  if (getLang() === 'es') {
+    var path = location.pathname.replace(/\/+$/, '') || '/';
+    if (path === '/' || path === '/index.html') {
+      location.replace('/es/');
+    }
+  }
+})();
+
+/* Hero portrait A/B toggle */
+(function () {
+  'use strict';
+
+  document.querySelectorAll('.hero-photo-toggle').forEach(function (btn) {
+    var target = document.querySelector(btn.getAttribute('data-target'));
+    if (!target) return;
+
+    var first = target.getAttribute('data-first');
+
+    function updateLabel() {
+      var num = first && target.getAttribute('src') === first ? '1' : '2';
+      var current = btn.querySelector('.hpt-current');
+      if (current) current.textContent = num;
+    }
+
+    btn.addEventListener('click', function () {
+      var alt = target.getAttribute('data-alternate');
+      var cur = target.getAttribute('src');
+      target.setAttribute('src', alt);
+      target.setAttribute('data-alternate', cur);
+      updateLabel();
+    });
+
+    updateLabel();
+  });
+})();
+
+/* Footer date line — © {year} {month} </> … localized */
+(function () {
+  'use strict';
+  if (!document.querySelector('.ft-year')) return;
+
+  var d = new Date();
+  var lang = (document.documentElement.lang || 'en').toLowerCase();
+  var locale = lang === 'es' || lang === 'ru' ? lang : 'en';
+  var month;
+  try {
+    month = new Intl.DateTimeFormat(locale, { month: 'long' }).format(d);
+  } catch (e) {
+    month = 'september';
+  }
+  month = month.charAt(0).toUpperCase() + month.slice(1);
+  var year = String(d.getFullYear());
+
+  document.querySelectorAll('.ft-year').forEach(function (el) { el.textContent = year; });
+  document.querySelectorAll('.ft-month').forEach(function (el) { el.textContent = month; });
+})();
+
+/* Theme toggle — misma lógica que la tienda (localStorage 'jh-theme').
+   El <head> ya fija data-theme; aquí se reactiva y se conecta el botón. */
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var KEY = 'jh-theme';
+  function apply(t) {
+    root.setAttribute('data-theme', t);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t === 'dark' ? '#0A0A0C' : '#F4F4F0');
+    document.querySelectorAll('.theme-toggle').forEach(function (b) {
+      b.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+    });
+  }
+  var current = root.getAttribute('data-theme');
+  if (current !== 'light' && current !== 'dark') {
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved === 'light' || saved === 'dark') { current = saved; }
+    else { var h = new Date().getHours(); current = (h >= 4 && h < 18) ? 'light' : 'dark'; }
+  }
+  apply(current);
+  document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  });
+})();

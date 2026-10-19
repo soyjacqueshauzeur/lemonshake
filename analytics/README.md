@@ -9,6 +9,7 @@ Código de seguimiento del sitio.
 | --- | --- |
 | `statcounter.js` | Carga el contador de Statcounter. Se incluye antes de `</body>`. |
 | `statcounter-noscript.html` | Respaldo de Statcounter para navegadores sin JavaScript. Se pega antes de `</body>`. |
+| `tiktok-products.js` | Mide el clic en "Ver producto" del catálogo y lo envía a TikTok. Solo en `index.html`. |
 
 Cuenta de Statcounter: proyecto **13360825**.
 
@@ -66,12 +67,42 @@ Eventos propios con `ttq.track('...')`; por ejemplo, en `gracias.html`:
 ttq.track('CompletePayment', { value: 84000, currency: 'COP' });
 ```
 
+### Clic en producto desde la tienda
+
+`tiktok-products.js` escucha un solo clic delegado sobre `.store-pin`, así que
+cubre las 6 tarjetas actuales y cualquier producto nuevo sin crear reglas en
+TikTok Ads. Envía `ClickButton` con `content_id`, `content_name`, `value` y
+`currency`, y además deja un evento `select_item` en `dataLayer` para GTM o Meta.
+
+Cada tarjeta necesita estos atributos:
+
+```html
+<article class="store-card"
+  data-id="RUSOCURSO-039"
+  data-name="Ruso desde cero en 3 meses"
+  data-price="39900"
+  data-currency="COP">
+```
+
+Para los productos con precio en USD (como Sushi Founder) se usa `data-price-usd`
+y `data-currency="USD"`; el script toma el valor en USD, no la conversión a COP.
+
+Se incluye una sola vez, antes de `</body>` en `index.html`:
+
+```html
+<script src="analytics/tiktok-products.js" defer></script>
+```
+
+Si prefieres el evento automático de TikTok Ads Manager ("Button Clicks"),
+configúralo una sola vez apuntando a `.store-pin`; no uses ambos métodos a la vez
+para no duplicar el evento.
+
 ## Statcounter
 
 **1. Antes de `</body>`**, importa el script:
 
 ```html
-<script src="../analytics/statcounter.js" async></script>
+<script src="../../analytics/statcounter.js" async></script>
 ```
 
 **2. El respaldo sin JavaScript** va justo después:
@@ -85,8 +116,8 @@ alt="Web Analytics"
 referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
 ```
 
-En la raíz del sitio la ruta es `analytics/statcounter.js`; en las landings,
-`../analytics/statcounter.js`.
+En la raíz del sitio la ruta es `analytics/statcounter.js`; en las landings
+(`cursos/…`, `digitales/…`, `productos/…`), `../../analytics/statcounter.js`.
 
 ## Cambiar de cuenta
 

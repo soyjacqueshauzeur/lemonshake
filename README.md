@@ -2,7 +2,7 @@
 
 **Tienda online de productos y cursos digitales.** Compra fácil, como un batido de limón.
 
-Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin frameworks, sin build y sin dependencias. Cada página es autocontenida y está pensada para cargar rápido, verse bien en móvil y funcionar en cualquier hosting estático.
+Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin frameworks ni build. Las páginas comparten fuentes, estilos base y el código de analítica, y funcionan en cualquier hosting estático.
 
 ---
 
@@ -21,15 +21,18 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ```text
 .
 ├── index.html                 # tienda y catálogo
-├── ruso/                      # una carpeta por landing
-│   ├── index.html
-│   ├── gracias.html
-│   ├── pago-fallido.html
-│   └── images/
-├── sushi-founder/
-│   ├── index.html
-│   ├── video/
-│   └── ...
+├── cursos/                    # cursos vendidos en Hotmart
+│   ├── jardin-vertical/
+│   ├── sushi-founder/
+│   └── velas-y-jabones-artesanales/
+├── digitales/                 # productos digitales propios
+│   ├── el-contador-de-ovejas/
+│   └── ruso/
+├── productos/                 # productos físicos
+│   └── synaptic-sleep-5-z/
+├── assets/                    # CSS, fuentes y JS compartidos
+├── analytics/                 # GTM, TikTok y Statcounter
+├── pictures/                  # logos y marca
 ├── payments/                  # logos de medios de pago
 ├── copy-badge.js              # copiar el badge de producto al portapapeles
 ├── terminos.html              # páginas legales
@@ -39,6 +42,8 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ├── devoluciones.html
 └── AGENTS.md                  # convenciones de trabajo del repo
 ```
+
+Cada landing incluye su `index.html`, sus imágenes y, cuando tiene checkout propio, `gracias.html` y `pago-fallido.html`.
 
 ## Pagos
 
