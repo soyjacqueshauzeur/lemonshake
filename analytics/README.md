@@ -2,7 +2,7 @@
 
 Código de seguimiento del sitio.
 
-- **Google Tag Manager** va pegado inline en cada página, con el snippet oficial.
+- **Google Tag Manager** y **TikTok Pixel** van pegados inline en cada página, con el snippet oficial.
 - **Statcounter** se centraliza en esta carpeta con un archivo JS que importan todas las páginas.
 
 | Archivo | Para qué sirve |
@@ -40,6 +40,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 Todas las páginas del repo ya lo tienen. Si agregas una página nueva, copia los dos bloques tal cual.
 
+## TikTok Pixel
+
+Pixel: **D7T48QBC77U471PH6PA0**. Va inline en el `<head>`, justo debajo del bloque de GTM:
+
+```html
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r;ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D7T48QBC77U471PH6PA0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+```
+
+Eventos propios con `ttq.track('...')`; por ejemplo, en `gracias.html`:
+
+```js
+ttq.track('CompletePayment', { value: 84000, currency: 'COP' });
+```
+
 ## Statcounter
 
 **1. Antes de `</body>`**, importa el script:
@@ -65,6 +91,7 @@ En la raíz del sitio la ruta es `analytics/statcounter.js`; en las landings,
 ## Cambiar de cuenta
 
 - **GTM**: reemplaza `GTM-5CCPPRGS` en los dos bloques de arriba, en cada página.
+- **TikTok**: reemplaza `D7T48QBC77U471PH6PA0` en la llamada `ttq.load(...)`, en cada página.
 - **Statcounter**: edita `SC_PROJECT` y `SC_SECURITY` en `statcounter.js`, y el `src` del iframe en `statcounter-noscript.html`.
 
 ## Eventos personalizados
