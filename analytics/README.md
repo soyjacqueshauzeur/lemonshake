@@ -1,38 +1,56 @@
 # Analytics
 
-Código de seguimiento compartido por todas las páginas del sitio: **Google Tag Manager** y **Statcounter**.
+Código de seguimiento del sitio.
+
+- **Google Tag Manager** va pegado inline en cada página, con el snippet oficial.
+- **Statcounter** se centraliza en esta carpeta con un archivo JS que importan todas las páginas.
 
 | Archivo | Para qué sirve |
 | --- | --- |
-| `gtm.js` | Carga el contenedor GTM. Se incluye en el `<head>`. |
-| `gtm-noscript.html` | Respaldo de GTM para navegadores sin JavaScript. Se pega tras `<body>`. |
 | `statcounter.js` | Carga el contador de Statcounter. Se incluye antes de `</body>`. |
-| `statcounter-noscript.html` | Respaldo de Statcounter sin JavaScript. Se pega antes de `</body>`. |
+| `statcounter-noscript.html` | Respaldo de Statcounter para navegadores sin JavaScript. Se pega antes de `</body>`. |
 
-Cuentas actuales:
+Cuenta de Statcounter: proyecto **13360825**.
 
-- GTM: **GTM-5CCPPRGS**
-- Statcounter: proyecto **13360825**
+## Google Tag Manager
 
-## Cómo activarlo en una página
+Contenedor: **GTM-5CCPPRGS**. Va inline, no como archivo externo, porque así lo
+espera la verificación de GTM y evita fallos de carga por rutas o caché.
 
-**1. En el `<head>`**, lo antes posible:
+**1. En el `<head>`**, lo más arriba posible:
 
 ```html
-<script src="/analytics/gtm.js"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5CCPPRGS');</script>
+<!-- End Google Tag Manager -->
 ```
 
-**2. Justo después de `<body>`**, el respaldo de GTM:
+**2. Justo después de abrir `<body>`**:
 
 ```html
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CCPPRGS"
-height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 ```
 
-**3. Antes de `</body>`**, Statcounter:
+Todas las páginas del repo ya lo tienen. Si agregas una página nueva, copia los dos bloques tal cual.
+
+## Statcounter
+
+**1. Antes de `</body>`**, importa el script:
 
 ```html
-<script src="/analytics/statcounter.js" async></script>
+<script src="../analytics/statcounter.js" async></script>
+```
+
+**2. El respaldo sin JavaScript** va justo después:
+
+```html
 <noscript><div class="statcounter"><a title="Web Analytics"
 href="https://statcounter.com/" target="_blank" rel="noopener"><img
 class="statcounter"
@@ -41,37 +59,13 @@ alt="Web Analytics"
 referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
 ```
 
-No hay que repetir el snippet completo de cada herramienta: los archivos `.js` ya traen la configuración.
-
-## La ruta de los scripts
-
-`/analytics/gtm.js` y `/analytics/statcounter.js` funcionan si el sitio se publica
-en la raíz de un dominio (por ejemplo `https://lemonshake.shop/`). Si se publica
-como proyecto de GitHub Pages (`usuario.github.io/lemonshake/`), usa la ruta con
-el prefijo:
-
-```html
-<script src="/lemonshake/analytics/gtm.js"></script>
-```
-
-O una ruta relativa desde cada página:
-
-```html
-<!-- index.html, en la raíz -->
-<script src="analytics/gtm.js"></script>
-
-<!-- ruso/index.html, una carpeta abajo -->
-<script src="../analytics/gtm.js"></script>
-```
-
-En este repo ya están todas las páginas con rutas relativas, así funcionan en local y en el dominio.
+En la raíz del sitio la ruta es `analytics/statcounter.js`; en las landings,
+`../analytics/statcounter.js`.
 
 ## Cambiar de cuenta
 
-- **GTM**: edita `GTM_ID` en `gtm.js` y el `id` del iframe en `gtm-noscript.html`.
+- **GTM**: reemplaza `GTM-5CCPPRGS` en los dos bloques de arriba, en cada página.
 - **Statcounter**: edita `SC_PROJECT` y `SC_SECURITY` en `statcounter.js`, y el `src` del iframe en `statcounter-noscript.html`.
-
-Los valores deben coincidir en cada pareja.
 
 ## Eventos personalizados
 
