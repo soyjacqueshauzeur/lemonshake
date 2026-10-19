@@ -13,6 +13,9 @@ dist/
 # Fotos fuente (no se publican; los logos sí)
 pictures/*.jpeg
 
+# Notas internas
+analytics/man.md
+
 # Sistema y editores
 .DS_Store
 Thumbs.db
