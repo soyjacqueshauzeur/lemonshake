@@ -812,7 +812,6 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
         <h2>8. Contacto</h2>
         <p>¿Dudas sobre las cookies? Escríbenos:</p>
         <ul>
-          <li>Correo: <a href="mailto:hola@lemonshake.dev">hola@lemonshake.dev</a></li>
           <li>WhatsApp: <a href="https://wa.me/573507402009" target="_blank" rel="noopener">+57 350 740 2009</a></li>
         </ul>
 
@@ -835,6 +834,15 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
   .sf-pay span{border:1px solid rgba(244,244,240,.16);border-radius:8px;padding:5px 10px;font-family:'Geist Mono',ui-monospace,monospace;font-size:.62rem;color:#80807A;letter-spacing:.06em}
   .sf-col h4{font-family:'Geist Mono',ui-monospace,monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#80807A;margin:0 0 14px;font-weight:400}
   .sf-col ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .sf-col--contact ul{display:flex;flex-wrap:wrap;gap:10px 12px}
+  .sf-col--contact li{flex:0 1 calc(33.333% - 8px);min-width:0}
+  .sf-col--contact li:first-child{flex:0 1 100%}
+  @media(max-width:1024px){.sf-col--contact li{flex-basis:calc(50% - 6px)}}
+  @media(max-width:425px){.sf-col--contact li{flex-basis:100%}}
+  .sf-col--contact a[href*="facebook.com"],
+  .sf-col--contact a[href*="t.me"],
+  .sf-col--contact li:has(a[href*="facebook.com"]),
+  .sf-col--contact li:has(a[href*="t.me"]){line-height:1.2em}
   .sf-col a{color:#C9C9C2;font-size:.95rem;text-decoration:none}
   .sf-col a:hover{color:#D4FF3D}
   .sf-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(244,244,240,.08);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#80807A;font-size:.8125rem;font-family:'Geist Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em}
@@ -862,13 +870,19 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
           <li><a href="synaptic-sleep-5-z/index.html#resenas">Reseñas</a></li>
         </ul>
       </div>
-      <div class="sf-col">
+      <div class="sf-col sf-col--contact">
         <h4>Contacto</h4>
         <ul>
           <li><a href="https://wa.me/573507402009" target="_blank" rel="noopener">WhatsApp: +57 350 740 2009</a></li>
-          <li><a href="mailto:hola@lemonshake.dev">hola@lemonshake.dev</a></li>
+          <li><a href="https://www.facebook.com/lemonshake.shop" target="_blank" rel="noopener noreferrer">Página de Facebook</a></li>
+          <li><a href="https://www.facebook.com/groups/6216947125006501" target="_blank" rel="noopener noreferrer">Grupo de Facebook</a></li>
           <li><a href="https://www.instagram.com/lemonshake.shop/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.facebook.com/lemonshake.shop" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.threads.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">Threads</a></li>
+          <li><a href="https://tiktok.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li><a href="https://x.com/lemonshake_shop" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li><a href="https://www.youtube.com/@lemonshake_shop" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://t.me/lemonshake_shop" target="_blank" rel="noopener noreferrer">Telegram Channel</a></li>
+          <li><a href="https://t.me/+YT0kcnrxpGs5Y2Zh" target="_blank" rel="noopener noreferrer">Telegram Group</a></li>
         </ul>
       </div>
       <div class="sf-col">
