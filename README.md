@@ -35,6 +35,8 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ├── pictures/                  # logos y marca
 ├── payments/                  # logos de medios de pago
 ├── copy-badge.js              # copiar el badge de producto al portapapeles
+├── store-card.js              # toda la tarjeta de la tienda abre el producto
+├── tienda-mapa.js             # limón de la tienda: mapa del sitio con clave
 ├── variantes.js               # limón del footer + modal con las versiones de cada landing
 ├── sitemap.xml                # mapa del sitio para Google
 ├── robots.txt                 # permite el rastreo y apunta al sitemap
@@ -54,10 +56,17 @@ Cada landing puede tener varias versiones del mismo producto o curso, una por
 ángulo de venta (`general.html`, `negocio.html`, `relax.html`…). Las versiones
 no se enlazan en el menú: se llega a ellas desde el anuncio correspondiente.
 
-En el footer, al final de la frase de marca, aparece un limón clickeable. Abre
-un modal con las versiones de esa página, marca la actual y permite **abrir** o
-**copiar** la URL limpia de cada una. Si la página no tiene versiones, el limón
-no se muestra.
+En el footer, al final de la frase de marca, aparece un limón clickeable. En las
+landings pide la misma clave que la tienda y abre un modal con las versiones de
+esa página, marca la actual y permite **abrir** o **copiar** la URL limpia de
+cada una. Si la página no tiene versiones, el limón no se muestra. La clave se
+comparte entre tienda y landings en la misma pestaña (`sessionStorage`, 24 h).
+
+En la tienda (`index.html`) el limón pide una clave y, si coincide, abre el
+**mapa completo del sitio**: todas las páginas agrupadas por producto, separadas
+con una línea, cada una con su limón y su botón **Copiar**. Si la clave no
+coincide, no se muestra nada. La clave se recuerda en `sessionStorage` durante
+24 h o hasta cerrar la pestaña.
 
 Para agregar versiones:
 
@@ -65,10 +74,11 @@ Para agregar versiones:
 2. Ajusta el copy, las imágenes y el `<title>` de esa copia.
 3. Deja el `canonical` apuntando a su propia URL y **sin** `noindex`.
 4. Añade su línea en `variantes.js`, dentro del grupo de esa carpeta.
-5. Súmala a `sitemap.xml` para que Google la descubra aunque no haya enlaces.
+5. Añádela también a `tienda-mapa.js` y a `sitemap.xml`.
 
 Todas las landings incluyen `<script src="../../variantes.js" defer></script>`
-antes de `</body>`; el script no hace nada en las páginas sin versiones.
+antes de `</body>`; el script no hace nada en las páginas sin versiones. La
+tienda incluye `tienda-mapa.js`.
 
 ## Pagos
 
