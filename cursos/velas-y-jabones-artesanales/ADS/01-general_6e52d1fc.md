@@ -1,4 +1,4 @@
-<# Anuncio Meta — Enfoque general / descubrimiento
+# Anuncio Meta — Enfoque general / descubrimiento
 
 > **Documento de dirección creativa para una IA generadora de imágenes.**
 > Resultado esperado: **1 imagen publicitaria estática** para Meta Ads.
@@ -278,4 +278,138 @@ No deformed hands, no extra fingers, no face, no money, no income charts, no sal
 - **1:1:** recortar manteniendo el bloque de texto a la izquierda y el producto a la derecha; no mover el headline.
 - **9:16:** usar la misma escena con más aire arriba y abajo; el CTA debe quedar en el tercio inferior, nunca en el borde.
 - No crear una segunda imagen conceptual: este documento produce una sola pieza principal.
->
+
+---
+---
+
+# Anuncio Meta — General / descubrimiento
+
+**Imagen:** `general.jpeg`
+**Archivo de anuncio:** `01-general_6e52d1fc.md`
+**Enfoque:** General / descubrimiento
+**Público:** 25–55 años, manualidades, decoración, regalos y bienestar creativo.
+**Ángulo:** Aprender el oficio desde cero; crear, regalar o vender si quieres.
+**Oferta:** 3 cursos en 1 · 120+ clases · 18 bonos · USD $37,50 (antes USD $75) · garantía de 7 días.
+
+> Textos en español para el formulario de Meta Ads.
+> Límites recomendados: texto principal ≤125 caracteres, titular ≤40, descripción ≤30.
+> Meta puede mostrar cualquiera de las opciones; están escritas para funcionar juntas o por separado.
+
+---
+
+## Primary text
+
+### Primary text (1 de 5)
+
+> Aprende a hacer velas y jabones desde cero, a tu ritmo. Para crear, regalar o vender si quieres.
+
+**96 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (2 de 5)
+
+> Tres cursos en uno: velas artesanales, velas navideñas y jabones. 120+ clases y 18 bonos.
+
+**89 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (3 de 5)
+
+> Haz algo con tus manos: tu primera vela, tu primer jabón y un montón de ideas para regalar.
+
+**91 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (4 de 5)
+
+> No necesitas experiencia ni un taller. Empieza con materiales básicos y aprende paso a paso.
+
+**92 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (5 de 5)
+
+> Un curso para aprender el oficio, crear tus propias piezas y decidir después si quieres vender.
+
+**95 caracteres** · dentro del límite (recomendado: ≤125).
+
+
+---
+
+## Headline
+
+### Headline (1 de 5)
+
+> Aprende velas y jabones desde cero
+
+**34 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (2 de 5)
+
+> 3 cursos en 1: velas y jabones
+
+**30 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (3 de 5)
+
+> Tu primer curso de velas y jabones
+
+**34 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (4 de 5)
+
+> Crea, regala o vende si quieres
+
+**31 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (5 de 5)
+
+> 120+ clases y 18 bonos
+
+**22 caracteres** · dentro del límite (recomendado: ≤40).
+
+
+---
+
+## Description
+
+### Description (1 de 5)
+
+> USD $37,50 · acceso inmediato
+
+**29 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (2 de 5)
+
+> Pago único · garantía 7 días
+
+**28 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (3 de 5)
+
+> 3 cursos + 18 bonos
+
+**19 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (4 de 5)
+
+> Sin experiencia previa
+
+**22 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (5 de 5)
+
+> A tu ritmo, desde casa
+
+**22 caracteres** · dentro del límite (recomendado: ≤30).
+
+
+---
+
+## Botón sugerido
+
+Más información para tráfico frío; Comprar ahora para retargeting.
+
+## Notas de campaña
+
+No usar “negocio en 14 días” ni promesas de ingresos. La imagen y el copy hablan de aprender y crear; vender es una opción, no una promesa.
+
+## Imagen asociada
+
+`general.jpeg` — usar la pieza 1080 × 1350 px (4:5) creada para este enfoque.

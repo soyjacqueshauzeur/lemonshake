@@ -35,6 +35,9 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ├── pictures/                  # logos y marca
 ├── payments/                  # logos de medios de pago
 ├── copy-badge.js              # copiar el badge de producto al portapapeles
+├── variantes.js               # limón del footer + modal con las versiones de cada landing
+├── sitemap.xml                # mapa del sitio para Google
+├── robots.txt                 # permite el rastreo y apunta al sitemap
 ├── terminos.html              # páginas legales
 ├── privacidad.html
 ├── cookies.html
@@ -44,6 +47,28 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ```
 
 Cada landing incluye su `index.html`, sus imágenes y, cuando tiene checkout propio, `gracias.html` y `pago-fallido.html`.
+
+## Variantes de landing
+
+Cada landing puede tener varias versiones del mismo producto o curso, una por
+ángulo de venta (`general.html`, `negocio.html`, `relax.html`…). Las versiones
+no se enlazan en el menú: se llega a ellas desde el anuncio correspondiente.
+
+En el footer, al final de la frase de marca, aparece un limón clickeable. Abre
+un modal con las versiones de esa página, marca la actual y permite **abrir** o
+**copiar** la URL limpia de cada una. Si la página no tiene versiones, el limón
+no se muestra.
+
+Para agregar versiones:
+
+1. Copia el `index.html` de la carpeta con el nuevo nombre (`dolor.html`…).
+2. Ajusta el copy, las imágenes y el `<title>` de esa copia.
+3. Deja el `canonical` apuntando a su propia URL y **sin** `noindex`.
+4. Añade su línea en `variantes.js`, dentro del grupo de esa carpeta.
+5. Súmala a `sitemap.xml` para que Google la descubra aunque no haya enlaces.
+
+Todas las landings incluyen `<script src="../../variantes.js" defer></script>`
+antes de `</body>`; el script no hace nada en las páginas sin versiones.
 
 ## Pagos
 

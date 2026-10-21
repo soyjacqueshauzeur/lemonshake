@@ -270,3 +270,138 @@ No business or income words, no money, no cash, no income charts, no sales scree
 - **1:1:** recortar manteniendo el texto arriba a la izquierda y la vela en la mano a la derecha.
 - **9:16:** ampliar la mesa hacia abajo; el CTA debe quedar en el tercio inferior.
 - No crear una segunda imagen conceptual: este documento produce una sola pieza principal.
+
+---
+---
+
+# Anuncio Meta — Hobby / pasatiempo creativo
+
+**Imagen:** `hobby.jpeg`
+**Archivo de anuncio:** `04-hobby_217deac8.md`
+**Enfoque:** Hobby / pasatiempo creativo
+**Público:** 25–60 años, personas que buscan un hobby, DIY y actividades creativas.
+**Ángulo:** Aprender una habilidad creativa, hacer proyectos y regalar; sin presión de vender.
+**Oferta:** 3 cursos en 1 · 120+ clases · 18 bonos · USD $37,50 (antes USD $75) · garantía de 7 días.
+
+> Textos en español para el formulario de Meta Ads.
+> Límites recomendados: texto principal ≤125 caracteres, titular ≤40, descripción ≤30.
+> Meta puede mostrar cualquiera de las opciones; están escritas para funcionar juntas o por separado.
+
+---
+
+## Primary text
+
+### Primary text (1 de 5)
+
+> Encuentra un hobby que se ve, se huele y se regala.
+
+**51 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (2 de 5)
+
+> Aprende velas y jabones desde cero y haz algo con tus manos.
+
+**60 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (3 de 5)
+
+> Un pasatiempo creativo para tu tiempo libre. Sin presión y a tu ritmo.
+
+**70 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (4 de 5)
+
+> ¿Buscas algo creativo que hacer? Empieza con una vela.
+
+**54 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (5 de 5)
+
+> Haz regalos hechos por ti y presume lo que creas.
+
+**49 caracteres** · dentro del límite (recomendado: ≤125).
+
+
+---
+
+## Headline
+
+### Headline (1 de 5)
+
+> Encuentra tu próximo hobby
+
+**26 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (2 de 5)
+
+> Crea velas y jabones en casa
+
+**28 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (3 de 5)
+
+> Un hobby que se ve y se regala
+
+**30 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (4 de 5)
+
+> Aprende desde cero, a tu ritmo
+
+**30 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (5 de 5)
+
+> Haz algo con tus manos
+
+**22 caracteres** · dentro del límite (recomendado: ≤40).
+
+
+---
+
+## Description
+
+### Description (1 de 5)
+
+> USD $37,50 · 18 bonos
+
+**21 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (2 de 5)
+
+> Sin experiencia · a tu ritmo
+
+**28 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (3 de 5)
+
+> 3 cursos en 1
+
+**13 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (4 de 5)
+
+> Acceso inmediato
+
+**16 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (5 de 5)
+
+> Garantía de 7 días
+
+**18 caracteres** · dentro del límite (recomendado: ≤30).
+
+
+---
+
+## Botón sugerido
+
+Más información para tráfico frío; Comprar ahora para retargeting.
+
+## Notas de campaña
+
+No usar palabras de negocio o ingresos. El gancho es el hobby, el aprendizaje y el orgullo de hacer algo propio.
+
+## Imagen asociada
+
+`hobby.jpeg` — usar la pieza 1080 × 1350 px (4:5) creada para este enfoque.

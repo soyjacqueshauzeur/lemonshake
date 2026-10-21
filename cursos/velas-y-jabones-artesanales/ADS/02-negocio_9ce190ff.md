@@ -281,3 +281,138 @@ No money, no cash, no coins, no income charts, no sales screenshots, no payment 
 - **1:1:** mantener el bloque de texto a la izquierda y la caja a la derecha.
 - **9:16:** ampliar la mesa hacia arriba; el CTA y el disclaimer deben seguir dentro del tercio inferior.
 - No crear una segunda imagen conceptual: este documento produce una sola pieza principal.
+
+---
+---
+
+# Anuncio Meta — Negocio / vender lo que creas
+
+**Imagen:** `negocio.jpeg`
+**Archivo de anuncio:** `02-negocio_9ce190ff.md`
+**Enfoque:** Negocio / vender lo que creas
+**Público:** 25–50 años, personas que ya hacen manualidades o quieren vender desde casa.
+**Ángulo:** El oficio no se vende solo: costos, empaque, marca y primeros clientes.
+**Oferta:** 3 cursos en 1 · 120+ clases · 18 bonos · USD $37,50 (antes USD $75) · garantía de 7 días.
+
+> Textos en español para el formulario de Meta Ads.
+> Límites recomendados: texto principal ≤125 caracteres, titular ≤40, descripción ≤30.
+> Meta puede mostrar cualquiera de las opciones; están escritas para funcionar juntas o por separado.
+
+---
+
+## Primary text
+
+### Primary text (1 de 5)
+
+> No es solo hacer velas: aprende a calcular costos, empacar y presentar tu producto para vender.
+
+**95 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (2 de 5)
+
+> Si ya haces manualidades y no sabes cuánto cobrar, este curso te ordena costos, precio y catálogo.
+
+**98 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (3 de 5)
+
+> Aprende el oficio y el método para vender tus velas y jabones. Sin promesas de ingresos.
+
+**88 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (4 de 5)
+
+> 3 cursos en 1 + módulo de negocio: costos, empaque, marca y primeros clientes.
+
+**78 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (5 de 5)
+
+> De tu primera vela a un catálogo que se ve profesional. Incluye 18 bonos y certificado.
+
+**87 caracteres** · dentro del límite (recomendado: ≤125).
+
+
+---
+
+## Headline
+
+### Headline (1 de 5)
+
+> Aprende el oficio y arma tu catálogo
+
+**36 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (2 de 5)
+
+> Velas y jabones para vender
+
+**27 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (3 de 5)
+
+> Costos, empaque y primeros clientes
+
+**35 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (4 de 5)
+
+> 3 cursos + módulo de negocio
+
+**28 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (5 de 5)
+
+> De la manualidad al catálogo
+
+**28 caracteres** · dentro del límite (recomendado: ≤40).
+
+
+---
+
+## Description
+
+### Description (1 de 5)
+
+> USD $37,50 · 18 bonos
+
+**21 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (2 de 5)
+
+> Aprende a tu ritmo
+
+**18 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (3 de 5)
+
+> Acceso inmediato · 7 días
+
+**25 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (4 de 5)
+
+> 3 cursos en 1
+
+**13 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (5 de 5)
+
+> Costos y precios claros
+
+**23 caracteres** · dentro del límite (recomendado: ≤30).
+
+
+---
+
+## Botón sugerido
+
+Más información para tráfico frío; Comprar ahora para retargeting.
+
+## Notas de campaña
+
+Mantener el aviso “Los resultados dependen de tu trabajo y tu mercado”. No usar cifras de ingresos, capturas de ventas ni “negocio en 14 días”.
+
+## Imagen asociada
+
+`negocio.jpeg` — usar la pieza 1080 × 1350 px (4:5) creada para este enfoque.

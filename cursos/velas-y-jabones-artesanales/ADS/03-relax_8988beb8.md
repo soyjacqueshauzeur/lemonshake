@@ -267,3 +267,138 @@ No medical or therapeutic claims, no anxiety or depression references, no before
 - **1:1:** recortar manteniendo la acción a la izquierda y el texto a la derecha.
 - **9:16:** ampliar la ventana y la mesa; el CTA debe quedar en el tercio inferior.
 - No crear una segunda imagen conceptual: este documento produce una sola pieza principal.
+
+---
+---
+
+# Anuncio Meta — Relax / un momento para ti
+
+**Imagen:** `relax.jpeg`
+**Archivo de anuncio:** `03-relax_8988beb8.md`
+**Enfoque:** Relax / un momento para ti
+**Público:** 30–60 años, autocuidado, aromas, decoración y regalos hechos a mano.
+**Ángulo:** Una pausa creativa en casa, sin prisa y sin presión de vender.
+**Oferta:** 3 cursos en 1 · 120+ clases · 18 bonos · USD $37,50 (antes USD $75) · garantía de 7 días.
+
+> Textos en español para el formulario de Meta Ads.
+> Límites recomendados: texto principal ≤125 caracteres, titular ≤40, descripción ≤30.
+> Meta puede mostrar cualquiera de las opciones; están escritas para funcionar juntas o por separado.
+
+---
+
+## Primary text
+
+### Primary text (1 de 5)
+
+> Regálate una tarde creativa: aprende velas y jabones en casa, sin prisa.
+
+**72 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (2 de 5)
+
+> Un momento para ti, una vela y tus manos. Empieza cuando quieras.
+
+**65 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (3 de 5)
+
+> No necesitas experiencia ni un taller: solo una mesa y ganas de crear.
+
+**70 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (4 de 5)
+
+> Haz algo con tus manos y desconecta de las pantallas.
+
+**53 caracteres** · dentro del límite (recomendado: ≤125).
+
+### Primary text (5 de 5)
+
+> Aprende velas y jabones a tu ritmo. Para ti, para tu casa o para regalar.
+
+**73 caracteres** · dentro del límite (recomendado: ≤125).
+
+
+---
+
+## Headline
+
+### Headline (1 de 5)
+
+> Regálate una tarde creativa
+
+**27 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (2 de 5)
+
+> Aprende velas y jabones en casa
+
+**31 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (3 de 5)
+
+> Un momento para ti, a tu ritmo
+
+**30 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (4 de 5)
+
+> Crea con tus manos y desconecta
+
+**31 caracteres** · dentro del límite (recomendado: ≤40).
+
+### Headline (5 de 5)
+
+> Sin experiencia, sin prisa
+
+**26 caracteres** · dentro del límite (recomendado: ≤40).
+
+
+---
+
+## Description
+
+### Description (1 de 5)
+
+> USD $37,50 · acceso inmediato
+
+**29 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (2 de 5)
+
+> A tu ritmo, desde casa
+
+**22 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (3 de 5)
+
+> 3 cursos + 18 bonos
+
+**19 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (4 de 5)
+
+> Garantía de 7 días
+
+**18 caracteres** · dentro del límite (recomendado: ≤30).
+
+### Description (5 de 5)
+
+> Sin experiencia previa
+
+**22 caracteres** · dentro del límite (recomendado: ≤30).
+
+
+---
+
+## Botón sugerido
+
+Más información para tráfico frío; Comprar ahora para retargeting.
+
+## Notas de campaña
+
+No usar “ansiedad”, “terapia”, “cura” ni claims de salud. La promesa es una actividad creativa y tranquila, no un tratamiento.
+
+## Imagen asociada
+
+`relax.jpeg` — usar la pieza 1080 × 1350 px (4:5) creada para este enfoque.
