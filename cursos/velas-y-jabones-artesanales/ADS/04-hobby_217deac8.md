@@ -1,3 +1,5 @@
+> hobby_217deac8
+
 # Anuncio Meta — Enfoque hobby / pasatiempo creativo
 
 > **Documento de dirección creativa para una IA generadora de imágenes.**

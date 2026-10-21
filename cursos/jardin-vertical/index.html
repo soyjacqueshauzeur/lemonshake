@@ -870,7 +870,7 @@
 
   <main id="top">
 
-    <div class="ml-breadcrumb">
+    <div class="ml-breadcrumb" style="display:none">
       <div class="wrap">
         <a href="/">Tienda</a><span aria-hidden="true">›</span>
         <a href="/?cat=hogar">Hogar</a><span aria-hidden="true">›</span>
@@ -1246,6 +1246,7 @@
   .sf-inner{width:100%;max-width:1340px;margin-inline:auto;padding-inline:clamp(1.25rem,1rem + 1.5vw,2.25rem)}
   .sf-grid{display:grid;gap:34px;grid-template-columns:1fr}
   @media(min-width:760px){.sf-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+  @media(min-width:760px){.sf-grid--compacto{grid-template-columns:1.6fr 1fr}}
   .sf-brand .sf-logo{display:inline-flex;align-items:center;gap:10px;font-family:'Boldonse',system-ui,sans-serif;font-size:1.25rem;text-transform:uppercase;color:#D4FF3D;text-decoration:none;letter-spacing:.01em}
   .sf-mark{width:34px;height:34px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
   .sf-mark::after{content:"{}";font-family:'Geist Mono',ui-monospace,'SF Mono',Menlo,monospace;font-weight:600;font-size:16px;line-height:1;color:#0A0A0C}
@@ -1274,13 +1275,13 @@
 </style>
 <footer class="sf">
   <div class="sf-inner">
-    <div class="sf-grid">
+    <div class="sf-grid sf-grid--compacto">
       <div class="sf-brand">
         <a class="sf-logo" href="/"><img class="sf-mark" src="../../pictures/logo-bold.svg" alt="" width="34" height="34" aria-hidden="true" /> Lemon Shake</a>
         <p class="sf-desc">Cientos de productos, cursos, guías, tutoriales (físicos y digitales).</p>
         <div class="sf-pay" aria-label="Medios de pago"><span>VISA</span><span>MASTERCARD</span><span>PSE</span><span>NEQUI</span><span>DAVIPLATA</span><span>NUBANK</span></div>
       </div>
-      <div class="sf-col">
+      <div class="sf-col" style="display:none">
         <h4>Ayuda</h4>
         <ul>
           <li><a href="/">Tienda</a></li>
@@ -1290,7 +1291,7 @@
           <li><a href="index.html#que-aprendes">Qué aprendes</a></li>
         </ul>
       </div>
-      <div class="sf-col sf-col--contact">
+      <div class="sf-col sf-col--contact" style="display:none">
         <h4>Contacto</h4>
         <ul>
           <li><a href="https://wa.digitales/573507402009" target="_blank" rel="noopener">WhatsApp: +57 350 740 2009</a></li>

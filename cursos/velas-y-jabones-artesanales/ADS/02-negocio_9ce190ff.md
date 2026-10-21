@@ -1,3 +1,5 @@
+> negocio_9ce190ff
+
 # Anuncio Meta — Enfoque negocio / vender lo que creas
 
 > **Documento de dirección creativa para una IA generadora de imágenes.**

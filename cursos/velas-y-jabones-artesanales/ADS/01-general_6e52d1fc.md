@@ -1,3 +1,5 @@
+> general_6e52d1fc
+
 # Anuncio Meta — Enfoque general / descubrimiento
 
 > **Documento de dirección creativa para una IA generadora de imágenes.**

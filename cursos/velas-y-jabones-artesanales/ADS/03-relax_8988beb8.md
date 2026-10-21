@@ -1,3 +1,5 @@
+> relax_8988beb8
+
 # Anuncio Meta — Enfoque relax / un momento para ti
 
 > **Documento de dirección creativa para una IA generadora de imágenes.**
