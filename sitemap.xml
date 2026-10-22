@@ -118,6 +118,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://lemonshake.shop/programas/canciones/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/pictures/og/canciones.jpg</image:loc>
+      <image:title>Canciones personalizadas de Lemon Shake</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://lemonshake.shop/terminos.html</loc>
     <lastmod>2026-10-21</lastmod>
   </url>

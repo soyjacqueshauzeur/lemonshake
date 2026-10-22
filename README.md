@@ -25,6 +25,8 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 │   ├── jardin-vertical/
 │   ├── sushi-founder/
 │   └── velas-y-jabones-artesanales/
+├── programas/                 # servicios y experiencias
+│   └── canciones/             # canciones personalizadas
 ├── digitales/                 # productos digitales propios
 │   ├── el-contador-de-ovejas/
 │   └── ruso/
@@ -111,6 +113,10 @@ Criterios:
   `robots.txt` permite GPTBot, ClaudeBot, PerplexityBot y similares.
 - Iconos en `pictures/icons/` (ICO, SVG, 32/192/512, apple-touch y maskable) y
   tarjetas Open Graph en `pictures/og/`.
+- `programas/canciones/` es una landing independiente: no aparece como tarjeta en
+  la tienda, pero sí en el mapa del limón, en el sitemap y en `llms.txt`. Usa
+  `Product` + `Service` con los tres paquetes de precio.
+
 
 Al añadir una landing: incluir su bloque SEO, crear su imagen OG, sumarla al
 `sitemap.xml` y, si tiene versiones, a `variantes.js` y `tienda-mapa.js`.

@@ -58,6 +58,11 @@
       items: [{ nombre: 'Principal', archivo: '' }]
     },
     {
+      titulo: 'Programas · Canciones personalizadas',
+      ruta: '/programas/canciones/',
+      items: [{ nombre: 'Principal', archivo: '' }]
+    },
+    {
       titulo: 'Legal',
       ruta: '/',
       items: [
