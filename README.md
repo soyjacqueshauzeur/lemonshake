@@ -38,8 +38,10 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 ├── store-card.js              # toda la tarjeta de la tienda abre el producto
 ├── tienda-mapa.js             # limón de la tienda: mapa del sitio con clave
 ├── variantes.js               # limón del footer + modal con las versiones de cada landing
-├── sitemap.xml                # mapa del sitio para Google
-├── robots.txt                 # permite el rastreo y apunta al sitemap
+├── sitemap.xml                # mapa del sitio para Google, con imágenes
+├── robots.txt                 # permite el rastreo (incluidos bots de IA) y apunta al sitemap
+├── llms.txt                   # resumen del catálogo para asistentes de IA
+├── site.webmanifest           # iconos y datos de instalación
 ├── terminos.html              # páginas legales
 ├── privacidad.html
 ├── cookies.html
@@ -79,6 +81,39 @@ Para agregar versiones:
 Todas las landings incluyen `<script src="../../variantes.js" defer></script>`
 antes de `</body>`; el script no hace nada en las páginas sin versiones. La
 tienda incluye `tienda-mapa.js`.
+
+## SEO y datos estructurados
+
+Cada página indexable lleva un bloque `<!-- seo:start --> … <!-- seo:end -->`
+en el `<head>` con:
+
+- `canonical` absoluto y self-referencing, más `hreflang="es"` y `x-default`
+  (preparado para añadir otros idiomas).
+- `robots`, Open Graph y Twitter Cards con imagen 1200×630 propia.
+- JSON-LD en un solo `@graph`: `OnlineStore` + `WebSite` (con `@id` estable en
+  todas las páginas), nodo de página (`CollectionPage`, `ItemPage` o `WebPage`)
+  y, según el caso, `Product` + `Offer`/`AggregateOffer`, `FAQPage` y
+  `BreadcrumbList`.
+
+Criterios:
+
+- `Organization` es un `OnlineStore` con logo, `sameAs`, `contactPoint`,
+  `areaServed` y medios de pago. No se declaran reseñas ni valoraciones que no
+  se puedan verificar.
+- Los cursos se marcan como `Product` + `Offer` (precio y disponibilidad), no
+  como `Course`.
+- `/cursos/` no lleva migas visibles ni `BreadcrumbList`, para no ofrecer
+  salidas en el embudo. En `/productos/` y `/digitales/` el breadcrumb va solo
+  en JSON-LD.
+- `gracias.html` y `pago-fallido.html` llevan `noindex, nofollow` y quedan
+  fuera del sitemap.
+- `llms.txt` resume catálogo, precios y contacto para asistentes de IA, y
+  `robots.txt` permite GPTBot, ClaudeBot, PerplexityBot y similares.
+- Iconos en `pictures/icons/` (ICO, SVG, 32/192/512, apple-touch y maskable) y
+  tarjetas Open Graph en `pictures/og/`.
+
+Al añadir una landing: incluir su bloque SEO, crear su imagen OG, sumarla al
+`sitemap.xml` y, si tiene versiones, a `variantes.js` y `tienda-mapa.js`.
 
 ## Pagos
 

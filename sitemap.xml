@@ -1,79 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lemonshake.shop/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/pictures/og/lemonshake.jpg</image:loc>
+      <image:title>Lemon Shake — tienda online con envío a Colombia</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/productos/synaptic-sleep-5-z/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/productos/synaptic-sleep-5-z/images/Gemini_Generated_Image_886r5v886r5v886r.avif</image:loc>
+      <image:title>Almohada cervical SYNAPTIC SLEEP 5-Z de 5 zonas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lemonshake.shop/productos/synaptic-sleep-5-z/images/size.avif</image:loc>
+      <image:title>Medidas de la almohada SYNAPTIC SLEEP 5-Z</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/images/hero-3x1.avif</image:loc>
+      <image:title>Velas y Jabones Artesanales: 3 cursos + 18 bonos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/general.html</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/images/hero-3x1.avif</image:loc>
+      <image:title>Programa completo de velas y jabones artesanales</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/negocio.html</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/images/hero-3x1.avif</image:loc>
+      <image:title>Curso de velas y jabones para vender</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/relax.html</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/images/vela-suculenta.avif</image:loc>
+      <image:title>Curso de velas y jabones para relajarte</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/hobby.html</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/velas-y-jabones-artesanales/images/vela-marmol.avif</image:loc>
+      <image:title>Curso de velas y jabones como hobby creativo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/jardin-vertical/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/jardin-vertical/images/portada.webp</image:loc>
+      <image:title>Ebook Crea tu Primer Jardín Vertical en Casa</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/sushi-founder/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/sushi-founder/images/portada-sushi-rolls.avif</image:loc>
+      <image:title>Curso online de sushi rolls Sushi Founder</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/sushi-founder/chef.html</loc>
     <lastmod>2026-10-21</lastmod>
-  </url>
-  <url>
-    <loc>https://lemonshake.shop/cursos/sushi-founder/regalo.html</loc>
-    <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/sushi-founder/images/portada-sushi-rolls.avif</image:loc>
+      <image:title>Curso de sushi con técnica profesional</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/cursos/sushi-founder/negocio.html</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/sushi-founder/images/portada-sushi-rolls.avif</image:loc>
+      <image:title>Curso de sushi para emprender</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lemonshake.shop/cursos/sushi-founder/regalo.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/cursos/sushi-founder/images/portada-sushi-rolls.avif</image:loc>
+      <image:title>Regala un curso de sushi</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/digitales/ruso/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/digitales/ruso/images/portada.avif</image:loc>
+      <image:title>Empieza a hablar ruso en 3 meses (A1-A2)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/digitales/el-contador-de-ovejas/</loc>
     <lastmod>2026-10-21</lastmod>
+    <image:image>
+      <image:loc>https://lemonshake.shop/digitales/el-contador-de-ovejas/images/book-cover.avif</image:loc>
+      <image:title>Libro digital El contador de ovejas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://lemonshake.shop/terminos.html</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://lemonshake.shop/privacidad.html</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://lemonshake.shop/cookies.html</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://lemonshake.shop/envios.html</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://lemonshake.shop/devoluciones.html</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
 </urlset>

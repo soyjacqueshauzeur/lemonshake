@@ -15,6 +15,7 @@ pictures/*.jpeg
 
 # Notas internas
 analytics/man.md
+cursos/instrucciones.md
 
 # Sistema y editores
 .DS_Store
