@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 
+# Libros para compradores: fuera de los buscadores (noindex + bloqueo)
+Disallow: /digitales/el-contador-de-ovejas/elcontadordeovejas.html
+Disallow: /digitales/el-contador-de-ovejas/elcontadordeovejas-librodidactico.html
+Disallow: /digitales/el-contador-de-ovejas/elcontadordeovejas-infusiones.html
+
 # Buscadores y asistentes de IA: permitidos para citar y enlazar el catálogo.
 User-agent: GPTBot
 Allow: /

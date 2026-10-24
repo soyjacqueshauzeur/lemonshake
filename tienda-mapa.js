@@ -50,7 +50,12 @@
     {
       titulo: 'Digitales · El contador de ovejas',
       ruta: '/digitales/el-contador-de-ovejas/',
-      items: [{ nombre: 'Principal', archivo: '' }]
+      items: [
+        { nombre: 'Ficha de venta', archivo: '' },
+        { nombre: 'Libro', archivo: 'elcontadordeovejas.html' },
+        { nombre: 'Cuaderno de ejercicios', archivo: 'elcontadordeovejas-librodidactico.html' },
+        { nombre: 'Recetas e infusiones', archivo: 'elcontadordeovejas-infusiones.html' }
+      ]
     },
     {
       titulo: 'Productos · Synaptic Sleep 5-Z',
@@ -112,29 +117,29 @@
     + '.lsv-scroll{max-height:min(70vh,620px);overflow-y:auto;padding-right:6px;'
     + 'scrollbar-width:thin;scrollbar-color:rgba(244,244,240,.2) transparent}'
     + '.lsv-group{margin:0;padding:0}'
-    + '.lsv-group-title{margin:0 0 8px;color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
+    + '.lsv-group-title{margin:0 0 8px;color:#D4FF3D;font-family:"Geist Mono",ui-monospace,monospace;'
     + 'font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase}'
+    /* mismo sistema de tarjetas de la ficha de producto */
+    + '.lsv-group{background:transparent;border:1px solid rgba(244,244,240,.12);border-radius:14px;'
+    + 'padding:14px 12px 10px;margin:0 0 14px}'
+    + '.lsv-hr{display:none}'
     + '.lsv-links{list-style:none;margin:0;padding:0;display:grid;gap:2px}'
     + '.lsv-links li{margin:0;padding:0}'
     + '.lsv-row{display:flex;align-items:center;gap:6px}'
     + '.lsv-links a,.lsv-links .lsv-actual{display:flex;align-items:center;gap:9px;flex:1;min-width:0;'
     + 'padding:8px 10px;border-radius:10px;color:#F4F4F0;text-decoration:none;font-size:.95rem}'
-    + '.lsv-name{flex:1;min-width:0}'
-    + '.lsv-ico{flex:0 0 auto;font-size:.9em;line-height:1;filter:saturate(.9)}'
+    + '.lsv-name{min-width:0}'
+    + '.lsv-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}'
+    + '.lsv-ruta{display:block;color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
+    + 'font-size:.64rem;letter-spacing:.02em;word-break:break-all;line-height:1.25}'
+    /* Botón Copiar: mismo borde y radio que las tarjetas */
     + '.lsv-copy{flex:0 0 auto;background:transparent;color:#C9C9C2;cursor:pointer;'
-    + 'border:1px solid rgba(244,244,240,.18);border-radius:999px;padding:6px 11px;'
+    + 'border:1px solid rgba(244,244,240,.12);border-radius:8px;padding:7px 12px;'
     + 'font-family:"Geist Mono",ui-monospace,monospace;font-size:.62rem;letter-spacing:.08em;'
     + 'text-transform:uppercase;transition:color .15s ease,border-color .15s ease,background .15s ease}'
     + '.lsv-copy:hover{color:#F4F4F0;border-color:rgba(244,244,240,.35)}'
     + '.lsv-copy:focus-visible{outline:2px solid #D4FF3D;outline-offset:2px}'
     + '.lsv-copy.is-done{color:#0A0A0C;background:#D4FF3D;border-color:#D4FF3D}'
-    + '.lsv-links a:hover{background:rgba(244,244,240,.06);color:#D4FF3D}'
-    + '.lsv-links a:focus-visible{outline:2px solid #D4FF3D;outline-offset:-2px}'
-    + '.lsv-actual{opacity:.5}'
-    + '.lsv-badge{color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
-    + 'font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}'
-    + '.lsv-hr{border:0;border-top:1px solid rgba(244,244,240,.10);margin:14px 0}'
-    + '.lsv-hr:last-child{display:none}'
 
     + '@keyframes lsvFade{from{opacity:0}to{opacity:1}}'
     + '@keyframes lsvIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}'
@@ -174,14 +179,14 @@
       var ruta = g.ruta + it.archivo;
       if (ruta === '') ruta = '/';
       var ico = '<span class="lsv-ico" aria-hidden="true">\ud83c\udf4b</span>';
+      var etiqueta = '<span class="lsv-txt"><span class="lsv-name">' + esc(it.nombre) + '</span>'
+        + '<span class="lsv-ruta">' + esc(ruta) + '</span></span>';
       if (normalizar(ruta) === actual) {
-        return '<li class="lsv-row"><span class="lsv-actual">' + ico
-          + '<span class="lsv-name">' + esc(it.nombre) + '</span>'
+        return '<li class="lsv-row"><span class="lsv-actual">' + ico + etiqueta
           + '<span class="lsv-badge">Actual</span></span></li>';
       }
       var absoluta = location.origin + ruta;
-      return '<li class="lsv-row"><a href="' + esc(ruta) + '">' + ico
-        + '<span class="lsv-name">' + esc(it.nombre) + '</span></a>'
+      return '<li class="lsv-row"><a href="' + esc(ruta) + '">' + ico + etiqueta + '</a>'
         + '<button class="lsv-copy" type="button" data-url="' + esc(absoluta) + '">Copiar</button></li>';
     }).join('');
 

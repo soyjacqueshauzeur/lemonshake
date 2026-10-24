@@ -22,6 +22,14 @@
       { nombre: 'Chef',      archivo: 'chef.html',    nota: 'Pulir técnica' },
       { nombre: 'Regalo',    archivo: 'regalo.html',  nota: 'Para compartir' },
       { nombre: 'Negocio',   archivo: 'negocio.html', nota: 'Vender sushi' }
+    ],
+
+    /* Ficha de venta del libro: desde aquí se abren los tres libros */
+    '/digitales/el-contador-de-ovejas/': [
+      { nombre: 'Ficha de venta',           archivo: 'index.html',        nota: 'Página base' },
+      { nombre: 'Libro',                    archivo: 'elcontadordeovejas.html',               nota: '14 capítulos' },
+      { nombre: 'Cuaderno de ejercicios',   archivo: 'elcontadordeovejas-librodidactico.html', nota: '42 actividades' },
+      { nombre: 'Recetas e infusiones',     archivo: 'elcontadordeovejas-infusiones.html',     nota: '10 recetas' }
     ]
   };
 
@@ -68,8 +76,11 @@
     + '.lsv-link:hover .lsv-name{color:#D4FF3D}'
     + '.lsv-link:focus-visible{outline:2px solid #D4FF3D;outline-offset:3px;border-radius:6px}'
     + '.lsv-name{font-size:.98rem;font-weight:600}'
-    + '.lsv-nota{color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
+    + '.lsv-nota{display:block;color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
     + 'font-size:.68rem;letter-spacing:.06em;text-transform:uppercase}'
+    + '.lsv-txt{display:flex;flex-direction:column;gap:2px;min-width:0}'
+    + '.lsv-name{display:block}'
+    + '.lsv-ruta{display:block;margin-top:2px}'
     + '.lsv-badge{flex:1;color:#80807A;font-family:"Geist Mono",ui-monospace,monospace;'
     + 'font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;text-align:right;padding-right:4px}'
     + '.lsv-copy{flex:0 0 auto;background:transparent;color:#C9C9C2;cursor:pointer;'
@@ -111,24 +122,33 @@
     });
   }
 
+  /* Ruta corta de una versión: /cursos/…/archivo.html */
+  function rutaCorta(archivo) {
+    var limpio = (archivo === 'index.html') ? '' : archivo;
+    var url = new URL(limpio || '.', location.href);
+    return url.pathname;
+  }
+
   var filas = items.map(function (it) {
     var esActual = it.archivo === actual.archivo;
+    var ruta = rutaCorta(it.archivo);
+    var absoluta = location.origin + ruta;
     var rotulo = '<span class="lsv-ico" aria-hidden="true">\ud83c\udf4b</span>'
+      + '<span class="lsv-txt">'
       + '<span class="lsv-name">' + esc(it.nombre) + '</span>'
-      + (it.nota ? '<span class="lsv-nota">' + esc(it.nota) + '</span>' : '');
+      + (it.nota ? '<span class="lsv-nota">' + esc(it.nota) + '</span>' : '')
+      + '<span class="lsv-ruta">' + esc(ruta) + '</span>'
+      + '</span>';
 
     if (esActual) {
       return '<li class="lsv-item is-current">' + rotulo
         + '<span class="lsv-badge">Actual</span></li>';
     }
 
-    var limpio = it.archivo === 'index.html' ? '' : it.archivo;
-    var url = new URL(limpio || '.', location.href);
-    var copiar = url.origin + url.pathname;
-    var destino = (limpio || '.') + location.search;
+    var destino = (it.archivo === 'index.html' ? '.' : it.archivo) + location.search;
     return '<li class="lsv-item">'
       + '<a class="lsv-link" href="' + esc(destino) + '">' + rotulo + '</a>'
-      + '<button class="lsv-copy" type="button" data-url="' + esc(copiar) + '">Copiar</button>'
+      + '<button class="lsv-copy" type="button" data-url="' + esc(absoluta) + '">Copiar</button>'
       + '</li>';
   }).join('');
 
