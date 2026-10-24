@@ -16,12 +16,16 @@ pictures/*.jpeg
 # Notas internas
 analytics/man.md
 cursos/instrucciones.md
+PAYMENTS.md
+informe.md
+HOTFIX.MD
 
 # Sistema y editores
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+.obsidian/
 
 # Artefactos de pruebas locales
 .playwright-mcp/

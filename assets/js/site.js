@@ -68,36 +68,6 @@
   }
 })();
 
-/* Language preference (EN default · ES under /es/) */
-(function () {
-  'use strict';
-
-  function setLang(lang) {
-    try {
-      document.cookie = 'lang=' + lang + ';path=/;max-age=31536000;SameSite=Lax';
-    } catch (e) {}
-  }
-
-  document.addEventListener('click', function (e) {
-    var link = e.target && e.target.closest ? e.target.closest('.lang-switch a[data-lang]') : null;
-    if (!link) return;
-    setLang(link.getAttribute('data-lang'));
-  });
-
-  function getLang() {
-    var m = document.cookie.match(/(?:^|;\s*)lang=([^;]+)/);
-    return m ? m[1] : null;
-  }
-
-  // Remembered Spanish users landing on the EN homepage go straight to /es/.
-  if (getLang() === 'es') {
-    var path = location.pathname.replace(/\/+$/, '') || '/';
-    if (path === '/' || path === '/index.html') {
-      location.replace('/es/');
-    }
-  }
-})();
-
 /* Hero portrait A/B toggle */
 (function () {
   'use strict';

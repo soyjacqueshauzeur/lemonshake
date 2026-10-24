@@ -150,16 +150,16 @@
       var PAGO_LABEL = {
         online: 'Compra rápida · Tarjeta/PSE (MercadoPago)',
         whatsapp: 'Nequi, Daviplata o NuBank (por WhatsApp)',
-        contraentrega: 'Contraentrega · Efectivo (+10%)'
+        contraentrega: 'Contraentrega · efectivo al recibir'
       };
       var PAGO_NOTE = {
         online: 'Pago 100% seguro: tu compra se procesa en la plataforma Mercadopago de Mercadolibre (tarjeta débito/crédito o PSE).',
-        contraentrega: 'El valor de la compra lo pagas únicamente a la transportadora, en EFECTIVO, al momento de recibir tu pedido.'
+        contraentrega: 'Pagas el saldo en efectivo a la transportadora al recibir el pedido. El abono, si aplica, se coordina por WhatsApp.'
       };
       var STEP2 = {
         online: '2. Coordinamos el pago seguro con MercadoPago (tarjeta o PSE).',
         whatsapp: '2. Coordinamos el pago seguro (tarjeta, PSE, Nequi, Daviplata o NuBank).',
-        contraentrega: '2. Pagas en efectivo a la transportadora al recibir tu pedido.'
+        contraentrega: '2. Coordinamos el abono por WhatsApp y pagas el saldo en efectivo al recibir.'
       };
 
       document.getElementById('summary').hidden = false;
@@ -168,20 +168,27 @@
       set('pago', PAGO_LABEL[o.pago] || 'Pago online');
       set('total', money(o.total));
 
-      // Detalle del pedido: producto principal + complementos + recargo contraentrega.
+      // Detalle del pedido: producto principal + complementos.
       var items = document.getElementById('items');
       if (items) {
         var rows = '';
         if (o.mainLine != null) rows += '<div class="row"><span>' + o.combo + '</span><b>' + money(o.mainLine) + '</b></div>';
         else if (o.combo) rows += '<div class="row"><span>' + o.combo + '</span><b>' + money(o.total) + '</b></div>';
         (o.addons || []).forEach(function (a) { rows += '<div class="row"><span>' + a.name + ' ×' + a.qty + '</span><b>' + money(a.unit * a.qty) + '</b></div>'; });
-        if (o.contraRecargo > 0) rows += '<div class="row"><span>Recargo contraentrega (10%)</span><b>' + money(o.contraRecargo) + '</b></div>';
         items.innerHTML = rows;
       }
 
       // Aviso de pago según la forma elegida (WhatsApp mantiene el texto actual).
       var note = document.getElementById('payNote');
-      if (note && PAGO_NOTE[o.pago]) { note.textContent = PAGO_NOTE[o.pago]; note.hidden = false; }
+      if (note) {
+        if (o.pago === 'contraentrega' && Number(o.contraAbono) > 0) {
+          note.innerHTML = 'Contraentrega: abono de <b>' + money(o.contraAbono) + '</b> por confirmar por WhatsApp · saldo de <b>' + money(o.contraSaldo) + '</b> en efectivo al recibir.';
+          note.hidden = false;
+        } else if (PAGO_NOTE[o.pago]) {
+          note.textContent = PAGO_NOTE[o.pago];
+          note.hidden = false;
+        }
+      }
       var s2 = document.getElementById('step2li');
       if (s2 && STEP2[o.pago]) s2.textContent = STEP2[o.pago];
 
