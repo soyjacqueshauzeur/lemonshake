@@ -475,7 +475,7 @@ h2.cap__titulo,h2.seccion__titulo,.seccion__titulo,h2.final__titulo{
 .aviso__letra strong{color:var(--text)}
 
 /* ======================= SEGUIR DONDE IBA / BORRAR PROGRESO ======================= */
-.seguir{position:fixed;left:12px;right:12px;bottom:calc(62px + 12px);z-index:78;display:flex;
+.seguir{position:fixed;left:12px;right:12px;top:calc(var(--barra-alto, 120px) + 8px);z-index:78;display:flex;
   align-items:center;gap:10px;padding:10px 10px 10px 16px;border-radius:18px;
   background:#0E1030;color:#F6F1E4;border:1px solid rgba(212,255,61,.45);
   box-shadow:0 18px 40px -18px rgba(0,0,0,.75)}
@@ -486,7 +486,9 @@ h2.cap__titulo,h2.seccion__titulo,.seccion__titulo,h2.final__titulo{
   color:#050507;font-weight:700;font-size:.95rem}
 .seguir__cerrar{flex:0 0 auto;width:40px;height:40px;border-radius:999px;background:transparent;
   color:#C9C9C2;font-size:1.3rem;line-height:1;border:1px solid rgba(244,244,240,.25)}
-@media(min-width:760px){.seguir{left:16px;right:auto;max-width:520px}}
+@media(min-width:760px){.seguir{left:16px;right:auto;max-width:560px}}
+/* Mientras se ve el aviso, el contenido no queda tapado */
+body{padding-top:0}
 
 .final__borrar{margin-top:6px;min-height:44px;padding:0 8px;background:none;border:0;
   font-size:.95rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
@@ -608,6 +610,11 @@ html[data-theme="noche"] .cap__otros a{color:#E2FF73}
 .libros__que{font-size:.95rem;color:var(--muted);line-height:1.35}
 .libros__item--principal a{border-color:var(--accent);background:var(--accent-bg)}
 .libros__item--principal .libros__rol{color:var(--accent)}
+.libros__cta{display:flex;align-items:center;justify-content:center;margin-top:12px;
+  padding:11px 16px;border-radius:999px;background:var(--lime);color:#050507;
+  font-weight:700;font-size:.98rem;line-height:1.2;text-align:center;
+  transition:background .15s ease,transform .15s ease}
+.libros__item a:hover .libros__cta{background:var(--lime-soft)}
 .libros__nota{margin:14px 0 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
   text-transform:uppercase;color:var(--muted);text-align:center}
 .libros__nota a{text-decoration:underline;text-underline-offset:3px}
@@ -681,7 +688,7 @@ h1.portada__titulo{max-width:100%}
   </div>
   <nav class="tira" aria-label="Capítulos">
     <div class="tira__scroll" id="tiraMenu">
-      <a href="#portada" data-salto>Inicio</a><a href="#introduccion" data-salto>Intro. Por qué este libro</a><a href="#cap-1" data-salto>1. Hábitos y rutinas</a><a href="#cap-2" data-salto>2. El reloj biológico</a><a href="#cap-3" data-salto>3. Pantallas y luz azul</a><a href="#cap-4" data-salto>4. Comida y agua</a><a href="#cap-5" data-salto>5. Pastillas y remedios</a><a href="#cap-6" data-salto>6. Respirar y calmar la mente</a><a href="#cap-7" data-salto>7. Hormonas y diferencias</a><a href="#cap-8" data-salto>8. Trastornos del sueño</a><a href="#cap-9" data-salto>9. Ansiedad y ánimo</a><a href="#cap-10" data-salto>10. Música y sonidos</a><a href="#cap-11" data-salto>11. Mitos y realidades</a><a href="#cap-12" data-salto>12. El sueño por edades</a><a href="#cap-13" data-salto>13. Cuándo pedir ayuda</a><a href="#cap-14" data-salto>14. La ciencia del sueño</a>
+      <a href="#portada" data-salto>Inicio</a><a href="#indice" data-salto>Índice</a><a href="#introduccion" data-salto>Intro. Por qué este libro</a><a href="#cap-1" data-salto>1. Hábitos y rutinas</a><a href="#cap-2" data-salto>2. El reloj biológico</a><a href="#cap-3" data-salto>3. Pantallas y luz azul</a><a href="#cap-4" data-salto>4. Comida y agua</a><a href="#cap-5" data-salto>5. Pastillas y remedios</a><a href="#cap-6" data-salto>6. Respirar y calmar la mente</a><a href="#cap-7" data-salto>7. Hormonas y diferencias</a><a href="#cap-8" data-salto>8. Trastornos del sueño</a><a href="#cap-9" data-salto>9. Ansiedad y ánimo</a><a href="#cap-10" data-salto>10. Música y sonidos</a><a href="#cap-11" data-salto>11. Mitos y realidades</a><a href="#cap-12" data-salto>12. El sueño por edades</a><a href="#cap-13" data-salto>13. Cuándo pedir ayuda</a><a href="#cap-14" data-salto>14. La ciencia del sueño</a>
     </div>
   </nav>
   <div class="barra__progreso" aria-hidden="true"><span id="barraProgreso"></span></div>
@@ -695,13 +702,13 @@ h1.portada__titulo{max-width:100%}
       <button type="button" class="cajon__cerrar" data-cerrar aria-label="Cerrar el menú">×</button>
     </div>
     <div class="cajon__lista">
-      <a href="#portada" data-salto>Inicio</a><a href="#introduccion" data-salto>Intro. Por qué este libro</a><a href="#cap-1" data-salto>1. Hábitos y rutinas</a><a href="#cap-2" data-salto>2. El reloj biológico</a><a href="#cap-3" data-salto>3. Pantallas y luz azul</a><a href="#cap-4" data-salto>4. Comida y agua</a><a href="#cap-5" data-salto>5. Pastillas y remedios</a><a href="#cap-6" data-salto>6. Respirar y calmar la mente</a><a href="#cap-7" data-salto>7. Hormonas y diferencias</a><a href="#cap-8" data-salto>8. Trastornos del sueño</a><a href="#cap-9" data-salto>9. Ansiedad y ánimo</a><a href="#cap-10" data-salto>10. Música y sonidos</a><a href="#cap-11" data-salto>11. Mitos y realidades</a><a href="#cap-12" data-salto>12. El sueño por edades</a><a href="#cap-13" data-salto>13. Cuándo pedir ayuda</a><a href="#cap-14" data-salto>14. La ciencia del sueño</a>
+      <a href="#portada" data-salto>Inicio</a><a href="#indice" data-salto>Índice</a><a href="#introduccion" data-salto>Intro. Por qué este libro</a><a href="#cap-1" data-salto>1. Hábitos y rutinas</a><a href="#cap-2" data-salto>2. El reloj biológico</a><a href="#cap-3" data-salto>3. Pantallas y luz azul</a><a href="#cap-4" data-salto>4. Comida y agua</a><a href="#cap-5" data-salto>5. Pastillas y remedios</a><a href="#cap-6" data-salto>6. Respirar y calmar la mente</a><a href="#cap-7" data-salto>7. Hormonas y diferencias</a><a href="#cap-8" data-salto>8. Trastornos del sueño</a><a href="#cap-9" data-salto>9. Ansiedad y ánimo</a><a href="#cap-10" data-salto>10. Música y sonidos</a><a href="#cap-11" data-salto>11. Mitos y realidades</a><a href="#cap-12" data-salto>12. El sueño por edades</a><a href="#cap-13" data-salto>13. Cuándo pedir ayuda</a><a href="#cap-14" data-salto>14. La ciencia del sueño</a>
       <a href="#bibliografia" data-salto>Bibliografía</a>
     </div>
   </nav>
 </div>
 
-<div class="libros-modal" id="librosModal" hidden><div class="libros-modal__fondo" data-cerrar-libros></div><div class="libros-modal__panel" role="dialog" aria-modal="true" aria-labelledby="librosModal-titulo"><button type="button" class="libros-modal__cerrar" data-cerrar-libros aria-label="Cerrar">×</button><aside class="libros" ><p class="libros__titulo" id="librosModal-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside></div></div>
+<div class="libros-modal" id="librosModal" hidden><div class="libros-modal__fondo" data-cerrar-libros></div><div class="libros-modal__panel" role="dialog" aria-modal="true" aria-labelledby="librosModal-titulo"><button type="button" class="libros-modal__cerrar" data-cerrar-libros aria-label="Cerrar">×</button><aside class="libros" ><p class="libros__titulo" id="librosModal-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside></div></div>
 
 <main>
   <section id="portada" class="seccion seccion--portada">
@@ -712,10 +719,6 @@ h1.portada__titulo{max-width:100%}
     <h1 id="portada-titulo">El contador<br>de ovejas</h1>
     <p class="portada__sub">Prioriza el bienestar.<br>Descubre tu ritmo.<br><strong>Para dormir desde ahora:
       transforma tu sueño.</strong></p>
-    <div class="portada__acciones">
-      <a class="boton boton--grande" href="#empezar">Empezar a leer</a>
-      <a class="boton boton--fantasma" href="#indice">Ver los capítulos</a>
-    </div>
     <p class="portada__nota">Puedes leer de a un capítulo por noche. No hay prisa.</p>
   </div>
   <figure class="portada__figura">
@@ -725,7 +728,7 @@ h1.portada__titulo{max-width:100%}
 
   </section>
   <section class="seccion seccion--caja-portada">
-    <aside class="libros" id="otros-libros-portada" aria-labelledby="otros-libros-portada-titulo"><p class="libros__titulo" id="otros-libros-portada-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside>
+    <aside class="libros" id="otros-libros-portada" aria-labelledby="otros-libros-portada-titulo"><p class="libros__titulo" id="otros-libros-portada-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside>
   </section>
 
   <div id="empezar"></div>
@@ -2872,7 +2875,7 @@ nuestra mente y nuestro bienestar.</p>
     <p><a class="boton boton--grande" href="#indice">Volver al índice</a></p>
     <p><button type="button" class="final__borrar" id="borrarProgreso">Terminé el libro · borrar progreso</button></p>
   </section>
-  <aside class="libros libros--cierre" id="otros-libros-cierre" aria-labelledby="otros-libros-cierre-titulo"><p class="libros__titulo" id="otros-libros-cierre-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside>
+  <aside class="libros libros--cierre" id="otros-libros-cierre" aria-labelledby="otros-libros-cierre-titulo"><p class="libros__titulo" id="otros-libros-cierre-titulo"><span class="libros__emoji" aria-hidden="true">📖</span> Otros libros complementarios que adquiriste con tu compra</p><ul class="libros__lista"><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-librodidactico.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Libro de ejercicios</strong><span class="libros__que">42 actividades cortas, con espacio para escribir tus respuestas.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li><li class="libros__item libros__item--complementario"><a href="elcontadordeovejas-infusiones.html"><span class="libros__emoji" aria-hidden="true">📖</span><span class="libros__txt"><span class="libros__rol">Complementario</span><strong class="libros__nombre">Recetas e infusiones</strong><span class="libros__que">Diez bebidas para bajar el ritmo, con ingredientes y pasos.</span><span class="libros__cta">Haz clic aquí para acceder</span></span></a></li></ul><p class="libros__nota">Lemon Shake</p></aside>
 </main>
 
 <nav class="piso" aria-label="Navegación rápida">
@@ -3011,6 +3014,17 @@ nuestra mente y nuestro bienestar.</p>
       barra.style.width = (Math.min(1, Math.max(0, p)) * 100).toFixed(1) + '%';
     });
   }
+
+  /* Alto real de la barra: el aviso de seguir leyendo se coloca debajo */
+  var barraEl = document.getElementById('barra');
+  function medirBarra() {
+    if (!barraEl) return;
+    raiz.style.setProperty('--barra-alto', barraEl.offsetHeight + 'px');
+    raiz.style.setProperty('scroll-padding-top', (barraEl.offsetHeight + 12) + 'px');
+  }
+  medirBarra();
+  window.addEventListener('resize', medirBarra);
+  window.addEventListener('load', medirBarra);
 
   var pedido = false;
   function alDesplazar() {
