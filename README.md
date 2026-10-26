@@ -22,7 +22,6 @@ Sitio estático construido con **HTML, CSS y JavaScript vanilla**: sin framework
 .
 ├── index.html                 # tienda y catálogo
 ├── cursos/                    # cursos vendidos en Hotmart
-│   ├── jardin-vertical/
 │   ├── sushi-founder/
 │   └── velas-y-jabones-artesanales/
 ├── programas/                 # servicios y experiencias

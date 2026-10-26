@@ -114,6 +114,7 @@
     <p>Gracias por tu compra. Te contactaremos por <b>WhatsApp</b> para confirmar tus datos antes del envío.</p>
 
     <div class="paynote" id="payNote" hidden></div>
+    <div class="paynote" data-payment-state hidden></div>
 
     <!-- Resumen del pedido (se rellena desde sessionStorage) -->
     <div class="summary" id="summary" hidden>
@@ -210,5 +211,7 @@
   alt="Web Analytics"
   referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
   <!-- End of Statcounter Code -->
+  <script src="/assets/js/payments-config.js"></script>
+  <script src="/assets/js/payment-return.js" defer></script>
 </body>
 </html>

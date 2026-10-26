@@ -109,6 +109,8 @@
     <h1>No pudimos completar tu pago</h1>
     <p>La transacción no se finalizó o fue rechazada. No se hizo ningún cobro. Puedes reintentar o elegir <b>pago contra entrega</b>.</p>
 
+    <div class="paynote" data-payment-state hidden></div>
+
     <div class="box">
       <b>¿Qué pudo pasar?</b><br />
       · Datos de tarjeta incorrectos o sin fondos.<br />
@@ -120,7 +122,7 @@
       <a class="btn btn--primary" href="index.html#pedido">Reintentar el pedido</a>
       <a class="btn btn--ghost" href="index.html#pedido">Elegir pago por WhatsApp</a>
     </div>
-    <p class="demo">DEMO (test) · Código de error de ejemplo: <b>PENDIENTE</b></p>
+    <p class="demo">Si el problema continúa, escríbenos por WhatsApp y revisamos tu caso.</p>
   </div>
   <script>
   (function(){var r=document.documentElement;var b=document.getElementById('themeToggle');if(b){b.addEventListener('click',function(){var n=(r.getAttribute('data-theme')==='dark')?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('jh-theme',n);}catch(e){}var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',n==='dark'?'#0A0A0C':'#F4F4F0');});}})();
@@ -134,5 +136,7 @@
   alt="Web Analytics"
   referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
   <!-- End of Statcounter Code -->
+  <script src="/assets/js/payments-config.js"></script>
+  <script src="/assets/js/payment-return.js" defer></script>
 </body>
 </html>

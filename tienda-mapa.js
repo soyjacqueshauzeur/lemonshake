@@ -38,11 +38,6 @@
       ]
     },
     {
-      titulo: 'Cursos · Jardín vertical',
-      ruta: '/cursos/jardin-vertical/',
-      items: [{ nombre: 'Principal', archivo: '' }]
-    },
-    {
       titulo: 'Digitales · Ruso',
       ruta: '/digitales/ruso/',
       items: [{ nombre: 'Principal', archivo: '' }]

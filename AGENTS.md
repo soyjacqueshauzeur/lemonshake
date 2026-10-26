@@ -19,7 +19,7 @@ Reglas:
 - Un bloque por web; nunca mezclar varias páginas en un mismo bloque.
 - Si el commit toca varias webs, repetir el bloque completo por separado.
 - Listar solo los componentes modificados; omitir los que no cambian.
-- `web` usa la ruta relativa desde la raíz del repo: `index`, `ruso/index`, `jardin-vertical/index`, etc.
+- `web` usa la ruta relativa desde la raíz del repo: `index`, `digitales/ruso/index`, `cursos/sushi-founder/index`, etc.
 - El `resumen` siempre debe ser no técnico: explicar el resultado visible para el usuario, no los detalles del código.
 
 ## Marcadores de cambio

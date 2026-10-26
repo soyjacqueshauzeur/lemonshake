@@ -109,6 +109,8 @@
     <h1>No pudimos completar tu pago</h1>
     <p>La transacción no se finalizó o fue rechazada. No se hizo ningún cobro. Puedes reintentar o elegir <b>pago contra entrega</b>.</p>
 
+    <div class="paynote" data-payment-state hidden></div>
+
     <div class="box">
       <b>¿Qué pudo pasar?</b><br />
       · Datos de tarjeta incorrectos o sin fondos.<br />
@@ -134,5 +136,7 @@
   alt="Web Analytics"
   referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
   <!-- End of Statcounter Code -->
+  <script src="/assets/js/payments-config.js"></script>
+  <script src="/assets/js/payment-return.js" defer></script>
 </body>
 </html>
