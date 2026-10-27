@@ -35,6 +35,85 @@
     created: '⏳ Estamos verificando tu pago.'
   };
 
+  var TITLES = {
+    approved: '¡Pago aprobado!',
+    pending: 'Estamos confirmando tu pago',
+    in_process: 'Estamos confirmando tu pago',
+    authorized: 'Pago autorizado',
+    rejected: 'No pudimos completar el pago',
+    cancelled: 'Pago cancelado',
+    refunded: 'Pago reembolsado',
+    charged_back: 'Pago revertido por el banco',
+    manual_review: 'Estamos revisando tu pago',
+    preference_error: 'No pudimos iniciar el pago',
+    created: 'Estamos verificando tu pago'
+  };
+
+  var SUBTITLES = {
+    approved: 'Tu pago se acreditó. Te contactaremos por WhatsApp para coordinar la entrega.',
+    pending: 'MercadoPago todavía no confirma el pago. Te avisaremos cuando se acredite.',
+    in_process: 'MercadoPago está procesando el pago. Te avisaremos cuando se acredite.',
+    authorized: 'El pago quedó autorizado. Estamos esperando la confirmación final.',
+    rejected: 'El pago no se completó y no se hizo ningún cobro. Puedes intentarlo de nuevo.',
+    cancelled: 'El pago fue cancelado y no se hizo ningún cobro.',
+    refunded: 'El pago fue reembolsado. Si tienes dudas, escríbenos por WhatsApp.',
+    charged_back: 'El banco revirtió el pago. Escríbenos por WhatsApp para revisarlo.',
+    manual_review: 'Estamos revisando el pago manualmente. Te contactaremos por WhatsApp.',
+    preference_error: 'No pudimos iniciar el pago. Escríbenos por WhatsApp y lo resolvemos.',
+    created: 'Estamos verificando el estado del pago.'
+  };
+
+  var STEPS = {
+    approved: {
+      physical: [
+        'Te escribimos por WhatsApp para confirmar tus datos.',
+        'Preparamos tu pedido.',
+        'Te compartimos la guía de seguimiento.'
+      ],
+      digital: [
+        'Pago confirmado.',
+        'Preparamos tu acceso.',
+        'Te lo enviamos al correo en menos de 24 horas hábiles.'
+      ]
+    },
+    pending: [
+      'Estamos esperando la confirmación de MercadoPago.',
+      'Te avisaremos por correo cuando se acredite.',
+      'Después coordinamos la entrega.'
+    ],
+    in_process: [
+      'Estamos esperando la confirmación de MercadoPago.',
+      'Te avisaremos por correo cuando se acredite.',
+      'Después coordinamos la entrega.'
+    ],
+    authorized: [
+      'Estamos esperando la confirmación final de MercadoPago.',
+      'Te avisaremos por correo cuando se acredite.',
+      'Después coordinamos la entrega.'
+    ],
+    refunded: [
+      'El pago fue reembolsado.',
+      'Si tienes dudas, escríbenos por WhatsApp.'
+    ],
+    manual_review: [
+      'Estamos revisando el pago manualmente.',
+      'Te contactaremos por WhatsApp con el resultado.'
+    ],
+    created: [
+      'Estamos verificando el estado del pago.',
+      'Te avisaremos cuando tengamos una respuesta.'
+    ],
+    rejected: [],
+    cancelled: []
+  };
+
+  function stepsFor(order, status) {
+    if (status === 'approved') {
+      return order.area === 'tienda' ? STEPS.approved.physical : STEPS.approved.digital;
+    }
+    return STEPS[status] || [];
+  }
+
   function money(n) {
     return '$' + Number(n || 0).toLocaleString('es-CO');
   }
@@ -49,6 +128,33 @@
     stateEl.hidden = false;
     stateEl.textContent = LABELS[status] || '⏳ Estamos verificando tu pago.';
     stateEl.className = 'paynote show payment-state payment-state--' + status;
+
+    var title = TITLES[status] || 'Estado de tu pedido';
+    var subtitle = SUBTITLES[status] || 'Revisa el estado de tu pago.';
+    if (status === 'approved' && order.area !== 'tienda') {
+      subtitle = 'Tu pago se acreditó. Te enviaremos el acceso a este correo en menos de 24 horas hábiles.';
+    }
+    var titleEl = document.querySelector('[data-payment-title]');
+    var subtitleEl = document.querySelector('[data-payment-subtitle]');
+    if (titleEl) titleEl.textContent = title;
+    if (subtitleEl) subtitleEl.textContent = subtitle;
+    document.title = title + ' — Lemon Shake';
+
+    var stepsEl = document.querySelector('[data-payment-steps]');
+    if (stepsEl) {
+      var steps = stepsFor(order, status);
+      stepsEl.textContent = '';
+      if (steps.length) {
+        stepsEl.hidden = false;
+        steps.forEach(function (text, i) {
+          var li = document.createElement('li');
+          li.textContent = (i + 1) + '. ' + text;
+          stepsEl.appendChild(li);
+        });
+      } else {
+        stepsEl.hidden = true;
+      }
+    }
 
     setText('[data-payment-order]', order.id || orderId);
     setText('[data-payment-total]', money(order.total));
