@@ -186,6 +186,7 @@
     .cart-nav:hover .cart-nav__icon{border-color:var(--lime);color:var(--lime)}
     .cart-nav svg{width:20px;height:20px}
     .cart-nav__count{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--lime);color:var(--ink-000);font-family:var(--font-mono);font-size:.62rem;font-weight:700;display:grid;place-items:center;line-height:1;/*box-shadow:0 0 0 2px var(--ink-deep)*/}
+    .cart-nav__count[hidden]{display:none}
     .cart-nav__label{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-mute)}
     .theme-nav{display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--paper);flex:0 0 auto}
     .theme-nav__icon{width:40px;height:40px;border:1px solid var(--ink-rule);border-radius:50%;display:grid;place-items:center;color:var(--paper);transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -759,9 +760,9 @@
     .t-save{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:var(--lime);color:var(--ink-000);font-family:var(--font-mono);font-size:.58rem;font-weight:700;letter-spacing:.02em}
     .t-financing{display:flex;align-items:center;gap:6px;margin:0;font-size:.7rem;color:var(--muted)}
     .t-financing svg{width:13px;height:13px}
-    .t-product .t-stepper{align-self:flex-start;margin:6px 0 4px}
-    .t-product .t-stepper button{width:36px;min-height:44px}
-    .t-product .t-stepper input{width:44px;min-height:44px;font-size:1rem}
+    .t-qty-row{display:flex;align-items:center;gap:10px;margin:6px 0 4px}
+    .t-qty-label{display:inline-flex;align-items:center;align-self:stretch;min-height:34px;font-family:var(--font-mono);font-size:1rem;font-weight:500;line-height:1;color:var(--text);white-space:nowrap}
+    .t-product .t-stepper{align-self:flex-start;margin:0}
     .t-seller{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:6px;border-top:1px solid var(--line);font-size:.62rem;color:var(--muted)}
     .t-seller b{color:var(--text)}
     .t-seller svg{width:13px;height:13px;vertical-align:-2px;color:var(--accent-text)}
@@ -781,17 +782,18 @@
     .t-min.is-warning{color:var(--danger-soft)}
     .t-addons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
     .t-addon{
-      position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"media media" "info actions" "desc desc";
+      position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "body" "desc";
       gap:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;
       background:var(--surface);cursor:pointer;user-select:none;
       transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out);
     }
     .t-addon.is-selected{background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent-soft)}
     .t-addon > img{grid-area:media;width:100%;height:auto;aspect-ratio:1/1;border:0;border-bottom:1px solid var(--line);border-radius:0;object-fit:cover;display:block;background:var(--surface-2)}
-    .t-addon__info{grid-area:info;min-width:0;padding:10px}
+    .t-addon__body{grid-area:body;display:flex;flex-direction:column;gap:4px;min-width:0;padding:10px}
+    .t-addon__info{display:block;min-width:0;padding:0}
     .t-addon__info b{display:block;font-size:.76rem;line-height:1.2}
     .t-addon__info span{display:block;margin-top:2px;font-family:var(--font-mono);font-size:.62rem;color:var(--muted)}
-    .t-addon__sku{margin-top:4px!important;width:max-content;max-width:100%;font-size:.56rem!important;letter-spacing:.03em;text-decoration:underline dotted;text-underline-offset:2px;cursor:pointer;transition:color var(--dur-fast) var(--ease-out)}
+    .t-addon__sku{margin-top:4px!important;margin-bottom:6px!important;width:max-content;max-width:100%;font-size:.56rem!important;letter-spacing:.03em;text-decoration:underline dotted;text-underline-offset:2px;cursor:pointer;transition:color var(--dur-fast) var(--ease-out)}
     .t-addon__sku:hover{color:var(--accent-text)}
     .t-addon__sku:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:2px}
     .t-addon__desc-toggle{grid-area:desc;display:flex;width:100%;align-self:end;align-items:center;justify-content:center;gap:5px;text-align:center;margin:0;padding:8px 10px;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--accent-soft);color:var(--accent-text);font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;cursor:pointer;box-sizing:border-box;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -813,17 +815,13 @@
     .t-addon__description li b{color:var(--text)}
     .t-addon__description li::marker{color:var(--accent-text)}
     @keyframes addonDescIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-    .t-addon__actions{grid-area:actions;display:flex;align-items:center;justify-content:flex-end;gap:7px;padding:10px 10px 10px 0}
+    .t-addon__actions{display:flex;flex-direction:column;align-items:stretch;gap:4px;width:100%;padding:0;margin:6px 0}
+    .t-addon__qty-label{display:block;width:100%;font-family:var(--font-mono);font-size:.78rem;font-weight:500;line-height:1.2;color:var(--text);white-space:nowrap}
+    .t-addon__actions .t-stepper{align-self:flex-start}
+    @media(max-width:340px){.t-addon__body{padding:4px}}
     @media(min-width:700px){.t-addons{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:768px){
-      .t-addon{grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "info" "actions" "desc"}
-      .t-addon__actions{justify-content:flex-start;padding:0 10px 10px}
-    }
     @media(min-width:1200px){
       .t-addons{grid-template-columns:repeat(3,minmax(0,1fr))}
-      .t-addon .t-stepper button{width:24px}
-      .t-addon .t-stepper input{width:28px}
-      .t-addon__actions{padding-right:8px}
     }
     .crosssell.t-crosssell{
       background:transparent;border-color:var(--line-strong);color:var(--text);
@@ -880,7 +878,8 @@
     .t-summary__subtotal{font-family:var(--font-mono);font-size:.7rem;color:var(--text);text-align:right;white-space:nowrap}
     .t-summary__item--gift .t-summary__thumb{grid-row:1}
     .t-summary__free{color:var(--accent-text);font-family:var(--font-mono);font-size:.82rem;text-align:right}
-    .t-summary__qty{grid-column:2 / -1;grid-row:2;margin-top:4px}
+    .t-summary__qty{grid-column:2 / -1;grid-row:2;margin-top:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .t-summary__qty-label{font-family:var(--font-mono);font-size:.62rem;line-height:1;color:var(--muted);white-space:nowrap}
     .t-summary__qty .t-stepper{transform:scale(.92);transform-origin:left center}
     .t-summary__row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;font-size:.76rem;color:var(--text-soft)}
     .t-summary__row b{color:var(--lime);font-family:var(--font-mono);font-size:.68rem}
@@ -1052,8 +1051,11 @@
     .lightbox-nav svg{width:22px;height:22px}
     .lightbox-nav--prev{left:clamp(6px,2vw,18px)}
     .lightbox-nav--next{right:clamp(6px,2vw,18px)}
-    .lightbox-close{position:absolute;top:16px;right:16px;z-index:2;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(5,5,7,.6);color:#F4F4F0;font-size:1.7rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
-    .lightbox-close:hover{border-color:var(--lime);color:var(--lime)}
+    .lightbox-close{position:absolute;top:16px;right:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;padding:0;color:var(--lime);cursor:pointer}
+    .lightbox-close__label{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);text-shadow:0 1px 8px rgba(0,0,0,.55);pointer-events:none}
+    .lightbox-close__icon{width:46px;height:46px;border-radius:50%;border:1px solid var(--lime);background:rgba(5,5,7,.6);color:var(--lime);font-size:1.7rem;line-height:1;display:grid;place-items:center;pointer-events:none;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+    .lightbox-close:hover .lightbox-close__icon{border-color:var(--lime-soft);color:var(--lime-soft)}
+    @media(max-width:480px){.lightbox-close{top:12px;right:12px;gap:6px}.lightbox-close__label{font-size:.6rem}}
 
     /* Selector de cantidad (ficha) */
     .ml-qty{width:100%;max-width:280px;background:var(--bg);border:1px solid var(--line-strong);color:var(--text);border-radius:var(--radius);padding:12px 14px;font-size:var(--text-base)}
@@ -1212,7 +1214,7 @@
         <button class="cart-nav" id="cartBtn" type="button" aria-label="Ver resumen de compra">
           <span class="cart-nav__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 6z"/><path d="M6 6L4 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-            <span class="cart-nav__count" id="headerCartCount">1</span>
+            <span class="cart-nav__count" id="headerCartCount" hidden>0</span>
           </span>
           <span class="cart-nav__label">Carrito</span>
         </button>
@@ -1298,10 +1300,13 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
               Pago seguro con MercadoPago · 1 cuota
             </p>
-            <div class="t-stepper">
-              <button type="button" id="qtyMinus" aria-label="Quitar una almohada">−</button>
-              <input type="text" id="qtyInput" value="1" readonly aria-label="Cantidad de almohadas" />
-              <button type="button" id="qtyPlus" aria-label="Añadir una almohada">+</button>
+            <div class="t-qty-row">
+              <span class="t-qty-label" id="qtyLabel">Cantidad:</span>
+              <div class="t-stepper" role="group" aria-labelledby="qtyLabel">
+                <button type="button" id="qtyMinus" aria-label="Quitar una almohada">−</button>
+                <input type="text" id="qtyInput" value="1" readonly aria-label="Cantidad de almohadas" />
+                <button type="button" id="qtyPlus" aria-label="Añadir una almohada">+</button>
+              </div>
             </div>
             <div class="t-seller">
               <span>Vendido por <b>Lemon Shake</b> · Compra protegida</span>
@@ -1314,7 +1319,7 @@
           </section>
 
           <section class="t-section" id="complementos" aria-labelledby="addonsTitle">
-            <h2 class="t-section-title" id="addonsTitle">Súmale algo <span class="opt">(opcional)</span></h2>
+            <h2 class="t-section-title" id="addonsTitle">Súmale algo  a tu compra <span class="opt">(opcional)</span></h2>
             <div class="crosssell t-crosssell">
               <div class="crosssell-head">
                 <label class="addon addon-all"><input type="checkbox" id="tAddonAll" /> Seleccionar todos</label>
@@ -1323,52 +1328,61 @@
               <div class="t-addons t-addons--three" id="addonList">
                 <div class="t-addon" data-t-addon="cojin">
                   <img src="images/TFL-1418543.png" alt="Cojín Ortopédico Pierna" width="600" height="600" />
-                  <div class="t-addon__info">
-                    <b>Cojín Ortopédico Pierna</b>
-                    <span data-t-addon-price="cojin">$32.000 c/u</span>
-                    <span class="t-addon__sku" data-copy="SKU: TFL-1418543">SKU: TFL-1418543</span>
-                  </div>
-                  <div class="t-addon__actions">
-                    <label class="t-check"><input type="checkbox" data-t-addon-check="cojin" aria-label="Incluir Cojín Ortopédico Pierna" /><span aria-hidden="true"></span></label>
-                    <div class="t-stepper">
-                      <button type="button" data-t-addon-step="cojin" data-dir="-1" aria-label="Quitar un cojín">−</button>
-                      <input type="text" data-t-addon-qty="cojin" value="0" readonly aria-label="Cantidad de cojines" />
-                      <button type="button" data-t-addon-step="cojin" data-dir="1" aria-label="Añadir un cojín">+</button>
+                  <label class="t-check"><input type="checkbox" data-t-addon-check="cojin" aria-label="Incluir Cojín Ortopédico Pierna" /><span aria-hidden="true"></span></label>
+                  <div class="t-addon__body">
+                    <div class="t-addon__info">
+                      <b>Cojín Ortopédico Pierna</b>
+                      <span data-t-addon-price="cojin">$32.000 c/u</span>
                     </div>
+                    <div class="t-addon__actions">
+                      <span class="t-addon__qty-label">Cantidad:</span>
+                      <div class="t-stepper">
+                        <button type="button" data-t-addon-step="cojin" data-dir="-1" aria-label="Quitar un cojín">−</button>
+                        <input type="text" data-t-addon-qty="cojin" value="0" readonly aria-label="Cantidad de cojines" />
+                        <button type="button" data-t-addon-step="cojin" data-dir="1" aria-label="Añadir un cojín">+</button>
+                      </div>
+                    </div>
+                    <span class="t-addon__sku" data-copy="SKU: TFL-1418543">SKU: TFL-1418543</span>
                   </div>
                   <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-cojin">Ver descripción</button>
                 </div>
                 <div class="t-addon" data-t-addon="masajeador">
                   <img class="t-addon__img--contain" src="images/MVV-2214521.png" alt="Cojín Masajeador Cuello Manos Y Pies" width="600" height="338" />
-                  <div class="t-addon__info">
-                    <b>Cojín Masajeador Cuello Manos Y Pies</b>
-                    <span data-t-addon-price="masajeador">$64.500 c/u</span>
-                    <span class="t-addon__sku" data-copy="SKU: MVV-2214521">SKU: MVV-2214521</span>
-                  </div>
-                  <div class="t-addon__actions">
-                    <label class="t-check"><input type="checkbox" data-t-addon-check="masajeador" aria-label="Incluir Cojín Masajeador Cuello Manos Y Pies" /><span aria-hidden="true"></span></label>
-                    <div class="t-stepper">
-                      <button type="button" data-t-addon-step="masajeador" data-dir="-1" aria-label="Quitar un masajeador">−</button>
-                      <input type="text" data-t-addon-qty="masajeador" value="0" readonly aria-label="Cantidad de masajeadores" />
-                      <button type="button" data-t-addon-step="masajeador" data-dir="1" aria-label="Añadir un masajeador">+</button>
+                  <label class="t-check"><input type="checkbox" data-t-addon-check="masajeador" aria-label="Incluir Cojín Masajeador Cuello Manos Y Pies" /><span aria-hidden="true"></span></label>
+                  <div class="t-addon__body">
+                    <div class="t-addon__info">
+                      <b>Cojín Masajeador Cuello Manos Y Pies</b>
+                      <span data-t-addon-price="masajeador">$64.500 c/u</span>
                     </div>
+                    <div class="t-addon__actions">
+                      <span class="t-addon__qty-label">Cantidad:</span>
+                      <div class="t-stepper">
+                        <button type="button" data-t-addon-step="masajeador" data-dir="-1" aria-label="Quitar un masajeador">−</button>
+                        <input type="text" data-t-addon-qty="masajeador" value="0" readonly aria-label="Cantidad de masajeadores" />
+                        <button type="button" data-t-addon-step="masajeador" data-dir="1" aria-label="Añadir un masajeador">+</button>
+                      </div>
+                    </div>
+                    <span class="t-addon__sku" data-copy="SKU: MVV-2214521">SKU: MVV-2214521</span>
                   </div>
                   <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-masajeador">Ver descripción</button>
                 </div>
                 <div class="t-addon" data-t-addon="gel">
                   <img src="images/NCHV-2104675.png" alt="Cojín Gel Ergonómico" width="600" height="600" />
-                  <div class="t-addon__info">
-                    <b>Cojín Gel Ergonómico</b>
-                    <span data-t-addon-price="gel">$48.500 c/u</span>
-                    <span class="t-addon__sku" data-copy="SKU: NCHV-2104675">SKU: NCHV-2104675</span>
-                  </div>
-                  <div class="t-addon__actions">
-                    <label class="t-check"><input type="checkbox" data-t-addon-check="gel" aria-label="Incluir Cojín Gel Ergonómico" /><span aria-hidden="true"></span></label>
-                    <div class="t-stepper">
-                      <button type="button" data-t-addon-step="gel" data-dir="-1" aria-label="Quitar un cojín de gel">−</button>
-                      <input type="text" data-t-addon-qty="gel" value="0" readonly aria-label="Cantidad de cojines de gel" />
-                      <button type="button" data-t-addon-step="gel" data-dir="1" aria-label="Añadir un cojín de gel">+</button>
+                  <label class="t-check"><input type="checkbox" data-t-addon-check="gel" aria-label="Incluir Cojín Gel Ergonómico" /><span aria-hidden="true"></span></label>
+                  <div class="t-addon__body">
+                    <div class="t-addon__info">
+                      <b>Cojín Gel Ergonómico</b>
+                      <span data-t-addon-price="gel">$48.500 c/u</span>
                     </div>
+                    <div class="t-addon__actions">
+                      <span class="t-addon__qty-label">Cantidad:</span>
+                      <div class="t-stepper">
+                        <button type="button" data-t-addon-step="gel" data-dir="-1" aria-label="Quitar un cojín de gel">−</button>
+                        <input type="text" data-t-addon-qty="gel" value="0" readonly aria-label="Cantidad de cojines de gel" />
+                        <button type="button" data-t-addon-step="gel" data-dir="1" aria-label="Añadir un cojín de gel">+</button>
+                      </div>
+                    </div>
+                    <span class="t-addon__sku" data-copy="SKU: NCHV-2104675">SKU: NCHV-2104675</span>
                   </div>
                   <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-gel">Ver descripción</button>
                 </div>
@@ -1436,7 +1450,7 @@
         <aside class="t-layout__aside">
           <section class="t-summary cart-summary-section" id="resumen" aria-labelledby="summaryTitle">
             <div class="t-summary__card">
-              <h2 class="t-summary__title" id="summaryTitle">Resumen</h2>
+              <h2 class="t-summary__title" id="summaryTitle">Resumen de tu compra:</h2>
               <div class="t-summary__rows" id="summaryRows" aria-live="polite"></div>
               <div class="t-summary__row"><span>Envío</span><b>Gratis</b></div>
               <div class="t-summary__total"><span>Total</span><b id="summaryTotal">$84.000</b></div>
@@ -1623,7 +1637,7 @@
     </section>
 
     <!-- ══════════ CTA FINAL (urgencia honesta) ══════════ -->
-    <section class="section final-cta" style="padding-top:0">
+    <section class="section final-cta" style="padding-top:0" hidden>
       <div class="wrap">
         <div class="card">
           <span class="badge">⏳ Unidades reducidas</span>
@@ -1635,7 +1649,7 @@
             <div><strong id="cdM">00</strong><small>Min</small></div>
             <div><strong id="cdS">00</strong><small>Seg</small></div>
           </div>
-          <p id="urgencyNote">El precio baja 10% los días 15 y el último día del mes, durante 24 horas.</p>
+          <p id="urgencyNote">El precio baja hoy 10% durante 24 horas.</p>
           <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#top" data-open-data-modal>Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
         </div>
       </div>
@@ -1656,11 +1670,16 @@
   .sf-desc{margin:16px 0 0;max-width:40ch;color:#C9C9C2;font-size:.95rem;line-height:1.6}
   .sf-pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
   .sf-pay span{border:1px solid rgba(244,244,240,.16);border-radius:8px;padding:5px 10px;font-family:'Geist Mono',ui-monospace,monospace;font-size:.62rem;color:#80807A;letter-spacing:.06em}
+  .sf-pay--bottom{margin-top:0;justify-content:flex-end}
+  @media(max-width:600px){.sf-pay--bottom{justify-content:flex-start}}
   .sf-col h4{font-family:'Geist Mono',ui-monospace,monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#80807A;margin:0 0 14px;font-weight:400}
   .sf-col ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
   .sf-col--contact ul{display:flex;flex-wrap:wrap;gap:10px 12px}
   .sf-col--contact li{flex:0 1 calc(33.333% - 8px);min-width:0}
   .sf-col--contact li:first-child{flex:0 1 100%}
+  .sf-col--contact li[hidden]{display:none}
+  .sf-more{display:inline-flex;align-items:center;background:transparent;border:0;padding:0;margin:0;font-family:'Geist Mono',ui-monospace,monospace;font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#D4FF3D;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .sf-more:hover{color:#F4F4F0}
   @media(max-width:1024px){.sf-col--contact li{flex-basis:calc(50% - 6px)}}
   @media(max-width:425px){.sf-col--contact li{flex-basis:100%}}
   .sf-col--contact a[href*="facebook.com"],
@@ -1675,6 +1694,8 @@
   .sf-meta a:hover{color:#D4FF3D}
   .sf-copy a{color:#D4FF3D;text-decoration:none}
   .sf-copy a:hover{color:#D4FF3D}
+  .sf-secret{cursor:default}
+  .final-cta{scroll-margin-top:96px}
 </style>
 <footer class="sf">
   <div class="sf-inner">
@@ -1682,12 +1703,10 @@
       <div class="sf-brand">
         <a class="sf-logo" href="/"><img class="sf-mark" src="../../pictures/logo-bold.svg" alt="" width="34" height="34" aria-hidden="true" /> Lemon Shake</a>
         <p class="sf-desc">Cientos de productos, cursos, guías, tutoriales (físicos y digitales).</p>
-        <div class="sf-pay" aria-label="Medios de pago"><span>VISA</span><span>MASTERCARD</span><span>PSE</span><span>NEQUI</span><span>DAVIPLATA</span><span>NUBANK</span></div>
       </div>
       <div class="sf-col">
         <h4>Ayuda</h4>
         <ul>
-          <li><a href="/">Tienda</a></li>
           <li><a href="../../productos/synaptic-sleep-5-z/index.html#faq">Preguntas frecuentes</a></li>
           <li><a href="../../envios.html">Envíos y entregas</a></li>
           <li><a href="#top" data-open-data-modal>Hacer un pedido</a></li>
@@ -1698,15 +1717,16 @@
         <h4>Contacto</h4>
         <ul>
           <li><a href="https://wa.me/573507402009" target="_blank" rel="noopener">WhatsApp: +57 350 740 2009</a></li>
-          <li><a href="https://www.facebook.com/lemonshake.shop" target="_blank" rel="noopener noreferrer">Página de Facebook</a></li>
-          <li><a href="https://www.facebook.com/groups/6216947125006501" target="_blank" rel="noopener noreferrer">Grupo de Facebook</a></li>
-          <li><a href="https://www.instagram.com/lemonshake.shop/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.threads.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">Threads</a></li>
-          <li><a href="https://tiktok.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-          <li><a href="https://x.com/lemonshake_shop" target="_blank" rel="noopener noreferrer">X</a></li>
-          <li><a href="https://www.youtube.com/@lemonshake_shop" target="_blank" rel="noopener noreferrer">YouTube</a></li>
           <li><a href="https://t.me/lemonshake_shop" target="_blank" rel="noopener noreferrer">Telegram Channel</a></li>
           <li><a href="https://t.me/+YT0kcnrxpGs5Y2Zh" target="_blank" rel="noopener noreferrer">Telegram Group</a></li>
+          <li class="sf-extra" hidden><a href="https://www.facebook.com/lemonshake.shop" target="_blank" rel="noopener noreferrer">Página de Facebook</a></li>
+          <li class="sf-extra" hidden><a href="https://www.facebook.com/groups/6216947125006501" target="_blank" rel="noopener noreferrer">Grupo de Facebook</a></li>
+          <li class="sf-extra" hidden><a href="https://www.instagram.com/lemonshake.shop/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li class="sf-extra" hidden><a href="https://www.threads.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">Threads</a></li>
+          <li class="sf-extra" hidden><a href="https://tiktok.com/@lemonshake.shop" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li class="sf-extra" hidden><a href="https://x.com/lemonshake_shop" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li class="sf-extra" hidden><a href="https://www.youtube.com/@lemonshake_shop" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li class="sf-more-item"><button class="sf-more" type="button" aria-expanded="false">Ver todas</button></li>
         </ul>
       </div>
       <div class="sf-col">
@@ -1721,12 +1741,8 @@
       </div>
     </div>
     <div class="sf-bottom">
-      <span class="sf-copy">© <span class="sf-year">2026</span> <span class="sf-month">Octubre</span> <a class="sf-copy-link" href="/">&lt;/&gt; Lemon Shake</a></span>
-      <div class="sf-meta">
-        <a href="../../envios.html">Envíos</a>
-        <a href="../../devoluciones.html">Devoluciones</a>
-        <a href="../../privacidad.html">Privacidad</a>
-      </div>
+      <span class="sf-copy"><span class="sf-secret">©</span> <span class="sf-year">2026</span> <span class="sf-month">Octubre</span> <a class="sf-copy-link" href="/">&lt;/&gt; Lemon Shake</a></span>
+      <div class="sf-pay sf-pay--bottom" aria-label="Medios de pago"><span>VISA</span><span>MASTERCARD</span><span>PSE</span><span>NEQUI</span><span>DAVIPLATA</span><span>NUBANK</span></div>
     </div>
   </div>
 </footer>
@@ -1741,6 +1757,19 @@
     for (var i = 0; i < ys.length; i++) ys[i].textContent = year;
     var ms = document.querySelectorAll('.sf-month');
     for (var j = 0; j < ms.length; j++) if (month) ms[j].textContent = month;
+  })();
+</script>
+<script>
+  (function () {
+    var more = document.querySelector('.sf-more');
+    if (!more) return;
+    var extras = document.querySelectorAll('.sf-extra');
+    more.addEventListener('click', function () {
+      var expanded = more.getAttribute('aria-expanded') === 'true';
+      for (var i = 0; i < extras.length; i++) extras[i].hidden = expanded;
+      more.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      more.textContent = expanded ? 'Ver todas' : 'Ver menos';
+    });
   })();
 </script>
 <!-- sf:end -->
@@ -2948,9 +2977,17 @@
       else target = new Date(y, m + 1, 15, 0, 0, 0);
       return { active: active, target: target, last: last };
     }
+    var finalCta = document.querySelector('.final-cta');
+    var finalCtaManual = null;
+    function syncFinalCta(active) {
+      if (!finalCta) return;
+      var visible = finalCtaManual === null ? active : finalCtaManual;
+      finalCta.hidden = !visible;
+    }
     function pad2(n) { return String(n).padStart(2, '0'); }
     function tickCountdown() {
       var c = offerCycle();
+      syncFinalCta(c.active);
       var disc = c.active ? 0.9 : 1;
       if (disc !== state.discount) {
         state.discount = disc;
@@ -2967,13 +3004,25 @@
         H = pad2(Math.floor((diff % 86400000) / 3600000));
         M = pad2(Math.floor((diff % 3600000) / 60000));
         S = pad2(Math.floor((diff % 60000) / 1000));
-        note.textContent = 'El precio baja 10% los días 15 y el último día del mes, durante 24 horas.';
+        note.textContent = 'El precio baja hoy 10% durante 24 horas.';
       }
       if (cdD) cdD.textContent = D; if (cdH) cdH.textContent = H;
       if (cdM) cdM.textContent = M; if (cdS) cdS.textContent = S;
       setTimeout(tickCountdown, 1000);
     }
     tickCountdown();
+
+    var sfSecret = document.querySelector('.sf-secret');
+    if (sfSecret) {
+      sfSecret.addEventListener('click', function () {
+        if (!finalCta) return;
+        finalCtaManual = finalCta.hidden;
+        syncFinalCta(offerCycle().active);
+        if (!finalCta.hidden) {
+          finalCta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
 
     /* ---------- Video demo (play/pause) ---------- */
     var dv = document.querySelector('.demo-video video');
@@ -3071,6 +3120,7 @@
       qty: 1,
       complements: { cojin: 0, masajeador: 0, gel: 0 }
     };
+    var cartStarted = false;
 
     var $ = function (sel, root) { return (root || document).querySelector(sel); };
     var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -3127,7 +3177,7 @@
         '<div class="t-summary__thumb"><img src="' + img + '" alt="' + name + '" width="64" height="64" loading="lazy" /></div>' +
         '<div class="t-summary__name"><b>' + name + '</b><small>' + money(price) + ' c/u</small></div>' +
         '<div class="t-summary__subtotal">' + money(lineTotal) + '</div>' +
-        '<div class="t-summary__qty"><div class="t-stepper">' +
+        '<div class="t-summary__qty"><span class="t-summary__qty-label">Cantidad</span><div class="t-stepper">' +
           '<button type="button" ' + attr + ' data-dir="-1" aria-label="Quitar una unidad">−</button>' +
           '<input type="text" value="' + qty + '" readonly aria-label="Cantidad de ' + name + '" />' +
           '<button type="button" ' + attr + ' data-dir="1" aria-label="Añadir una unidad">+</button>' +
@@ -3157,7 +3207,10 @@
       var valid = true; // Súmale algo es opcional: se puede comprar sin complementos.
 
       if (els.qtyInput) els.qtyInput.value = state.qty;
-      if (els.headerCartCount) els.headerCartCount.textContent = totalUnits();
+      if (els.headerCartCount) {
+        els.headerCartCount.textContent = cartStarted ? totalUnits() : 0;
+        els.headerCartCount.hidden = !cartStarted;
+      }
       if (els.cartCount) els.cartCount.textContent = totalUnits() + ' Productos';
 
       $$('[data-t-addon]', els.addonList).forEach(function (row) {
@@ -3208,12 +3261,16 @@
     }
 
     function setMainQty(n) {
-      state.qty = clamp(n, 1, MAX_QTY);
+      var next = clamp(n, 1, MAX_QTY);
+      if (next !== state.qty) cartStarted = true;
+      state.qty = next;
       render();
     }
     function setComplementQty(id, n) {
       if (!COMPLEMENTS[id]) return;
-      state.complements[id] = clamp(n, 0, MAX_QTY);
+      var next = clamp(n, 0, MAX_QTY);
+      if (next !== (state.complements[id] || 0)) cartStarted = true;
+      state.complements[id] = next;
       render();
     }
     function scrollTo(el) {
@@ -3228,6 +3285,7 @@
         ORDER.forEach(function (id) {
           state.complements[id] = els.addonAll.checked ? 1 : 0;
         });
+        cartStarted = true;
         render();
       });
     }
@@ -3345,6 +3403,8 @@
       if (!dataModal || !dataModal.hidden) return;
       var dataStep = document.getElementById('datos');
       if (!dataStep) return;
+      cartStarted = true;
+      render();
       if (window.JH_PRODUCT_CHECKOUT) {
         window.JH_PRODUCT_CHECKOUT.setSelection(state.qty, state.complements);
       }
@@ -3597,7 +3657,10 @@
   </script>
   <!-- Lightbox: imagen a tamaño completo -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
-    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar">×</button>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar fotos">
+      <span class="lightbox-close__label">Cerrar fotos</span>
+      <span class="lightbox-close__icon" aria-hidden="true">×</span>
+    </button>
     <button class="lightbox-nav lightbox-nav--prev" id="lightboxPrev" type="button" aria-label="Ver anterior">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
     </button>
