@@ -180,14 +180,24 @@
     .brand .dot::after{content:"{}";font-family:var(--font-mono);font-weight:600;font-size:14px;line-height:1;letter-spacing:0;color:var(--ink-000)}
     .nav-links{display:flex;flex-wrap:wrap;gap:22px;margin-inline-start:auto;font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
     .nav-links a:hover{color:var(--accent-text)}
-    .brand-group{display:flex;align-items:center;gap:8px;min-width:0}
-    .brand-group .theme-toggle{margin-inline-start:0}
-    .cart-nav{margin-inline-start:auto;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:0;color:var(--paper);padding:0;cursor:pointer;flex:0 0 auto}
+    .header-actions{display:flex;align-items:center;gap:14px;margin-inline-start:auto;flex:0 0 auto}
+    .cart-nav{display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:0;color:var(--paper);padding:0;cursor:pointer;flex:0 0 auto}
     .cart-nav__icon{position:relative;display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--ink-rule);border-radius:50%;color:var(--paper);transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
     .cart-nav:hover .cart-nav__icon{border-color:var(--lime);color:var(--lime)}
     .cart-nav svg{width:20px;height:20px}
     .cart-nav__count{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--lime);color:var(--ink-000);font-family:var(--font-mono);font-size:.62rem;font-weight:700;display:grid;place-items:center;line-height:1;box-shadow:0 0 0 2px var(--ink-deep)}
     .cart-nav__label{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-mute)}
+    .theme-nav{display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--paper);flex:0 0 auto}
+    .theme-nav__icon{width:40px;height:40px;border:1px solid var(--ink-rule);border-radius:50%;display:grid;place-items:center;color:var(--paper);transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+    .theme-nav:hover .theme-nav__icon{border-color:var(--lime);color:var(--lime)}
+    .theme-nav svg{width:20px;height:20px}
+    .theme-nav .icon-sun,.theme-nav .icon-moon{display:none}
+    html[data-theme="dark"] .theme-nav .icon-sun{display:block}
+    html[data-theme="light"] .theme-nav .icon-moon{display:block}
+    .theme-nav__label{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.04em;line-height:1.1;text-align:center;color:var(--paper-mute);max-width:54px;white-space:nowrap}
+    .theme-nav__label .theme-to-dark,.theme-nav__label .theme-to-light{display:none}
+    html[data-theme="light"] .theme-nav__label .theme-to-dark{display:inline}
+    html[data-theme="dark"] .theme-nav__label .theme-to-light{display:inline}
     /* Nav compacto en anchos medios; el nombre de la marca solo se oculta < 1024 */
     @media(min-width:900px) and (max-width:1199px){
       .nav-links{gap:14px;font-size:.68rem}
@@ -272,19 +282,12 @@
     .spec-row span:first-child{color:var(--muted)}
     .spec-row span:last-child{font-weight:600;text-align:right}
 
-    .demo-grid{display:flex;flex-direction:column;gap:16px}
-    .demo-hero{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
-    @media(min-width:1024px){.demo-hero{grid-template-columns:1fr 1fr}}
-    .demo-hero figure{margin:0;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);position:relative}
-    .demo-side{display:none}
-    @media(min-width:1024px){.demo-side{display:block;aspect-ratio:16/9}}
-    .demo-side img{width:100%;height:100%;object-fit:cover;display:block}
-    .demo-grid figure{margin:0;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);position:relative}
+    .demo-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:768px){.demo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .demo-grid figure{margin:0;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);position:relative;aspect-ratio:1/1}
     .demo-grid img{width:100%;height:100%;object-fit:cover}
     .demo-video{width:100%;cursor:pointer}
-    .demo-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000}
-    .demo-stack{display:flex;gap:16px;flex-wrap:wrap}
-    .demo-stack figure{flex:1 1 0;min-width:110px;aspect-ratio:4/3}
+    .demo-video video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
     .play-badge{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,5,7,.35)}
     .play-badge i{width:64px;height:64px;border-radius:50%;background:var(--lime);color:var(--ink-000);display:grid;place-items:center;font-size:1.4rem;font-style:normal;box-shadow:var(--shadow-lime)}
 
@@ -562,6 +565,7 @@
       .nav-links,.nav-cta-row{display:none}
       .menu-toggle{display:grid}
       .wrap.nav{gap:12px}
+      .header-actions{gap:10px}
     }
     @media(max-width:375px){
       .brand{font-size:var(--text-sm)}
@@ -684,7 +688,9 @@
     /* ===== Hero + layout de test dentro de ml-product ===== */
     .t-hero-wrap{margin-bottom:clamp(20px,3.5vw,40px)}
     .t-hero{position:relative;width:100%;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius-xl);background:var(--surface);aspect-ratio:4/5;min-height:420px}
-    .t-hero__img{width:100%;height:100%;object-fit:cover;display:block}
+    .t-hero__img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+    .t-hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .t-hero__img[hidden],.t-hero__video[hidden]{display:none}
     .t-hero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,7,.82) 0%,rgba(5,5,7,.22) 48%,rgba(5,5,7,.86) 100%);pointer-events:none}
     .t-hero__content{position:absolute;top:22px;left:16px;right:16px;max-width:78%;color:var(--paper-bright);text-shadow:0 1px 12px rgba(0,0,0,.55)}
     .t-kicker{margin:0 0 8px;font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--paper-bright);opacity:.84}
@@ -719,12 +725,25 @@
     .t-gallery{position:relative;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--bg)}
     .t-gallery__track{display:flex;gap:8px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:2px 0 4px}
     .t-gallery__track::-webkit-scrollbar{display:none}
-    .t-thumb{flex:0 0 64px;width:64px;height:64px;padding:0;overflow:hidden;border:1px solid var(--line-strong);border-radius:9px;background:var(--surface-2);cursor:pointer}
+    .t-thumb{flex:0 0 64px;width:64px;height:64px;padding:0;overflow:hidden;border:1px solid var(--line-strong);border-radius:9px;background:var(--surface-2);cursor:pointer;position:relative}
     .t-thumb.is-active{border:2px solid var(--lime)}
     .t-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .t-thumb__play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,5,7,.28);color:#F4F4F0;font-size:1rem;line-height:1;pointer-events:none;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+    .t-thumb.is-active .t-thumb__play{color:var(--lime)}
     .t-gallery__next{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--text);cursor:pointer;box-shadow:var(--shadow-sm)}
     .t-gallery__next svg{width:14px;height:14px}
+    @media(max-width:599px){
+      .t-gallery__track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;overflow:visible}
+      .t-thumb{flex:none;width:100%;height:auto;aspect-ratio:1}
+      .t-gallery__next{display:none}
+    }
     .t-product{display:flex;flex-direction:column;gap:6px;padding:22px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius-xl);box-shadow:var(--shadow);margin:12px 0 18px}
+    html[data-theme="dark"] .t-product.product-details,
+    html[data-theme="dark"] .crosssell.t-crosssell,
+    html[data-theme="dark"] .t-summary__card{border:1px solid var(--lime)}
+    html[data-theme="light"] .t-product.product-details,
+    html[data-theme="light"] .crosssell.t-crosssell,
+    html[data-theme="light"] .t-summary__card{border-color:var(--line)}
     .t-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
     .t-title-row h2{margin:0;font-family:var(--font-display);font-size:clamp(1.15rem,4.8vw,1.4rem);line-height:1.08;letter-spacing:-.01em}
     .t-badge{flex:0 0 auto;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--line-strong);color:var(--accent-text);font-family:var(--font-mono);font-size:.55rem;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
@@ -736,7 +755,7 @@
     .t-price-row{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
     .t-price-now{font-family:var(--font-display);font-size:1.85rem;line-height:1}
     .t-price-old{font-family:var(--font-mono);font-size:.86rem;color:var(--muted);text-decoration:line-through}
-    .t-save{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;background:var(--lime);color:var(--ink-000);font-family:var(--font-mono);font-size:.58rem;font-weight:700;letter-spacing:.02em}
+    .t-save{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:var(--lime);color:var(--ink-000);font-family:var(--font-mono);font-size:.58rem;font-weight:700;letter-spacing:.02em}
     .t-financing{display:flex;align-items:center;gap:6px;margin:0;font-size:.7rem;color:var(--muted)}
     .t-financing svg{width:13px;height:13px}
     .t-product .t-stepper{align-self:flex-start;margin:6px 0 4px}
@@ -745,6 +764,9 @@
     .t-seller{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:6px;border-top:1px solid var(--line);font-size:.62rem;color:var(--muted)}
     .t-seller b{color:var(--text)}
     .t-seller svg{width:13px;height:13px;vertical-align:-2px;color:var(--accent-text)}
+    .t-seller [data-copy]{cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;transition:color var(--dur-fast) var(--ease-out)}
+    .t-seller [data-copy]:hover{color:var(--accent-text)}
+    .t-seller [data-copy]:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:2px}
     .t-chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px 0 0}
     .t-chip{display:inline-flex;padding:4px 8px;border:1px solid var(--line);border-radius:999px;font-family:var(--font-mono);font-size:.58rem;color:var(--text-soft)}
 
@@ -848,7 +870,8 @@
     .data-modal[hidden]{display:none}
     .data-modal__backdrop{position:absolute;inset:0;background:rgba(5,5,7,.72);backdrop-filter:blur(3px)}
     .data-modal__dialog{
-      position:relative;z-index:1;width:100%;max-width:760px;max-height:92vh;display:flex;flex-direction:column;
+      position:relative;z-index:1;width:100%;max-width:760px;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);display:flex;flex-direction:column;
+      overflow:hidden;
       background:#F4F4F0;color:#0A0A0C;color-scheme:light;border-radius:18px 18px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.5);
       --bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#ECECE6;--surface-elev:#E4E4DD;
       --line:rgba(10,10,12,.10);--line-strong:rgba(10,10,12,.18);
@@ -859,10 +882,10 @@
     .data-modal__head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:#F4F4F0;flex:0 0 auto}
     .data-modal__head strong{font-family:var(--font-display);font-size:var(--text-lg);font-weight:400;text-transform:uppercase;letter-spacing:.03em}
     .data-modal__close{width:38px;height:38px;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--text);display:grid;place-items:center;font-size:1.25rem;line-height:1;cursor:pointer;flex:0 0 auto}
-    .data-modal__body{overflow-y:auto;padding:18px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+    .data-modal__body{flex:1 1 auto;min-height:0;overflow-y:auto;padding:18px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
     .data-modal__body .checkout-step{scroll-margin-top:0}
     .data-modal__body .checkout-step-head{margin-top:0}
-    @media(min-width:768px){.data-modal{align-items:center;padding:24px}.data-modal__dialog{border-radius:18px;max-height:90vh}}
+    @media(min-width:768px){.data-modal{align-items:center;padding:24px}.data-modal__dialog{border-radius:18px;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px)}}
 
     /* ===== Escala tipográfica final de test ===== */
     .t-condition{font-size:.72rem}
@@ -983,10 +1006,27 @@
       .countdown strong{font-size:1.35rem}
     }
     /* Lightbox (imagen a tamaño completo) */
-    .lightbox{position:fixed;inset:0;z-index:120;background:rgba(5,5,7,.92);display:flex;align-items:center;justify-content:center;padding:24px}
+    .lightbox{position:fixed;inset:0;z-index:120;background:#050507;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:clamp(16px,3vw,28px);overflow:hidden}
     .lightbox[hidden]{display:none}
-    .lightbox img{max-width:96vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:var(--radius)}
-    .lightbox-close{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(5,5,7,.6);color:#F4F4F0;font-size:1.7rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+    .lightbox__stage{display:flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:0;width:100%;max-width:1200px}
+    .lightbox__stage img,.lightbox__stage video{display:block;max-width:100%;max-height:85vh;max-height:min(85dvh,100%);width:auto;height:auto;object-fit:contain;border-radius:var(--radius)}
+    .lightbox__stage img{touch-action:pan-y;-webkit-user-drag:none;user-select:none}
+    .lightbox__stage video{background:#000}
+    .lightbox__stage [hidden]{display:none}
+    .lightbox__thumbs{display:flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;width:100%;max-width:900px;overflow-x:auto;padding:2px;scrollbar-width:none}
+    .lightbox__thumbs::-webkit-scrollbar{display:none}
+    .lightbox__thumb{position:relative;flex:0 0 auto;width:clamp(48px,8vw,64px);height:clamp(48px,8vw,64px);padding:0;border:1px solid rgba(244,244,240,.35);border-radius:8px;overflow:hidden;background:#111;opacity:.65;transition:opacity var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+    .lightbox__thumb img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;display:block;border-radius:0}
+    .lightbox__thumb:hover,.lightbox__thumb:focus-visible{opacity:1}
+    .lightbox__thumb.is-active{border:2px solid var(--lime);opacity:1}
+    .lightbox__thumb-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,5,7,.35);color:#F4F4F0;font-size:.75rem;line-height:1;pointer-events:none}
+    .lightbox__thumb.is-active .lightbox__thumb-play{color:var(--lime)}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,244,240,.35);background:rgba(5,5,7,.65);color:#F4F4F0;display:grid;place-items:center;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out)}
+    .lightbox-nav:hover,.lightbox-nav:focus-visible{border-color:var(--lime);color:var(--lime);background:rgba(5,5,7,.85)}
+    .lightbox-nav svg{width:22px;height:22px}
+    .lightbox-nav--prev{left:clamp(6px,2vw,18px)}
+    .lightbox-nav--next{right:clamp(6px,2vw,18px)}
+    .lightbox-close{position:absolute;top:16px;right:16px;z-index:2;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(5,5,7,.6);color:#F4F4F0;font-size:1.7rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
     .lightbox-close:hover{border-color:var(--lime);color:var(--lime)}
 
     /* Selector de cantidad (ficha) */
@@ -1132,22 +1172,25 @@
   <!-- ══════════ HEADER ORIGINAL SIMPLIFICADO ══════════ -->
   <header class="site-header">
     <div class="wrap nav">
-      <div class="brand-group">
-        <a class="brand" href="/" aria-label="Lemon Shake — inicio"><img class="dot" src="../../pictures/logo-bold.svg" alt="" width="44" height="44" aria-hidden="true" /> <span class="brand-name">Lemon Shake</span></a>
+      <a class="brand" href="/" aria-label="Lemon Shake — inicio"><img class="dot" src="../../pictures/logo-bold.svg" alt="" width="44" height="44" aria-hidden="true" /> <span class="brand-name">Lemon Shake</span></a>
 
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Tema claro/oscuro">
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
-          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      <div class="header-actions">
+        <button class="theme-nav" id="themeToggle" type="button" aria-label="Cambiar tema claro u oscuro" title="Cambiar tema claro u oscuro">
+          <span class="theme-nav__icon">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+          </span>
+          <span class="theme-nav__label"><span class="theme-to-dark">Oscuro</span><span class="theme-to-light">Claro</span></span>
+        </button>
+
+        <button class="cart-nav" id="cartBtn" type="button" aria-label="Ver resumen de compra">
+          <span class="cart-nav__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 6z"/><path d="M6 6L4 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            <span class="cart-nav__count" id="headerCartCount">1</span>
+          </span>
+          <span class="cart-nav__label">Carrito</span>
         </button>
       </div>
-
-      <button class="cart-nav" id="cartBtn" type="button" aria-label="Ver resumen de compra">
-        <span class="cart-nav__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 6z"/><path d="M6 6L4 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-          <span class="cart-nav__count" id="headerCartCount">1</span>
-        </span>
-        <span class="cart-nav__label">Carrito</span>
-      </button>
     </div>
   </header>
 
@@ -1165,7 +1208,8 @@
     <section class="ml-product">
       <div class="wrap t-hero-wrap">
         <section class="t-hero" aria-labelledby="heroTitle">
-          <img class="t-hero__img" id="heroImage" src="images/5dd68603-8826-4001-92c6-7b063678f5bf.avif" alt="Persona descansando sobre la almohada SYNAPTIC SLEEP 5-Z" width="900" height="900" loading="eager" fetchpriority="high" />
+          <img class="t-hero__img" id="heroImage" src="images/Gemini_Generated_Image_886r5v886r5v886r.avif" alt="Persona durmiendo sobre la almohada SYNAPTIC SLEEP 5-Z" width="900" height="900" loading="eager" fetchpriority="high" tabindex="0" role="button" aria-haspopup="dialog" title="Ampliar imagen" />
+          <video class="t-hero__video" id="heroVideo" src="images/render.mp4" poster="images/Gemini_Generated_Image_886r5v886r5v886r.avif" loop muted playsinline preload="metadata" hidden aria-label="Video de la almohada SYNAPTIC SLEEP 5-Z"></video>
           <div class="t-hero__shade" aria-hidden="true"></div>
           <div class="t-hero__content">
             <p class="t-kicker">SYNAPTIC SLEEP 5-Z</p>
@@ -1179,20 +1223,21 @@
         <div class="t-layout__main">
           <section class="t-gallery product-gallery" aria-label="Galería del producto">
             <div class="t-gallery__track" id="thumbTrack">
-              <button class="t-thumb is-active" type="button" data-img="images/Gemini_Generated_Image_886r5v886r5v886r.avif" data-alt="Almohada cervical SYNAPTIC SLEEP 5-Z" aria-label="Ver imagen principal">
+              <button class="t-thumb is-active" type="button" data-img="images/Gemini_Generated_Image_886r5v886r5v886r.avif" data-alt="Persona durmiendo sobre la almohada SYNAPTIC SLEEP 5-Z" aria-label="Ver imagen principal">
                 <img src="images/Gemini_Generated_Image_886r5v886r5v886r.avif" alt="" width="64" height="64" />
+              </button>
+              <button class="t-thumb" type="button" data-img="images/Gemini_Generated_Image_2v5hee2v5hee2v5h.avif" data-alt="Zonas ergonómicas de la almohada SYNAPTIC SLEEP 5-Z" aria-label="Ver zonas ergonómicas">
+                <img src="images/Gemini_Generated_Image_2v5hee2v5hee2v5h.avif" alt="" width="64" height="64" />
+              </button>
+              <button class="t-thumb" type="button" data-img="images/5dd68603-8826-4001-92c6-7b063678f5bf.avif" data-alt="Almohada SYNAPTIC SLEEP 5-Z" aria-label="Ver almohada">
+                <img src="images/5dd68603-8826-4001-92c6-7b063678f5bf.avif" alt="" width="64" height="64" />
               </button>
               <button class="t-thumb" type="button" data-img="images/size.avif" data-alt="Medidas de la almohada SYNAPTIC SLEEP 5-Z" aria-label="Ver medidas">
                 <img src="images/size.avif" alt="" width="64" height="64" />
               </button>
-              <button class="t-thumb" type="button" data-img="images/funda-de-repuesto.avif" data-alt="Funda de repuesto para la almohada" aria-label="Ver funda de repuesto">
-                <img src="images/funda-de-repuesto.avif" alt="" width="64" height="64" />
-              </button>
-              <button class="t-thumb" type="button" data-img="images/antifaz-descanso.avif" data-alt="Antifaz de descanso" aria-label="Ver antifaz de descanso">
-                <img src="images/antifaz-descanso.avif" alt="" width="64" height="64" />
-              </button>
-              <button class="t-thumb" type="button" data-img="images/protector-impermeable.avif" data-alt="Protector impermeable para la almohada" aria-label="Ver protector impermeable">
-                <img src="images/protector-impermeable.avif" alt="" width="64" height="64" />
+              <button class="t-thumb" type="button" data-video="images/render.mp4" data-alt="Video de la almohada SYNAPTIC SLEEP 5-Z" aria-label="Ver video">
+                <img src="images/Gemini_Generated_Image_886r5v886r5v886r.avif" alt="" width="64" height="64" />
+                <span class="t-thumb__play" aria-hidden="true">▶</span>
               </button>
             </div>
             <button class="t-gallery__next" id="thumbNext" type="button" aria-label="Ver más imágenes">
@@ -1202,6 +1247,7 @@
 
           <section class="t-product product-details" aria-labelledby="productTitle">
             <p class="t-condition">Nuevo <span>|</span> +100 vendidos</p>
+            <p class="product-badge"><img src="../../pictures/logo-bold.svg" alt="" width="34" height="34" /> <span><b>Lemon Shake</b> · con Bodega P&amp;G (PI.CO.NV)</span></p>
             <div class="t-title-row">
               <h2 id="productTitle">SYNAPTIC SLEEP 5-Z</h2>
               <span class="t-badge">#1 Best Seller</span>
@@ -1214,7 +1260,7 @@
             <div class="t-price-row">
               <span class="t-price-now" data-t-price-now>$84.000</span>
               <s class="t-price-old" data-t-price-old>$119.000</s>
-              <span class="t-save">Ahorra <span data-t-save>$35.000</span></span>
+              <span class="t-save">Ahorras <span data-t-save>$35.000</span></span>
             </div>
             <p class="t-financing">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
@@ -1227,7 +1273,7 @@
             </div>
             <div class="t-seller">
               <span>Vendido por <b>Lemon Shake</b> · Compra protegida</span>
-              <span>SKU: SYNAPTICS-2122714</span>
+              <span data-copy="SKU: SYNAPTICS-2122714">SKU: SYNAPTICS-2122714</span>
             </div>
           </section>
 
@@ -1336,19 +1382,11 @@
           <h2>De cuello tensionado a descanso profundo</h2>
         </div>
         <div class="demo-grid">
-          <div class="demo-hero">
-            <!-- Video real del producto (render.mp4) -->
-            <figure class="demo-video reveal">
-              <video src="images/render.mp4" poster="images/Gemini_Generated_Image_886r5v886r5v886r.avif" autoplay loop muted playsinline preload="metadata" aria-label="Video de la almohada SYNAPTIC SLEEP 5-Z"></video>
-            </figure>
-            <!-- Imagen de apoyo, solo en desktop -->
-            <figure class="demo-side reveal"><img src="images/5dd68603-8826-4001-92c6-7b063678f5bf.avif" alt="Almohada SYNAPTIC SLEEP 5-Z en uso" width="800" height="450" loading="lazy" /></figure>
-          </div>
-          <div class="demo-stack">
-            <figure class="reveal"><img src="images/564certe54tc365c35.avif" alt="Antes: cuello tenso" width="600" height="400" loading="lazy" /></figure>
-            <figure class="reveal"><img src="images/fa6ee3bb-c1c2-47a5-8b2c-d4ce99f3eae8.avif" alt="Después: descanso profundo" width="600" height="400" loading="lazy" /></figure>
-            <figure class="reveal"><img src="images/Gemini_Generated_Image_jgynq8jgynq8jgyn.avif" alt="Diseño de 5 zonas ergonómicas" width="600" height="400" loading="lazy" /></figure>
-          </div>
+          <figure class="reveal"><img src="images/Gemini_Generated_Image_n7didon7didon7di.avif" alt="Persona descansando sobre la almohada SYNAPTIC SLEEP 5-Z" width="600" height="600" loading="lazy" /></figure>
+          <figure class="demo-video reveal">
+            <video src="images/render.mp4" poster="images/Gemini_Generated_Image_886r5v886r5v886r.avif" autoplay loop muted playsinline preload="metadata" aria-label="Video de la almohada SYNAPTIC SLEEP 5-Z"></video>
+          </figure>
+          <figure class="reveal"><img src="images/564certe54tc365c35.avif" alt="Persona descansando sin dolor de cuello con la almohada SYNAPTIC SLEEP 5-Z" width="600" height="600" loading="lazy" /></figure>
         </div>
       </div>
     </section>
@@ -1764,11 +1802,18 @@
     var rootEl = document.documentElement;
     var themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
+      var syncThemeToggle = function () {
+        var dark = rootEl.getAttribute('data-theme') === 'dark';
+        themeToggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        themeToggle.setAttribute('aria-label', dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+        themeToggle.setAttribute('title', dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+      };
+      syncThemeToggle();
       themeToggle.addEventListener('click', function () {
         var next = (rootEl.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
         rootEl.setAttribute('data-theme', next);
         try { localStorage.setItem('jh-theme', next); } catch (e) {}
-        themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+        syncThemeToggle();
         var m = document.querySelector('meta[name="theme-color"]');
         if (m) m.setAttribute('content', next === 'dark' ? '#0A0A0C' : '#F4F4F0');
       });
@@ -2969,6 +3014,7 @@
       headerCartCount: $('#headerCartCount'),
       cartCount: $('#cartCount'),
       heroImage: $('#heroImage'),
+      heroVideo: $('#heroVideo'),
       thumbTrack: $('#thumbTrack'),
       thumbNext: $('#thumbNext')
     };
@@ -3215,16 +3261,133 @@
       els.buyNow.addEventListener('click', openDataModal);
     }
 
-    /* Galería: las miniaturas cambian la imagen del hero. */
+    /* Galería: las miniaturas cambian la imagen del hero y alimentan el lightbox. */
     var thumbs = $$('.t-thumb');
+
+    function buildLightboxThumbs() {
+      var box = document.getElementById('lightboxThumbs');
+      if (!box || box.childElementCount) return;
+      thumbs.forEach(function (thumb, index) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lightbox__thumb';
+        btn.setAttribute('aria-label', thumb.getAttribute('aria-label') || ('Ver imagen ' + (index + 1)));
+        var thumbImg = thumb.querySelector('img');
+        if (thumbImg) {
+          var clone = thumbImg.cloneNode(false);
+          clone.alt = '';
+          clone.removeAttribute('width');
+          clone.removeAttribute('height');
+          btn.appendChild(clone);
+        }
+        if (thumb.getAttribute('data-video')) {
+          var play = document.createElement('span');
+          play.className = 'lightbox__thumb-play';
+          play.setAttribute('aria-hidden', 'true');
+          play.textContent = '▶';
+          btn.appendChild(play);
+        }
+        btn.addEventListener('click', function () {
+          thumbs[index].click();
+          showLightboxItem(index);
+        });
+        box.appendChild(btn);
+      });
+    }
+
+    function showLightboxItem(index) {
+      var thumb = thumbs[index];
+      if (!thumb) return;
+      var lbImg = document.getElementById('lightboxImg');
+      var lbVideo = document.getElementById('lightboxVideo');
+      var lbThumbs = document.getElementById('lightboxThumbs');
+      if (!lbImg || !lbVideo) return;
+      if (lbThumbs) {
+        Array.prototype.forEach.call(lbThumbs.children, function (el, i) {
+          el.classList.toggle('is-active', i === index);
+        });
+      }
+      var videoSrc = thumb.getAttribute('data-video');
+      if (videoSrc) {
+        lbImg.hidden = true;
+        lbVideo.hidden = false;
+        if (lbVideo.getAttribute('src') !== videoSrc) lbVideo.setAttribute('src', videoSrc);
+        try { lbVideo.currentTime = 0; } catch (e) {}
+        var playAttempt = lbVideo.play();
+        if (playAttempt && playAttempt.catch) playAttempt.catch(function () {});
+      } else {
+        lbVideo.pause();
+        lbVideo.hidden = true;
+        lbImg.hidden = false;
+        lbImg.src = thumb.getAttribute('data-img') || '';
+        lbImg.alt = thumb.getAttribute('data-alt') || '';
+      }
+    }
+
+    function openGalleryLightbox() {
+      if (!els.heroImage || els.heroImage.hidden) return;
+      var lb = document.getElementById('lightbox');
+      if (!lb) return;
+      buildLightboxThumbs();
+      var activeThumb = document.querySelector('.t-thumb.is-active');
+      var index = Array.prototype.indexOf.call(thumbs, activeThumb);
+      if (index < 0) index = 0;
+      showLightboxItem(index);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      var lbClose = document.getElementById('lightboxClose');
+      if (lbClose) lbClose.focus();
+    }
+
+    function stopLightboxVideo() {
+      var lbVideo = document.getElementById('lightboxVideo');
+      if (lbVideo && !lbVideo.paused) lbVideo.pause();
+    }
+
+    function stepLightbox(delta) {
+      var lb = document.getElementById('lightbox');
+      if (!lb || lb.hidden) return;
+      var lbThumbs = document.getElementById('lightboxThumbs');
+      var active = lbThumbs ? lbThumbs.querySelector('.lightbox__thumb.is-active') : null;
+      var current = lbThumbs ? Array.prototype.indexOf.call(lbThumbs.children, active) : 0;
+      if (current < 0) current = 0;
+      var next = (current + delta + thumbs.length) % thumbs.length;
+      thumbs[next].click();
+      showLightboxItem(next);
+    }
+
+    if (els.heroImage) {
+      els.heroImage.addEventListener('click', openGalleryLightbox);
+      els.heroImage.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openGalleryLightbox();
+        }
+      });
+    }
     thumbs.forEach(function (thumb) {
       thumb.addEventListener('click', function () {
         thumbs.forEach(function (t) { t.classList.remove('is-active'); });
         thumb.classList.add('is-active');
+        var videoSrc = thumb.getAttribute('data-video');
         var src = thumb.getAttribute('data-img');
-        if (els.heroImage && src) {
-          els.heroImage.src = src;
-          els.heroImage.alt = thumb.getAttribute('data-alt') || '';
+        if (videoSrc && els.heroVideo) {
+          if (els.heroImage) els.heroImage.hidden = true;
+          els.heroVideo.hidden = false;
+          if (els.heroVideo.getAttribute('src') !== videoSrc) els.heroVideo.setAttribute('src', videoSrc);
+          try { els.heroVideo.currentTime = 0; } catch (e) {}
+          var playing = els.heroVideo.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          if (els.heroVideo) {
+            els.heroVideo.pause();
+            els.heroVideo.hidden = true;
+          }
+          if (els.heroImage && src) {
+            els.heroImage.hidden = false;
+            els.heroImage.src = src;
+            els.heroImage.alt = thumb.getAttribute('data-alt') || '';
+          }
         }
       });
     });
@@ -3233,6 +3396,61 @@
         els.thumbTrack.scrollBy({ left: 144, behavior: 'smooth' });
       });
     }
+
+    document.addEventListener('click', function (e) {
+      var target = e.target;
+      if (!target || !target.closest) return;
+      if (target.closest('#lightboxPrev')) { e.preventDefault(); stepLightbox(-1); return; }
+      if (target.closest('#lightboxNext')) { e.preventDefault(); stepLightbox(1); return; }
+      if (target.closest('#lightboxClose') || target.id === 'lightbox') stopLightboxVideo();
+    });
+    document.addEventListener('keydown', function (e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb || lb.hidden) return;
+      if (e.key === 'Escape') { stopLightboxVideo(); return; }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stepLightbox(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepLightbox(1); }
+    });
+
+    var swipeStartX = 0;
+    var swipeStartY = 0;
+    var swipeActive = false;
+    document.addEventListener('pointerdown', function (e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb || lb.hidden || !e.target || !e.target.closest) return;
+      if (!e.target.closest('.lightbox__stage') || e.target.closest('video')) return;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      swipeStartX = e.clientX;
+      swipeStartY = e.clientY;
+      swipeActive = true;
+    });
+    document.addEventListener('pointerup', function (e) {
+      if (!swipeActive) return;
+      swipeActive = false;
+      var lb = document.getElementById('lightbox');
+      if (!lb || lb.hidden) return;
+      var dx = e.clientX - swipeStartX;
+      var dy = e.clientY - swipeStartY;
+      if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+        stepLightbox(dx < 0 ? 1 : -1);
+      }
+    });
+    document.addEventListener('pointercancel', function () { swipeActive = false; });
+    document.addEventListener('dragstart', function (e) {
+      if (e.target && e.target.id === 'lightboxImg') e.preventDefault();
+    });
+
+    var lightboxWheelLock = false;
+    document.addEventListener('wheel', function (e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb || lb.hidden) return;
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 20) return;
+      e.preventDefault();
+      if (lightboxWheelLock) return;
+      lightboxWheelLock = true;
+      stepLightbox(e.deltaX > 0 ? 1 : -1);
+      setTimeout(function () { lightboxWheelLock = false; }, 350);
+    }, { passive: false });
 
     window.addEventListener('jh:discount-change', function () {
       checkoutDiscount = window.JH_PRODUCT_CHECKOUT ? window.JH_PRODUCT_CHECKOUT.getDiscount() : 1;
@@ -3245,9 +3463,19 @@
   <!-- Lightbox: imagen a tamaño completo -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar">×</button>
-    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox-nav lightbox-nav--prev" id="lightboxPrev" type="button" aria-label="Ver anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-nav--next" id="lightboxNext" type="button" aria-label="Ver siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="lightbox__stage">
+      <img id="lightboxImg" src="" alt="" draggable="false" />
+      <video id="lightboxVideo" loop muted playsinline controls preload="metadata" hidden aria-label="Video de la almohada SYNAPTIC SLEEP 5-Z"></video>
+    </div>
+    <div class="lightbox__thumbs" id="lightboxThumbs" aria-label="Miniaturas del producto"></div>
   </div>
-  <script src="../../copy-badge.js" defer></script>
+  <script src="../../copy-badge.js?v=2" defer></script>
   <!-- Statcounter -->
   <script src="../../analytics/statcounter.js" async></script>
   <noscript><div class="statcounter"><a title="Web Analytics"

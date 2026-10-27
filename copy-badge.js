@@ -1,14 +1,9 @@
-/* Copia el texto del badge de producto al hacer clic. */
+/* Copia el texto del badge de producto y cualquier elemento [data-copy]. */
 (function () {
   function init() {
     var badge = document.querySelector('.product-badge');
-    if (!badge) return;
-
-    badge.style.cursor = 'pointer';
-    badge.setAttribute('role', 'button');
-    badge.setAttribute('tabindex', '0');
-    badge.setAttribute('title', 'Copiar información del producto');
-    badge.setAttribute('aria-label', 'Copiar información del producto');
+    var copyEls = Array.prototype.slice.call(document.querySelectorAll('[data-copy]'));
+    if (!badge && !copyEls.length) return;
 
     var toast = document.createElement('div');
     toast.id = 'copyToast';
@@ -50,8 +45,12 @@
       document.body.removeChild(ta);
     }
 
-    function copyBadge() {
-      var text = (badge.textContent || '').replace(/\s+/g, ' ').trim();
+    function getText(el) {
+      return ((el.getAttribute('data-copy') || el.textContent) || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function copyFrom(el) {
+      var text = getText(el);
       if (!text) return;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(showToast).catch(function () {
@@ -62,12 +61,27 @@
       }
     }
 
-    badge.addEventListener('click', copyBadge);
-    badge.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        copyBadge();
-      }
+    function bind(el, label) {
+      el.style.cursor = 'pointer';
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('title')) el.setAttribute('title', label);
+      if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', label);
+      el.addEventListener('click', function () { copyFrom(el); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          copyFrom(el);
+        }
+      });
+    }
+
+    if (badge) {
+      bind(badge, 'Copiar información del producto');
+    }
+
+    copyEls.forEach(function (el) {
+      bind(el, 'Copiar ' + getText(el));
     });
   }
 
