@@ -781,7 +781,7 @@
     .t-min.is-warning{color:var(--danger-soft)}
     .t-addons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
     .t-addon{
-      position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"media media" "info actions";
+      position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"media media" "info actions" "desc desc";
       gap:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;
       background:var(--surface);cursor:pointer;user-select:none;
       transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out);
@@ -794,10 +794,29 @@
     .t-addon__sku{margin-top:4px!important;width:max-content;max-width:100%;font-size:.56rem!important;letter-spacing:.03em;text-decoration:underline dotted;text-underline-offset:2px;cursor:pointer;transition:color var(--dur-fast) var(--ease-out)}
     .t-addon__sku:hover{color:var(--accent-text)}
     .t-addon__sku:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:2px}
+    .t-addon__desc-toggle{grid-area:desc;display:flex;width:100%;align-self:end;align-items:center;justify-content:center;gap:5px;text-align:center;margin:0;padding:8px 10px;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--accent-soft);color:var(--accent-text);font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;cursor:pointer;box-sizing:border-box;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+    .t-addon__desc-toggle:hover{color:var(--accent-text);background:var(--accent-soft)}
+    .t-addon__desc-toggle:focus-visible{outline:2px solid var(--accent-text);outline-offset:-3px}
+    .t-addon__desc-toggle::after{content:"+";font-size:.8rem;line-height:1}
+    .t-addon__desc-toggle[aria-expanded="true"]::after{content:"−"}
+    .t-addon__description{position:relative;margin-top:14px;padding:18px;border:1px solid var(--line-strong);border-radius:14px;background:var(--surface);animation:addonDescIn .22s var(--ease-out);scroll-margin-top:100px}
+    .t-addon__description[hidden]{display:none}
+    .t-addon__desc-close{position:absolute;top:10px;right:10px;width:30px;height:30px;border:1px solid var(--line-strong);border-radius:50%;background:transparent;color:var(--muted);font-size:1.15rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+    .t-addon__desc-close:hover{border-color:var(--accent-text);color:var(--accent-text)}
+    .t-addon__description h3{margin:0 0 8px;padding-right:34px;font-family:var(--font-body);font-size:1.05rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--text);text-transform:none}
+    .t-addon__description .t-addon__desc-intro{margin:0 0 16px;font-size:.9rem;line-height:1.55;color:var(--text-soft)}
+    .t-addon__description h4{margin:16px 0 8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+    .t-addon__description dl{display:grid;grid-template-columns:minmax(90px,auto) 1fr;gap:5px 16px;margin:0;font-size:.86rem;line-height:1.45}
+    .t-addon__description dt{color:var(--muted)}
+    .t-addon__description dd{margin:0;color:var(--text)}
+    .t-addon__description ul{margin:0;padding-left:1.1rem;display:grid;gap:6px;font-size:.86rem;line-height:1.45;color:var(--text-soft)}
+    .t-addon__description li b{color:var(--text)}
+    .t-addon__description li::marker{color:var(--accent-text)}
+    @keyframes addonDescIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
     .t-addon__actions{grid-area:actions;display:flex;align-items:center;justify-content:flex-end;gap:7px;padding:10px 10px 10px 0}
     @media(min-width:700px){.t-addons{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:768px){
-      .t-addon{grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "info" "actions"}
+      .t-addon{grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "info" "actions" "desc"}
       .t-addon__actions{justify-content:flex-start;padding:0 10px 10px}
     }
     @media(min-width:1200px){
@@ -1317,6 +1336,7 @@
                       <button type="button" data-t-addon-step="cojin" data-dir="1" aria-label="Añadir un cojín">+</button>
                     </div>
                   </div>
+                  <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-cojin">Ver descripción</button>
                 </div>
                 <div class="t-addon" data-t-addon="masajeador">
                   <img class="t-addon__img--contain" src="images/MVV-2214521.png" alt="Cojín Masajeador Cuello Manos Y Pies" width="600" height="338" />
@@ -1333,6 +1353,7 @@
                       <button type="button" data-t-addon-step="masajeador" data-dir="1" aria-label="Añadir un masajeador">+</button>
                     </div>
                   </div>
+                  <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-masajeador">Ver descripción</button>
                 </div>
                 <div class="t-addon" data-t-addon="gel">
                   <img src="images/NCHV-2104675.png" alt="Cojín Gel Ergonómico" width="600" height="600" />
@@ -1349,7 +1370,62 @@
                       <button type="button" data-t-addon-step="gel" data-dir="1" aria-label="Añadir un cojín de gel">+</button>
                     </div>
                   </div>
+                  <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-gel">Ver descripción</button>
                 </div>
+              </div>
+              <div class="t-addon__description" id="addonDescription-cojin" role="region" aria-labelledby="addonDescriptionTitle-cojin" hidden>
+                <button class="t-addon__desc-close" type="button" aria-label="Cerrar descripción">×</button>
+                <h3 id="addonDescriptionTitle-cojin">Cojín Triangular Ortopédico para Piernas</h3>
+                <p class="t-addon__desc-intro">Alivia Dolor y Mejora Circulación, Color Blanco, Soporte Ergonómico para Descanso, Reposo y Sueño Cómodo, Energy Plus.</p>
+                <h4>Lo que tienes que saber de este producto</h4>
+                <dl>
+                  <dt>Espesor</dt><dd>12 cm</dd>
+                  <dt>Altura</dt><dd>25 cm</dd>
+                  <dt>Largo</dt><dd>21.5 cm</dd>
+                  <dt>Unidades por pack</dt><dd>1</dd>
+                </dl>
+                <h4>Características</h4>
+                <ul>
+                  <li><b>Soporte Ergonómico:</b> Diseñado para brindar soporte y alineación a las piernas.</li>
+                  <li><b>Alivio de Dolor:</b> Ideal para reducir molestias en piernas, caderas y espalda.</li>
+                  <li><b>Mejora Circulación:</b> Favorece la circulación sanguínea durante el descanso.</li>
+                  <li><b>Material Suave:</b> Fabricado con tejido suave y transpirable para mayor comodidad.</li>
+                  <li><b>Funda Lavable:</b> Funda removible y fácil de lavar para mantener la higiene.</li>
+                  <li><b>Diseño Triangular:</b> Perfecto para usar en la cama o sofá, ajustándose a la forma del cuerpo.</li>
+                  <li><b>Uso Versátil:</b> Ideal para dormir de lado o para elevación de piernas tras cirugía.</li>
+                  <li><b>Color Blanco Neutro:</b> Se adapta a cualquier estilo de habitación y decoración.</li>
+                </ul>
+              </div>
+              <div class="t-addon__description" id="addonDescription-masajeador" role="region" aria-labelledby="addonDescriptionTitle-masajeador" hidden>
+                <button class="t-addon__desc-close" type="button" aria-label="Cerrar descripción">×</button>
+                <h3 id="addonDescriptionTitle-masajeador">Cojín Masajeador Cuello Manos Y Pies</h3>
+                <p class="t-addon__desc-intro">Esta almohada de masaje es adecuada para el coche, el hogar u oficina: una manera fácil de reducir el estrés y la tensión diaria en viajes, trabajo y otras situaciones.</p>
+                <h4>Características</h4>
+                <ul>
+                  <li><b>8 rodillos de masaje:</b> brindan relajación y masaje en la espalda, el cuello, la zona lumbar y los muslos.</li>
+                  <li><b>Material de alta calidad:</b> más saludable y amigable con el medio ambiente.</li>
+                  <li><b>Banda elástica e interfaz DC:</b> facilitan sujetarlo y conectarlo en el coche, el hogar u oficina.</li>
+                  <li><b>Uso versátil:</b> ideal para relajarse o masajear después del trabajo, en viajes o en momentos de estrés.</li>
+                </ul>
+                <h4>Alimentación</h4>
+                <ul>
+                  <li>Cable para corriente.</li>
+                  <li>Cable para usar 12 V en la cigarrera del vehículo.</li>
+                </ul>
+              </div>
+              <div class="t-addon__description" id="addonDescription-gel" role="region" aria-labelledby="addonDescriptionTitle-gel" hidden>
+                <button class="t-addon__desc-close" type="button" aria-label="Cerrar descripción">×</button>
+                <h3 id="addonDescriptionTitle-gel">Cojín Gel Silla Ergonómico</h3>
+                <p class="t-addon__desc-intro">El Cojín Gel Silla Ergonómico es un accesorio diseñado para mejorar la comodidad y el soporte al sentarse durante largos periodos. Generalmente, está compuesto por una capa de gel que distribuye el peso de manera uniforme y reduce la presión sobre áreas clave, como la espalda baja, las caderas y los glúteos.</p>
+                <h4>Características principales</h4>
+                <ul>
+                  <li><b>Gel de alta calidad:</b> se adapta al cuerpo y ofrece un soporte flexible, permitiendo que el cojín se ajuste a la forma del cuerpo, aliviando la presión y proporcionando mayor confort.</li>
+                  <li><b>Diseño ergonómico:</b> sigue la curvatura natural de la anatomía humana, ayuda a mantener una postura correcta y reduce la incomodidad y el dolor, especialmente para quienes pasan muchas horas sentados.</li>
+                  <li><b>Alivio de presión:</b> distribuye de manera eficiente el peso del cuerpo, lo que puede aliviar problemas relacionados con la circulación sanguínea y la fatiga muscular.</li>
+                  <li><b>Material transpirable:</b> incluye una funda o capa de material transpirable que evita la acumulación de calor y sudor, manteniendo la zona cómoda durante más tiempo.</li>
+                  <li><b>Versatilidad:</b> ideal para sillas de oficina, sillas de coche, sillas de ruedas o para usarse en casa o en el trabajo. Su diseño permite transportarlo y colocarlo fácilmente.</li>
+                  <li><b>Alivio para dolores de espalda y cadera:</b> puede ser muy útil para personas con problemas de espalda o cadera, proporcionando un soporte adicional que favorece una alineación correcta de la columna vertebral.</li>
+                </ul>
               </div>
               <p class="t-min" id="minNote" aria-live="polite" hidden></p>
             </div>
@@ -3170,8 +3246,8 @@
           setComplementQty(stepId, (state.complements[stepId] || 0) + Number(btn.getAttribute('data-dir')));
           return;
         }
-        // Tocar la card selecciona/deselecciona; check y stepper conservan su comportamiento.
-        if (e.target.closest('.t-check') || e.target.closest('.t-stepper') || e.target.closest('input')) return;
+        // Tocar la card selecciona/deselecciona; check, stepper, SKU y descripción conservan su comportamiento.
+        if (e.target.closest('.t-check') || e.target.closest('.t-stepper') || e.target.closest('input') || e.target.closest('.t-addon__desc-toggle') || e.target.closest('[data-copy]')) return;
         var row = e.target.closest('[data-t-addon]');
         if (!row) return;
         var id = row.getAttribute('data-t-addon');
@@ -3179,6 +3255,36 @@
         setComplementQty(id, next ? Math.max(1, state.complements[id] || 0) : 0);
       });
     }
+
+    var addonDescToggles = document.querySelectorAll('.t-addon__desc-toggle');
+    var addonDescPanels = document.querySelectorAll('.t-addon__description');
+    function setAddonDescOpen(panel, toggle, open, focusToggle) {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? 'Ocultar descripción' : 'Ver descripción';
+      if (open) {
+        window.setTimeout(function () {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 40);
+      } else if (focusToggle) {
+        toggle.focus();
+      }
+    }
+    addonDescToggles.forEach(function (toggle) {
+      var panel = document.getElementById(toggle.getAttribute('aria-controls'));
+      if (!panel) return;
+      toggle.addEventListener('click', function () {
+        var willOpen = panel.hidden;
+        addonDescPanels.forEach(function (other) {
+          if (other === panel) return;
+          var otherToggle = document.querySelector('.t-addon__desc-toggle[aria-controls="' + other.id + '"]');
+          if (otherToggle) setAddonDescOpen(other, otherToggle, false, false);
+        });
+        setAddonDescOpen(panel, toggle, willOpen, true);
+      });
+      var close = panel.querySelector('.t-addon__desc-close');
+      if (close) close.addEventListener('click', function () { setAddonDescOpen(panel, toggle, false, true); });
+    });
 
     if (els.summaryRows) {
       els.summaryRows.addEventListener('click', function (e) {
