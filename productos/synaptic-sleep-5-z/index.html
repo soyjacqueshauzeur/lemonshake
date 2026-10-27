@@ -407,7 +407,7 @@
     .checkout-promise svg{width:18px;height:18px;color:var(--accent-text);flex:0 0 auto}
     .checkout-promise b{color:var(--text)}
 
-    .checkout-step{min-width:0}
+    .checkout-step{min-width:0;scroll-margin-top:96px}
     .checkout-step-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
     .step-num{width:30px;height:30px;border-radius:50%;background:var(--lime);color:var(--ink-000);display:grid;place-items:center;font-family:var(--font-display);font-size:.9rem;flex:0 0 auto}
     .checkout-step-head h3{margin:0;font-size:var(--text-xl)}
@@ -812,7 +812,7 @@
         <a href="#faq">Preguntas</a>
       </nav>
       <div class="nav-cta-row">
-        <a class="btn btn--primary nav-cta" href="#pedido">Pedir ahora</a>
+        <a class="btn btn--primary nav-cta" href="#paso-combo">Pedir ahora</a>
       </div>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -837,7 +837,7 @@
       <a href="#regalo">Regalo</a>
       <a href="#faq">Preguntas</a>
     </nav>
-    <a class="btn btn--primary mobile-menu-cta" href="#pedido">Pedir ahora</a>
+    <a class="btn btn--primary mobile-menu-cta" href="#paso-combo">Pedir ahora</a>
     <div class="summary" aria-live="polite">
       <div class="summary-row"><span data-label-out>1 × SYNAPTIC SLEEP 5-Z</span><span data-price-out>$84.000</span></div>
       <div class="summary-addons"></div>
@@ -920,7 +920,7 @@
           </div>
 
           <div class="ml-actions">
-            <a class="btn btn--primary btn--lg" href="#pedido" id="addToCart">Agregar al carrito</a>
+            <a class="btn btn--primary btn--lg" href="#paso-combo" id="addToCart">Agregar al carrito</a>
           </div>
 
           <ul class="ml-perks">
@@ -1227,7 +1227,7 @@
             </section>
 
             <!-- CTA móvil: después de los pasos, para no saltarse los complementos -->
-            <a class="btn btn--primary btn--lg cta-pay checkout-cta checkout-cta--inline" href="#datos" id="goToDatosMobile" data-go-cta><span data-go-label>Comprar ahora</span> · <span class="amount" data-total-out>$84.000</span></a>
+            <a class="btn btn--primary btn--lg cta-pay checkout-cta checkout-cta--inline" href="#datos" id="goToDatosMobile" data-go-cta data-go-target="#datos" data-go-label-default="Continuar"><span data-go-label>Continuar</span> · <span class="amount" data-total-out>$84.000</span></a>
 
             <!-- Paso 3 · Datos -->
             <section class="checkout-step" id="datos" aria-labelledby="paso-datos-t">
@@ -1335,7 +1335,7 @@
                   <div class="ok-ico" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
                   <h3>¡Pedido recibido!</h3>
                   <p class="muted">Te contactaremos por WhatsApp para confirmar tu envío. Gracias por tu compra.</p>
-                  <p><a class="btn btn--ghost" href="#pedido">Volver</a></p>
+                  <p><a class="btn btn--ghost" href="#paso-combo">Volver</a></p>
                 </div>
               </form>
             </section>
@@ -1362,7 +1362,7 @@
               <div class="summary-row total"><span>Total</span><span data-total-out>$84.000</span></div>
             </div>
 
-            <a class="btn btn--primary btn--lg cta-pay checkout-cta checkout-cta--aside" href="#datos" id="goToDatos" data-go-cta><span data-go-label>Comprar ahora</span> · <span class="amount" data-total-out>$84.000</span></a>
+            <a class="btn btn--primary btn--lg cta-pay checkout-cta checkout-cta--aside" href="#paso-combo" id="goToDatos" data-go-cta data-go-target="#paso-combo" data-go-label-default="Comprar ahora"><span data-go-label>Comprar ahora</span> · <span class="amount" data-total-out>$84.000</span></a>
 
             <ul class="trust-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span>Compra protegida</span></li>
@@ -1435,7 +1435,7 @@
             <div><strong id="cdS">00</strong><small>Seg</small></div>
           </div>
           <p id="urgencyNote">El precio baja 10% los días 15 y el último día del mes, durante 24 horas.</p>
-          <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#pedido">Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
+          <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#paso-combo">Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
         </div>
       </div>
     </section>
@@ -1489,7 +1489,7 @@
           <li><a href="/">Tienda</a></li>
           <li><a href="../../productos/synaptic-sleep-5-z/index.html#faq">Preguntas frecuentes</a></li>
           <li><a href="../../envios.html">Envíos y entregas</a></li>
-          <li><a href="../../productos/synaptic-sleep-5-z/index.html#pedido">Hacer un pedido</a></li>
+          <li><a href="#paso-combo">Hacer un pedido</a></li>
           <li><a href="../../productos/synaptic-sleep-5-z/index.html#resenas">Reseñas</a></li>
         </ul>
       </div>
@@ -1549,13 +1549,13 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7 7 0 01-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.7 4.3 3.8 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>
   </a>
 
-  <a class="cart-fab" id="cartFab" href="#pedido" hidden aria-label="Ver carrito">
+  <a class="cart-fab" id="cartFab" href="#paso-combo" hidden aria-label="Ver carrito">
     <span id="cartCount">1 Productos</span>
   </a>
 
   <div class="mobile-cta">
     <div class="price"><span data-total-out>$84.000</span><small>Envío gratis</small></div>
-    <a class="btn btn--primary" href="#pedido">Comprar ahora</a>
+    <a class="btn btn--primary" href="#paso-combo">Comprar ahora</a>
   </div>
 
   <div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
@@ -1939,9 +1939,9 @@
           go.setAttribute('target', '_blank');
           go.setAttribute('rel', 'noopener');
         } else {
-          if (goLabel) goLabel.textContent = 'Comprar ahora';
+          if (goLabel) goLabel.textContent = go.getAttribute('data-go-label-default') || 'Comprar ahora';
           if (goAmount) goAmount.hidden = false;
-          go.setAttribute('href', '#datos');
+          go.setAttribute('href', go.getAttribute('data-go-target') || '#paso-combo');
           go.removeAttribute('target');
           go.removeAttribute('rel');
         }
@@ -1953,7 +1953,7 @@
       var buy = document.querySelector('.ml-actions .btn--primary');
       if (buy) {
         if (quote) { buy.textContent = 'Cotizar por WhatsApp'; buy.setAttribute('href', whatsappLink()); buy.setAttribute('target', '_blank'); buy.setAttribute('rel', 'noopener'); }
-        else { buy.textContent = 'Agregar al carrito'; buy.setAttribute('href', '#pedido'); buy.removeAttribute('target'); buy.removeAttribute('rel'); }
+        else { buy.textContent = 'Agregar al carrito'; buy.setAttribute('href', '#paso-combo'); buy.removeAttribute('target'); buy.removeAttribute('rel'); }
       }
     }
 
@@ -2382,9 +2382,10 @@
     form.querySelectorAll('input[name="pago"]').forEach(function (r) { r.addEventListener('change', updatePay); });
     updatePay();
 
-    /* Los CTA de compra llevan al formulario y enfocan el primer campo */
+    /* El CTA "Continuar" lleva al formulario y enfoca el primer campo */
     document.querySelectorAll('[data-go-cta]').forEach(function (el) {
       el.addEventListener('click', function () {
+        if (el.getAttribute('data-go-target') !== '#datos') return;
         setTimeout(function () { if (form.nombre) form.nombre.focus({ preventScroll: true }); }, 450);
       });
     });
