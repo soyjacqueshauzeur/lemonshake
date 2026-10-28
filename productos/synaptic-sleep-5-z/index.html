@@ -506,11 +506,13 @@
 
     .final-cta{text-align:center}
     .final-cta .card{background:radial-gradient(120% 120% at 50% 0%,rgba(212,255,61,.14),var(--surface) 60%);border-color:var(--line-strong)}
+    .final-cta h2{color:var(--accent-text)}
+    .final-cta__offer{font-weight:700}
     .countdown{display:flex;gap:12px;justify-content:center;margin:22px 0}
     .countdown div{background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 16px;min-width:70px}
     .countdown strong{font-family:var(--font-display);font-size:1.7rem;display:block;color:var(--accent-text)}
     .countdown small{color:var(--muted);font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em}
-    #urgencyNote{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--accent-text)}
+    #urgencyNote{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text)}
 
     .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:56px 0 40px}
     .footer-grid{display:grid;gap:34px;grid-template-columns:1fr}
@@ -1489,6 +1491,25 @@
       </div>
     </div>
 
+    <!-- ══════════ CTA POR FECHAS (urgencia honesta) ══════════ -->
+    <section class="section final-cta" style="padding-top:0" hidden>
+      <div class="wrap">
+        <div class="card">
+          <span class="badge">⏳ Unidades reducidas</span>
+          <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br />durante 24 horas.</h2>
+          <p class="lead" style="margin-inline:auto">Almohada SYNAPTIC SLEEP 5-Z desde <b>$84.000 COP</b>, con envío gratis y garantía de 7 días.</p>
+          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
+            <div><strong id="cdD">00</strong><small>Días</small></div>
+            <div><strong id="cdH">00</strong><small>Horas</small></div>
+            <div><strong id="cdM">00</strong><small>Min</small></div>
+            <div><strong id="cdS">00</strong><small>Seg</small></div>
+          </div>
+          <p id="urgencyNote">Tu descanso empieza hoy</p>
+          <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#top" data-open-data-modal>Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
+        </div>
+      </div>
+    </section>
+
     <!-- ══════════ DEMOSTRACIÓN VISUAL ══════════ -->
     <section class="section" id="demo" style="padding-top:0">
       <div class="wrap">
@@ -1632,25 +1653,6 @@
             <h3 style="margin-bottom:.2em;font-size:var(--text-xl)">Garantía de 7 días</h3>
             <p class="muted" style="margin:0;font-size:.9rem">Si la ingeniería falla dentro de los 7 días, absorbemos el riesgo: cambiamos o devolvemos tu dinero. También tienes derecho de retracto dentro de los 3 días hábiles siguientes a la entrega.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ CTA FINAL (urgencia honesta) ══════════ -->
-    <section class="section final-cta" style="padding-top:0" hidden>
-      <div class="wrap">
-        <div class="card">
-          <span class="badge">⏳ Unidades reducidas</span>
-          <h2>Tu descanso empieza hoy</h2>
-          <p class="lead" style="margin-inline:auto">Almohada SYNAPTIC SLEEP 5-Z desde <b>$84.000 COP</b>, con envío gratis y garantía de 7 días.</p>
-          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
-            <div><strong id="cdD">00</strong><small>Días</small></div>
-            <div><strong id="cdH">00</strong><small>Horas</small></div>
-            <div><strong id="cdM">00</strong><small>Min</small></div>
-            <div><strong id="cdS">00</strong><small>Seg</small></div>
-          </div>
-          <p id="urgencyNote">El precio baja hoy 10% durante 24 horas.</p>
-          <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#top" data-open-data-modal>Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
         </div>
       </div>
     </section>
@@ -2948,8 +2950,7 @@
 
     /* ---------- Countdown mensual (días 15 y último del mes) ---------- */
     var cdD = document.getElementById('cdD'), cdH = document.getElementById('cdH'),
-        cdM = document.getElementById('cdM'), cdS = document.getElementById('cdS'),
-        note = document.getElementById('urgencyNote');
+        cdM = document.getElementById('cdM'), cdS = document.getElementById('cdS');
     function lastDayOfMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
     /* Fecha en Bogotá: la promo debe ser la misma en el navegador y en el servidor,
        aunque el visitante esté en otra zona horaria. */
@@ -2997,14 +2998,12 @@
       var D, H, M, S;
       if (c.active) {
         D = H = M = S = '00';
-        note.textContent = '¡Hoy 10% de descuento! Válido por 24 horas.';
       } else {
         var diff = Math.max(0, c.target - Date.now());
         D = pad2(Math.floor(diff / 86400000));
         H = pad2(Math.floor((diff % 86400000) / 3600000));
         M = pad2(Math.floor((diff % 3600000) / 60000));
         S = pad2(Math.floor((diff % 60000) / 1000));
-        note.textContent = 'El precio baja hoy 10% durante 24 horas.';
       }
       if (cdD) cdD.textContent = D; if (cdH) cdH.textContent = H;
       if (cdM) cdM.textContent = M; if (cdS) cdS.textContent = S;
