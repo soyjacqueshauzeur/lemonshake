@@ -505,14 +505,15 @@
     .faq-a p{padding-bottom:22px;margin:0}
 
     .final-cta{text-align:center}
-    .final-cta .card{background:radial-gradient(120% 120% at 50% 0%,rgba(212,255,61,.14),var(--surface) 60%);border-color:var(--line-strong)}
-    .final-cta h2{color:var(--accent-text)}
+    .final-cta .card{background:radial-gradient(120% 120% at 50% 0%,rgba(212,255,61,.14),var(--surface) 60%);border-color:var(--line)}
+    html[data-theme="dark"] .final-cta .card{border-color:var(--lime)}
+    .final-cta h2{color:var(--accent-text);line-height:0.9em}
     .final-cta__offer{font-weight:700}
+    .final-cta__deadline{color:var(--text);font-size:0.7em}
     .countdown{display:flex;gap:12px;justify-content:center;margin:22px 0}
     .countdown div{background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 16px;min-width:70px}
     .countdown strong{font-family:var(--font-display);font-size:1.7rem;display:block;color:var(--accent-text)}
     .countdown small{color:var(--muted);font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em}
-    #urgencyNote{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text)}
 
     .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:56px 0 40px}
     .footer-grid{display:grid;gap:34px;grid-template-columns:1fr}
@@ -1236,6 +1237,22 @@
       </div>
     </div>
 
+    <!-- ══════════ CTA POR FECHAS (urgencia honesta) ══════════ -->
+    <section class="section final-cta" style="padding:18px 0 0" hidden>
+      <div class="wrap">
+        <div class="card">
+          <span class="badge">⏳ Unidades reducidas</span>
+          <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br /><span class="final-cta__deadline">durante 24 horas</span></h2>
+          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
+            <div><strong id="cdD">00</strong><small>Días</small></div>
+            <div><strong id="cdH">00</strong><small>Horas</small></div>
+            <div><strong id="cdM">00</strong><small>Min</small></div>
+            <div><strong id="cdS">00</strong><small>Seg</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="ml-product">
       <div class="wrap t-hero-wrap">
         <section class="t-hero" aria-labelledby="heroTitle">
@@ -1491,25 +1508,6 @@
         <span>Pago contraentrega disponible</span>
       </div>
     </div>
-
-    <!-- ══════════ CTA POR FECHAS (urgencia honesta) ══════════ -->
-    <section class="section final-cta" style="padding-top:0" hidden>
-      <div class="wrap">
-        <div class="card">
-          <span class="badge">⏳ Unidades reducidas</span>
-          <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br />durante 24 horas.</h2>
-          <p class="lead" style="margin-inline:auto">Almohada SYNAPTIC SLEEP 5-Z desde <b>$84.000 COP</b>, con envío gratis y garantía de 7 días.</p>
-          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
-            <div><strong id="cdD">00</strong><small>Días</small></div>
-            <div><strong id="cdH">00</strong><small>Horas</small></div>
-            <div><strong id="cdM">00</strong><small>Min</small></div>
-            <div><strong id="cdS">00</strong><small>Seg</small></div>
-          </div>
-          <p id="urgencyNote">Tu descanso empieza hoy</p>
-          <p style="margin-top:20px"><a class="btn btn--primary btn--lg" href="#top" data-open-data-modal>Quiero mi SYNAPTIC SLEEP 5-Z</a></p>
-        </div>
-      </div>
-    </section>
 
     <!-- ══════════ DEMOSTRACIÓN VISUAL ══════════ -->
     <section class="section" id="demo" style="padding-top:0">
