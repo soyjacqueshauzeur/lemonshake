@@ -785,10 +785,11 @@
     .t-addons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
     .t-addon{
       position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "body" "desc";
-      gap:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;
+      gap:0;padding:0;overflow:hidden;border:1px solid #EAEAEA;border-radius:12px;
       background:var(--surface);cursor:pointer;user-select:none;
       transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out);
     }
+    html[data-theme="dark"] .t-addon{border-color:hsla(73,100%,62%,.3)}
     .t-addon.is-selected{background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent-soft)}
     .t-addon > img{grid-area:media;width:100%;height:auto;aspect-ratio:1/1;border:0;border-bottom:1px solid var(--line);border-radius:0;object-fit:cover;display:block;background:var(--surface-2)}
     .t-addon__body{grid-area:body;display:flex;flex-direction:column;gap:4px;min-width:0;padding:10px}
@@ -839,9 +840,9 @@
     .t-check{position:relative;width:25px;height:25px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:6px;background:var(--bg);cursor:pointer;flex:0 0 auto}
     .t-check input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
     .t-check span{width:11px;height:11px;border-radius:3px;background:transparent}
-    .t-check input:checked + span{background:var(--lime)}
+    .t-check input:checked + span{background:var(--accent-text)}
     .t-check input:focus-visible + span{outline:2px solid var(--accent-text);outline-offset:2px}
-    .t-addon .t-check{position:absolute;top:8px;right:8px;z-index:2;background:var(--surface);box-shadow:var(--shadow-sm)}
+    .t-addon .t-check{position:absolute;top:8px;right:8px;z-index:2;background:var(--accent-soft);box-shadow:var(--shadow-sm)}
     .t-stepper{display:inline-flex;align-items:stretch;width:fit-content;max-width:100%;flex:0 0 auto;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;background:var(--bg)}
     .t-stepper button{width:30px;min-height:32px;border:0;background:var(--lime);color:var(--ink-000);font-size:1rem;line-height:1;cursor:pointer;display:grid;place-items:center}
     .t-stepper button:disabled{opacity:.35;cursor:not-allowed}
@@ -1078,7 +1079,7 @@
     .addon-all{border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:2px;font-weight:500;color:var(--text)}
     .addon-all input{
       appearance:none;-webkit-appearance:none;position:relative;display:grid;place-items:center;
-      width:20px;height:20px;border:2px solid var(--line-strong);border-radius:5px;background:var(--surface);cursor:pointer;
+      width:20px;height:20px;border:2px solid var(--line-strong);border-radius:5px;background:var(--accent-soft);cursor:pointer;
     }
     .addon-all input:checked,.addon-all input:indeterminate{background:var(--lime);border-color:var(--lime)}
     .addon-all input:checked::after{content:"";width:5px;height:9px;border:solid var(--ink-000);border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-1px)}
