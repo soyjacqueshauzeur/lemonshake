@@ -509,7 +509,7 @@
     html[data-theme="dark"] .final-cta .card{border-color:var(--lime)}
     .final-cta h2{color:var(--accent-text);line-height:0.9em}
     .final-cta__offer{font-weight:700}
-    .final-cta__deadline{color:var(--text);font-size:0.7em}
+    .final-cta__deadline{color:var(--text);font-size:0.6em}
     .countdown{display:flex;gap:12px;justify-content:center;margin:22px 0}
     .countdown div{background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 16px;min-width:70px}
     .countdown strong{font-family:var(--font-display);font-size:1.7rem;display:block;color:var(--accent-text)}
@@ -1242,7 +1242,7 @@
       <div class="wrap">
         <div class="card">
           <span class="badge">⏳ Unidades reducidas</span>
-          <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br /><span class="final-cta__deadline">durante 24 horas</span></h2>
+          <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br /><span class="final-cta__deadline" id="finalCtaDate"></span></h2>
           <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
             <div><strong id="cdD">00</strong><small>Días</small></div>
             <div><strong id="cdH">00</strong><small>Horas</small></div>
@@ -2985,9 +2985,22 @@
       finalCta.hidden = !visible;
     }
     function pad2(n) { return String(n).padStart(2, '0'); }
+    var mesesLargos = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    var finalCtaDateKey = '';
+    function updateFinalCtaDate() {
+      var el = document.getElementById('finalCtaDate');
+      if (!el) return;
+      var b = bogotaDate();
+      var key = b.y + '-' + b.m + '-' + b.d;
+      if (key === finalCtaDateKey) return;
+      finalCtaDateKey = key;
+      el.textContent = b.y + ' / ' + mesesLargos[b.m] + ' / ' + pad2(b.d);
+    }
+    updateFinalCtaDate();
     function tickCountdown() {
       var c = offerCycle();
       syncFinalCta(c.active);
+      updateFinalCtaDate();
       var disc = c.active ? 0.9 : 1;
       if (disc !== state.discount) {
         state.discount = disc;
