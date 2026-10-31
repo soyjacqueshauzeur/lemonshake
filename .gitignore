@@ -35,3 +35,6 @@ Thumbs.db
 
 # Artefactos de pruebas locales
 .playwright-mcp/
+
+# Libros y manuales en PDF (se entregan por correo, no se publican)
+*.pdf

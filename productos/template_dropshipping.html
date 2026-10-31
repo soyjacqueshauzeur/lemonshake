@@ -148,6 +148,10 @@
               <input type="text" id="sku" placeholder="SYNAPTICS-2122714" autocomplete="off" />
             </div>
             <div>
+              <label for="vendedor">Vendedor / autor de la ficha</label>
+              <input type="text" id="vendedor" placeholder="Lemon Shake" autocomplete="off" />
+            </div>
+            <div>
               <label for="categoria">Categoría <span class="req">*</span></label>
               <select id="categoria" required>
                 <option value="">Selecciona…</option>
@@ -215,6 +219,11 @@
               <label for="costo">Costo del producto</label>
               <input type="number" id="costo" min="0" step="100" placeholder="28000" />
               <p class="note">Solo para calcular el margen; no se publica.</p>
+            </div>
+            <div>
+              <label for="siglas">Siglas del precio (referente interno)</label>
+              <input type="text" id="siglas" placeholder="PI.CO" autocomplete="off" />
+              <p class="note">Código con el que referencias el precio (PI.CO, W.IN.ML, RT.IN.MV…). También sale en la tarjeta como «Autor: Lemon Shake (PI.CO)».</p>
             </div>
           </div>
         </fieldset>
@@ -500,7 +509,7 @@
 
     var $ = function (id) { return document.getElementById(id); };
     var STORE_KEY = 'ls-product-brief-draft';
-    var FIELDS = ['nombre','id','sku','categoria','tipo','moneda','precio','precioAnterior','costo',
+    var FIELDS = ['nombre','id','sku','vendedor','siglas','categoria','tipo','moneda','precio','precioAnterior','costo',
                   'descVolPct','descVolUds','descDiaPct','descDiaDias','descAlcance','titulo','subtitulo',
                   'descripcion','beneficios','publico','regalo','regaloSku','regaloValor','badge','umbral',
                   'imagenes','url','extra',
@@ -675,25 +684,32 @@
       L.push('## 1. Identidad');
       L.push('');
       check('nombre', v('nombre')); check('ID de producto', id); check('SKU', sku);
+      check('vendedor', v('vendedor'));
       check('categoría', v('categoria')); check('URL propuesta', v('url'));
       L.push('| Campo | Valor |');
       L.push('|---|---|');
       L.push('| Nombre | ' + A(v('nombre')) + ' |');
       L.push('| ID de producto | ' + A(id) + ' |');
       L.push('| SKU | ' + A(sku) + ' |');
+      L.push('| Vendedor | ' + A(v('vendedor')) + ' |');
       L.push('| Categoría | ' + (v('categoria') ? catLabel(v('categoria')) : AUTO) + ' |');
       L.push('| Entrega | ' + (v('tipo') === 'digital' ? 'Digital (correo)' : 'Física (envío)') + ' |');
       L.push('| URL propuesta | ' + A(v('url')) + ' |');
       L.push('');
+      if (v('vendedor') || v('siglas')) {
+        L.push('**Autor para la tarjeta:** ' + (v('vendedor') || AUTO) + ' (' + (v('siglas') || AUTO) + ')');
+        L.push('');
+      }
 
       L.push('## 2. Precio');
       L.push('');
       check('precio base', v('precio')); check('precio anterior', v('precioAnterior'));
-      check('costo', v('costo'));
+      check('costo', v('costo')); check('siglas del precio', v('siglas'));
       L.push('| Concepto | Valor |');
       L.push('|---|---|');
       L.push('| Precio base (1 unidad) | ' + (base ? money(base, cur) : AUTO) + ' |');
       L.push('| Precio anterior (tachado) | ' + (v('precioAnterior') ? money(v('precioAnterior'), cur) : AUTO) + ' |');
+      L.push('| Referente interno de precio | ' + A(v('siglas')) + ' |');
       if (v('costo')) {
         var margen = base - Number(v('costo'));
         var margenPct = base ? Math.round((margen / base) * 100) : 0;
@@ -991,6 +1007,7 @@
     $('example').addEventListener('click', function () {
       var demo = {
         nombre: 'Cojín Cervical Pro', id: '2122714', sku: 'SYNAPTICS-2122714',
+        vendedor: 'Lemon Shake', siglas: 'PI.CO',
         categoria: 'hogar', tipo: 'fisico', moneda: 'COP',
         precio: '84000', precioAnterior: '119000', costo: '28900',
         titulo: 'Duerme mejor desde esta noche',
