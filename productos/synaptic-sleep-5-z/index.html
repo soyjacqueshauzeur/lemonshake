@@ -861,6 +861,16 @@
     .t-purchase .btn[disabled]{opacity:.55;cursor:not-allowed}
     /* Temporal: ocultar los controles de compra inferiores */
     .t-purchase.purchase-controls{display:none}
+    /* Inventario: ocultar lo que marque inventario.js (refuerzo del atributo hidden) */
+    #complementos[hidden],[hidden][data-hijo],.t-purchase[hidden],.picker[hidden]{display:none!important}
+    /* Con el producto agotado no tiene sentido promocionar el descuento del día */
+    html[data-producto-agotado] .final-cta{display:none!important}
+    html[data-producto-agotado] .t-summary__qty,html[data-producto-agotado] #summaryNote{display:none}
+    .t-aviso-agotado{display:flex;flex-direction:column;gap:10px;padding:18px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);margin:0 0 14px}
+    .t-aviso-agotado[hidden]{display:none!important}
+    .t-aviso-agotado__title{font-family:var(--font-display);font-size:1.05rem;margin:0}
+    .t-aviso-agotado__text{color:var(--muted);font-size:.9rem;margin:0}
+    .t-aviso-agotado__btn{justify-content:center}
     .t-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:14px 8px;border-bottom:1px solid var(--line)}
     .t-trust__item{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:.56rem;line-height:1.2;color:var(--muted);min-width:0}
     .t-trust__item svg{width:19px;height:19px;color:var(--lime);flex:0 0 auto}
@@ -1191,7 +1201,7 @@
   </script>
   <script src="/assets/js/payments-config.js"></script>
 </head>
-<body>
+<body data-sku="2122714" data-uri="productos/synaptic-sleep-5-z/">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CCPPRGS"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1328,7 +1338,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
               Pago seguro con MercadoPago · 1 cuota
             </p>
-            <div class="t-qty-row">
+            <div class="t-qty-row" data-ocultar-agotado>
               <span class="t-qty-label" id="qtyLabel">Cantidad:</span>
               <div class="t-stepper" role="group" aria-labelledby="qtyLabel">
                 <button type="button" id="qtyMinus" aria-label="Quitar una almohada">−</button>
@@ -1340,6 +1350,12 @@
               <span>Vendido por <b>Lemon Shake</b> · Compra protegida</span>
               <span data-copy="SKU: SYNAPTICS-2122714">SKU: SYNAPTICS-2122714</span>
             </div>
+          </section>
+
+          <section class="t-aviso-agotado" id="tAgotado" hidden aria-label="Producto agotado">
+            <p class="t-aviso-agotado__title">Producto agotado por el momento</p>
+            <p class="t-aviso-agotado__text">Déjanos tu WhatsApp y te avisamos en cuanto vuelva a estar disponible.</p>
+            <a class="btn btn--primary t-aviso-agotado__btn" data-agotado-wa href="https://wa.me/573507402009">Avísame cuando llegue</a>
           </section>
 
           <section class="t-purchase purchase-controls" aria-label="Añadir al carrito">
@@ -1354,7 +1370,7 @@
                 <span class="crosssell-count">3 productos</span>
               </div>
               <div class="t-addons t-addons--three" id="addonList">
-                <div class="t-addon" data-t-addon="cojin">
+                <div class="t-addon" data-t-addon="cojin" data-sku="1418543" data-padre="2122714" data-uri="productos/synaptic-sleep-5-z/#complementos" data-hijo>
                   <img src="images/TFL-1418543.png" alt="Cojín Ortopédico Pierna" width="600" height="600" />
                   <label class="t-check"><input type="checkbox" data-t-addon-check="cojin" aria-label="Incluir Cojín Ortopédico Pierna" /><span aria-hidden="true"></span></label>
                   <div class="t-addon__body">
@@ -1374,7 +1390,7 @@
                   </div>
                   <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-cojin">Ver descripción</button>
                 </div>
-                <div class="t-addon" data-t-addon="masajeador">
+                <div class="t-addon" data-t-addon="masajeador" data-sku="2214521" data-padre="2122714" data-uri="productos/synaptic-sleep-5-z/#complementos" data-hijo>
                   <img class="t-addon__img--contain" src="images/MVV-2214521.png" alt="Cojín Masajeador Cuello Manos Y Pies" width="600" height="338" />
                   <label class="t-check"><input type="checkbox" data-t-addon-check="masajeador" aria-label="Incluir Cojín Masajeador Cuello Manos Y Pies" /><span aria-hidden="true"></span></label>
                   <div class="t-addon__body">
@@ -1394,7 +1410,7 @@
                   </div>
                   <button class="t-addon__desc-toggle" type="button" aria-expanded="false" aria-controls="addonDescription-masajeador">Ver descripción</button>
                 </div>
-                <div class="t-addon" data-t-addon="gel">
+                <div class="t-addon" data-t-addon="gel" data-sku="2104675" data-padre="2122714" data-uri="productos/synaptic-sleep-5-z/#complementos" data-hijo>
                   <img src="images/NCHV-2104675.png" alt="Cojín Gel Ergonómico" width="600" height="600" />
                   <label class="t-check"><input type="checkbox" data-t-addon-check="gel" aria-label="Incluir Cojín Gel Ergonómico" /><span aria-hidden="true"></span></label>
                   <div class="t-addon__body">
@@ -1482,7 +1498,7 @@
               <div class="t-summary__rows" id="summaryRows" aria-live="polite"></div>
               <div class="t-summary__row"><span>Envío</span><b>Gratis</b></div>
               <div class="t-summary__total"><span>Total</span><b id="summaryTotal">$84.000</b></div>
-              <button class="btn btn--primary" id="buyNow" type="button">Comprar ahora · <span id="buyTotal">$84.000</span></button>
+              <button class="btn btn--primary" id="buyNow" type="button" data-ocultar-agotado>Comprar ahora · <span id="buyTotal">$84.000</span></button>
               <p class="t-summary__note" id="summaryNote">El libro digital «El contador de ovejas» va gratis con tu pedido.</p>
 
               <section class="t-trust" aria-label="Garantías de compra">
@@ -3726,6 +3742,7 @@
   alt="Web Analytics"
   referrerpolicy="no-referrer-when-downgrade"></a></div></noscript>
   <!-- End of Statcounter Code -->
+  <script src="../../inventario.js?v=3" defer></script>
   <script src="../../variantes.js?v=6" defer></script>
 </body>
 </html>

@@ -791,7 +791,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
     @media(max-width:424px){
       .store-title{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;row-gap:.06em}
       .store-title-logo{width:clamp(64px,18vw,80px);height:clamp(64px,18vw,80px);margin-bottom:.2em}
-      .store-tag{display:none}
+    .store-tag{display:none}
     }
     .store-sub{margin-top:var(--space-4);color:var(--fg-soft);max-width:52ch;font-size:var(--text-lg)}
     .store-sub b{color:var(--fg);font-weight:600}
@@ -870,6 +870,14 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
       text-transform:uppercase;padding:5px 10px;border-radius:var(--radius-full);
       box-shadow:var(--shadow-sm)
     }
+    /* Inventario: tarjeta agotada (inventario.js pone .is-agotado) */
+    .store-badge--agotado{background:var(--ink-000);color:var(--fg);border:1px solid var(--rule)}
+    .store-card.is-agotado .store-badge:not(.store-badge--agotado){display:none}
+    .store-card.is-agotado .store-pin{filter:grayscale(1);opacity:.55;cursor:not-allowed}
+    .store-card.is-agotado .store-pin:hover{transform:none;box-shadow:none}
+    .store-card.is-agotado .store-overlay{display:none}
+    .store-card.is-agotado .store-price-main{color:var(--fg-mute)}
+
     .store-tag{
       position:absolute;top:12px;right:12px;z-index:2;
       font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;
@@ -1055,9 +1063,10 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
         </div>
 
         <div class="store-wall" id="store-wall">
-          <article class="store-card" data-cat="hogar" data-id="SYNAPTICS-2122714" data-name="Almohada Cervical SYNAPTIC SLEEP 5-Z" data-price="84000" data-currency="COP" data-date="2026-09-28">
+          <article class="store-card" data-cat="hogar" data-sku="2122714" data-id="SYNAPTICS-2122714" data-name="Almohada Cervical SYNAPTIC SLEEP 5-Z" data-price="84000" data-currency="COP" data-date="2026-09-28">
             <a class="store-pin" href="./productos/synaptic-sleep-5-z/" aria-label="Almohada Cervical SYNAPTIC SLEEP 5-Z, $84.000 COP">
               <span class="store-badge">Top ventas</span>
+              <span class="store-badge store-badge--agotado" hidden>Agotado</span>
               <span class="store-tag">Hogar</span>
               <span class="store-media"><img src="./productos/synaptic-sleep-5-z/images/Gemini_Generated_Image_886r5v886r5v886r.avif" alt="Almohada cervical ergonómica SYNAPTIC SLEEP 5-Z" loading="lazy" /></span>
               <span class="store-overlay"><span class="store-cta">Ver producto →</span></span>
@@ -1421,6 +1430,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
   <script src="assets/js/fx.js" defer></script>
   <script src="assets/js/site.js" defer></script>
   <script src="analytics/tiktok-products.js" defer></script>
+  <script src="inventario.js?v=3" defer></script>
   <script src="store-card.js" defer></script>
   <script src="tienda-mapa.js?v=10" defer></script>
   <!-- Statcounter -->

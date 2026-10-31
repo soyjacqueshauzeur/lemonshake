@@ -18,6 +18,8 @@
  *   <body data-sku="2122714" data-uri="productos/synaptic-sleep-5-z/">
  *   <div class="t-addon" data-sku="1418543" data-padre="2122714" data-hijo>
  *   <article class="store-card" data-sku="2122714">
+ *   <button data-ocultar-agotado>   (CTA que se oculta si el principal está agotado)
+ *   <section id="tAgotado" hidden>  (aviso + WhatsApp)
  *   <script src="inventario.js" defer></script>
  */
 (function () {
@@ -31,6 +33,11 @@
     return 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkn7moOONmVq4gCXG_PvL3EGXwdOLm8qGAQzuIkpLfiWTAj0hhi2RhbC5OVbm1drYk7eaO7ZA0OYAL/pub?output=csv';
   })();
   var DB_KEY = 'ls_inventario_v1';
+  /* Con ?inventario=<url> se está probando: no se lee ni se escribe el caché
+     compartido, para no contaminar la página real. */
+  var MODO_PRUEBA = (function () {
+    try { return !!new URLSearchParams(window.location.search).get('inventario'); } catch (e) { return false; }
+  })();
   var MAX_HORAS = 6;
   var UMBRAL_RESPALDO = 25;
 
@@ -207,7 +214,7 @@
     if (principal && esAgotado(principal)) {
       document.documentElement.setAttribute('data-producto-agotado', String(principal));
 
-      Array.prototype.forEach.call(document.querySelectorAll('.t-purchase, .purchase-controls, .picker, [data-go-cta]'), function (el) {
+      Array.prototype.forEach.call(document.querySelectorAll('.t-purchase, .purchase-controls, .picker, [data-go-cta], [data-ocultar-agotado]'), function (el) {
         el.setAttribute('hidden', '');
         el.style.display = 'none';
       });
@@ -280,6 +287,7 @@
      ============================================================ */
 
   function leerCache() {
+    if (MODO_PRUEBA) return null;
     try {
       var g = JSON.parse(localStorage.getItem(DB_KEY) || 'null');
       if (!g || !g.t || !g.mapa) return null;
@@ -289,6 +297,7 @@
   }
 
   function guardarCache(m) {
+    if (MODO_PRUEBA) return;
     try { localStorage.setItem(DB_KEY, JSON.stringify({ t: Date.now(), mapa: m })); } catch (e) { /* cuota */ }
   }
 
