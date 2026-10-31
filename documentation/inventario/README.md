@@ -102,10 +102,20 @@ El padre es la llave. Un complemento solo existe si su padre tiene inventario.
 </section>
 ```
 
+### Botones que se ocultan si el principal está agotado
+
+Cualquier CTA de compra puede marcarse así; el script le pone `hidden` y
+`display:none` cuando el producto principal no tiene inventario:
+
+```html
+<div class="t-qty-row" data-ocultar-agotado>…</div>
+<button id="buyNow" data-ocultar-agotado>Comprar ahora</button>
+```
+
 ### Script
 
 ```html
-<script src="../../inventario.js?v=1" defer></script>
+<script src="../../inventario.js?v=3" defer></script>
 ```
 
 Los números de `data-sku` deben coincidir exactamente con la columna
@@ -145,6 +155,10 @@ No hay que tocar `inventario.js`.
 productos/synaptic-sleep-5-z/index.html?inventario=/archivo-de-prueba.csv
 ```
 
+> El modo prueba **no lee ni escribe el caché compartido**: así una prueba con
+> datos falsos no deja la página real mostrando «Agotado» durante 6 horas.
+> Esto se corrigió el 31 de octubre de 2026 (`MODO_PRUEBA` en `inventario.js`).
+
 ---
 
 ## 7. Cómo verificar que funciona
@@ -159,11 +173,35 @@ productos/synaptic-sleep-5-z/index.html?inventario=/archivo-de-prueba.csv
 
 ## 8. Estado actual (31 de octubre de 2026)
 
-- `inventario.js` existe en la raíz, pero **ninguna página lo carga todavía**:
-  el `git reset` revirtió el marcado (`data-sku`, `#tAgotado`, el `<script>`).
-  Hay que reponerlo en `productos/synaptic-sleep-5-z/index.html` e `index.html`.
-- Los SKU reales de la hoja son `2122714` (padre) y `1418543`, `2214521`,
-  `2104675` (complementos).
+**Conectado y funcionando en producción.** El marcado que el `git reset` había
+revertido ya se repuso:
+
+| Página | Marcado |
+|---|---|
+| `productos/synaptic-sleep-5-z/index.html` | `<body data-sku="2122714" data-uri="…">`, los 3 complementos con `data-sku`/`data-padre`/`data-hijo`, el bloque `#tAgotado` con WhatsApp, `data-ocultar-agotado` en el selector de cantidad y en «Comprar ahora», y `<script src="../../inventario.js?v=3" defer>` |
+| `index.html` | la tarjeta con `data-sku="2122714"`, el badge `store-badge--agotado` y `<script src="inventario.js?v=3" defer>` |
+
+Reglas que aplica al agotarse el principal: oculta los controles de compra, el
+selector de cantidad, el botón «Comprar ahora», la sección de complementos, el
+bloque de descuento del día y el selector del resumen; muestra `#tAgotado` con
+un WhatsApp que ya lleva el SKU; y cambia el JSON-LD a `OutOfStock`.
+
+Los SKU reales de la hoja son `2122714` (padre) y `1418543`, `2214521`,
+`2104675` (complementos).
+
+**Probado el 31 de octubre** con tres CSV falsos vía `?inventario=`:
+un complemento en `NO`, los tres en `NO`, y el padre en `NO`. Los tres casos
+se comportaron como se describe arriba.
+
+### Lo que sigue pendiente
+
 - El sync de Dropi a la hoja lo mantiene Jacques por fuera.
 - `scripts-apps-script/dropi_sync.gs` está ignorado en git y **no se usa** en
   este flujo: la web solo lee el CSV publicado.
+- El **precio** todavía no viene de la hoja: vive en `PRECIO_BASE` del HTML y en
+  `catalog.json` del servidor.
+- La comprobación es **solo en el navegador**: el Worker no consulta stock al
+  crear la orden, así que una llamada directa a la API podría comprar sin
+  existencias.
+- La columna `uir` de la hoja sigue con el error de escritura (el script acepta
+  `uir` o `uri`).

@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuevo producto — brief para Lemon Shake</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="../pictures/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../pictures/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../assets/css/fonts.css" />
+  <script>(function(){try{var t=localStorage.getItem("jh-theme");if(t!=="light"&&t!=="dark"){var h=new Date().getHours();t=(h>=4&&h<18)?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <style>
+    :root{
+      --ink-000:#050507; --ink-deep:#0A0A0C; --ink:#111114; --ink-elev:#232328;
+      --line:rgba(244,244,240,.10); --line-strong:rgba(244,244,240,.20);
+      --fg:#F4F4F0; --fg-soft:#C9C9C2; --muted:#9A9A94;
+      --lime:#D4FF3D; --lime-soft:#E2FF73; --lime-deep:#9CCB1F; --lime-ink:#648A08;
+      --danger:#FF6B6B;
+      --font-display:'Boldonse','Boldonse Fallback','Inter Tight',system-ui,sans-serif;
+      --font-body:'Inter Tight','Inter Tight Fallback',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+      --font-mono:'Geist Mono','Geist Mono Fallback',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+      --radius:12px; --ease:cubic-bezier(.22,1,.36,1);
+    }
+    html[data-theme="light"]{
+      --ink-000:#ECECE6; --ink-deep:#F4F4F0; --ink:#FFFFFF; --ink-elev:#EFEFE9;
+      --line:rgba(10,10,12,.10); --line-strong:rgba(10,10,12,.20);
+      --fg:#0A0A0C; --fg-soft:#3F3F3A; --muted:#6A6A65;
+      --lime:#5F7D00; --lime-soft:#7C9B18; --lime-deep:#3F5A05; --lime-ink:#3F5A05;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0;background:var(--ink-deep);color:var(--fg);
+      font-family:var(--font-body);-webkit-font-smoothing:antialiased;line-height:1.5;
+    }
+    a{color:inherit}
+    :focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:4px}
+    .wrap{max-width:1240px;margin-inline:auto;padding:0 clamp(16px,4vw,32px)}
+
+    header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ink-deep) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;font-size:1.05rem}
+    .brand img{width:30px;height:30px}
+    .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-strong);padding:5px 10px;border-radius:999px}
+    .theme{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--fg);cursor:pointer}
+    .theme:hover{border-color:var(--lime);color:var(--lime)}
+
+    .lead{padding:clamp(28px,5vw,48px) 0 8px}
+    .lead h1{font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.05;margin:0 0 10px}
+    .lead p{margin:0;max-width:70ch;color:var(--fg-soft)}
+    .lead .hint{margin-top:12px;font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+
+    .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding-block:24px 64px}
+    @media(min-width:1024px){.layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start}}
+
+    form{display:grid;gap:18px}
+    fieldset{border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:0;background:color-mix(in srgb,var(--ink) 55%,transparent)}
+    legend{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);padding:0 8px}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media(max-width:620px){.grid{grid-template-columns:minmax(0,1fr)}}
+    .full{grid-column:1/-1}
+    label{display:block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    label .req{color:var(--lime)}
+    input[type=text],input[type=number],input[type=url],select,textarea{
+      width:100%;padding:11px 13px;border-radius:9px;border:1px solid var(--line-strong);
+      background:var(--ink-deep);color:var(--fg);font-family:var(--font-body);font-size:.95rem;
+    }
+    textarea{min-height:92px;resize:vertical;line-height:1.55}
+    input:hover,select:hover,textarea:hover{border-color:color-mix(in srgb,var(--line-strong) 60%,var(--fg))}
+    input:focus,select:focus,textarea:focus{border-color:var(--lime);outline:none}
+    .note{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+    .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:620px){.row-2{grid-template-columns:1fr}}
+
+    .addons{display:grid;gap:10px}
+    .addon{border:1px dashed var(--line-strong);border-radius:10px;padding:12px;display:grid;gap:10px}
+    .addon-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .addon-head span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+      font-family:var(--font-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;transition:transform .16s var(--ease),background .16s,color .16s,border-color .16s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn--primary{background:var(--lime);color:#0A0A0C;font-weight:600}
+    .btn--primary:hover{background:var(--lime-soft)}
+    .btn--ghost{background:transparent;border-color:var(--line-strong);color:var(--fg)}
+    .btn--ghost:hover{border-color:var(--lime);color:var(--lime)}
+    .btn--danger{background:transparent;border-color:color-mix(in srgb,var(--danger) 55%,transparent);color:var(--danger);padding:7px 12px;font-size:.68rem}
+    .btn--danger:hover{background:color-mix(in srgb,var(--danger) 12%,transparent)}
+    .btn--sm{padding:8px 13px;font-size:.7rem}
+
+    .out{position:sticky;top:78px;border:1px solid var(--line);border-radius:var(--radius);background:var(--ink);overflow:hidden}
+    @media(max-width:1023px){.out{position:static}}
+    .out-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--ink-elev) 60%,transparent)}
+    .out-head h2{margin:0;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .out-actions{display:flex;gap:8px;flex-wrap:wrap}
+    pre#md{margin:0;padding:16px;max-height:min(62vh,620px);overflow:auto;font-family:var(--font-mono);font-size:.78rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:var(--fg-soft);tab-size:2}
+    .status{padding:0 14px 12px;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);min-height:18px}
+    .status.err{color:var(--danger)}
+    .status.ok{color:var(--lime)}
+
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);background:var(--lime);color:#0A0A0C;
+      font-family:var(--font-mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border-radius:999px;
+      opacity:0;visibility:hidden;
+      transition:transform .3s var(--ease),opacity .3s var(--ease),visibility .3s var(--ease);z-index:90;pointer-events:none}
+    .toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    @media print{header.top,.out-actions,.theme{display:none}.layout{grid-template-columns:1fr}.out{position:static}pre#md{max-height:none}}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#form">Ir al formulario</a>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="../index.html">
+        <img src="../pictures/logo-bold.svg" alt="" width="30" height="30" aria-hidden="true" />
+        Lemon Shake
+      </a>
+      <span class="tag">Brief de producto</span>
+      <button class="theme" id="themeToggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Tema claro/oscuro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5 5l1.6 1.6M17.4 17.4 19 19M19 5l-1.6 1.6M6.6 17.4 5 19"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="lead">
+      <h1>Nuevo producto</h1>
+      <p>Rellena los datos del producto de dropshipping. Al final se genera un <strong>brief en Markdown</strong> listo para copiar y enviar.</p>
+      <p class="hint">Los campos con <span style="color:var(--lime)">*</span> son obligatorios. El borrador se guarda solo en este navegador.</p>
+    </div>
+
+    <div class="layout">
+      <form id="form" novalidate>
+        <fieldset>
+          <legend>Identidad</legend>
+          <div class="grid">
+            <div class="full">
+              <label for="nombre">Nombre del producto <span class="req">*</span></label>
+              <input type="text" id="nombre" required placeholder="Ej. Cojín Cervical Pro" autocomplete="off" />
+            </div>
+            <div>
+              <label for="id">ID de producto <span class="req">*</span></label>
+              <input type="text" id="id" required placeholder="2122714" inputmode="numeric" autocomplete="off" />
+              <p class="note">El número final del SKU de Dropi.</p>
+            </div>
+            <div>
+              <label for="sku">SKU</label>
+              <input type="text" id="sku" placeholder="SYNAPTICS-2122714" autocomplete="off" />
+            </div>
+            <div>
+              <label for="categoria">Categoría <span class="req">*</span></label>
+              <select id="categoria" required>
+                <option value="">Selecciona…</option>
+                <option value="aseo">Aseo</option>
+                <option value="bebe">Bebé</option>
+                <option value="belleza">Belleza</option>
+                <option value="bienestar">Bienestar</option>
+                <option value="bisuteria">Bisutería</option>
+                <option value="camping">Camping</option>
+                <option value="cocina">Cocina</option>
+                <option value="curso-online">Curso online</option>
+                <option value="defensa-personal">Defensa personal</option>
+                <option value="deportes">Deportes</option>
+                <option value="halloween">Halloween</option>
+                <option value="herramientas">Herramientas</option>
+                <option value="hogar">Hogar</option>
+                <option value="jugueteria">Juguetería</option>
+                <option value="libros">Libros online</option>
+                <option value="mad">Mad</option>
+                <option value="mascotas">Mascotas</option>
+                <option value="moda">Moda</option>
+                <option value="natural-home">Natural Home</option>
+                <option value="navidad">Navidad</option>
+                <option value="otro">Otro</option>
+                <option value="papeleria">Papelería</option>
+                <option value="pesca">Pesca</option>
+                <option value="pinateria">Piñatería</option>
+                <option value="ropa-deportiva">Ropa Deportiva</option>
+                <option value="salud">Salud</option>
+                <option value="sex-shop">Sex Shop</option>
+                <option value="tecnologia">Tecnología</option>
+                <option value="vaporizadores">Vaporizadores</option>
+                <option value="vehiculos">Vehículos</option>
+              </select>
+            </div>
+            <div>
+              <label for="tipo">Tipo de entrega</label>
+              <select id="tipo">
+                <option value="fisico">Físico (envío)</option>
+                <option value="digital">Digital (correo)</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Precio</legend>
+          <div class="grid">
+            <div>
+              <label for="moneda">Moneda</label>
+              <select id="moneda">
+                <option value="COP">COP</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
+            <div>
+              <label for="precio">Precio base (1 unidad) <span class="req">*</span></label>
+              <input type="number" id="precio" required min="0" step="100" placeholder="84000" />
+            </div>
+            <div>
+              <label for="precioAnterior">Precio anterior (tachado)</label>
+              <input type="number" id="precioAnterior" min="0" step="100" placeholder="119000" />
+            </div>
+            <div>
+              <label for="costo">Costo del producto</label>
+              <input type="number" id="costo" min="0" step="100" placeholder="28000" />
+              <p class="note">Solo para calcular el margen; no se publica.</p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Descuentos</legend>
+          <div class="grid">
+            <div>
+              <label for="descVolPct">Descuento por volumen (%)</label>
+              <input type="number" id="descVolPct" min="0" max="90" step="1" value="10" />
+            </div>
+            <div>
+              <label for="descVolUds">Unidades donde llega al máximo</label>
+              <input type="number" id="descVolUds" min="2" max="100" step="1" value="10" />
+            </div>
+            <div>
+              <label for="descDiaPct">Descuento por fecha (%)</label>
+              <input type="number" id="descDiaPct" min="0" max="90" step="1" value="10" />
+            </div>
+            <div>
+              <label for="descDiaDias">Días que aplica</label>
+              <input type="text" id="descDiaDias" value="15 y último día del mes" />
+            </div>
+            <div class="full">
+              <label for="descAlcance">¿A qué aplica el descuento?</label>
+              <input type="text" id="descAlcance" value="Solo al producto principal. Los complementos mantienen su precio." />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Complementos</legend>
+          <div class="addons" id="addons"></div>
+          <div style="margin-top:12px">
+            <button class="btn btn--ghost btn--sm" type="button" id="addAddon">+ Añadir complemento</button>
+          </div>
+          <p class="note">Cada complemento necesita su propio SKU y precio; se envía como ítem aparte al pago.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Textos</legend>
+          <div class="grid">
+            <div class="full">
+              <label for="titulo">Título del hero <span class="req">*</span></label>
+              <input type="text" id="titulo" required placeholder="Duerme mejor desde esta noche" />
+            </div>
+            <div class="full">
+              <label for="subtitulo">Subtítulo / promesa</label>
+              <input type="text" id="subtitulo" placeholder="Almohada cervical de 5 zonas que sostiene tu cuello" />
+            </div>
+            <div class="full">
+              <label for="descripcion">Descripción</label>
+              <textarea id="descripcion" placeholder="Qué es, para quién y por qué funciona. 2–4 frases."></textarea>
+            </div>
+            <div class="full">
+              <label for="beneficios">Beneficios (uno por línea)</label>
+              <textarea id="beneficios" placeholder="5 zonas de soporte&#10;Antibacteriana y antiácaros&#10;Recupera su forma en 5–15 s"></textarea>
+            </div>
+            <div class="full">
+              <label for="publico">Público objetivo</label>
+              <textarea id="publico" placeholder="Quién lo compra, qué le duele y qué miedo tiene."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Regalo</legend>
+          <div class="grid">
+            <div class="full">
+              <label for="regalo">Obsequio incluido</label>
+              <input type="text" id="regalo" placeholder="Libro digital «El contador de ovejas»" />
+            </div>
+            <div>
+              <label for="regaloSku">SKU del regalo</label>
+              <input type="text" id="regaloSku" placeholder="CONTADORE-035" />
+            </div>
+            <div>
+              <label for="regaloValor">Valor del regalo</label>
+              <input type="number" id="regaloValor" min="0" step="100" placeholder="35000" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Presentación</legend>
+          <div class="grid">
+            <div>
+              <label for="badge">Etiqueta de la tarjeta</label>
+              <select id="badge">
+                <option value="">Sin etiqueta</option>
+                <option value="Top ventas">Top ventas</option>
+                <option value="Nuevo">Nuevo</option>
+                <option value="Oferta">Oferta</option>
+                <option value="Últimas unidades">Últimas unidades</option>
+              </select>
+            </div>
+            <div>
+              <label for="umbral">Umbral de inventario</label>
+              <input type="number" id="umbral" min="0" step="1" value="25" />
+              <p class="note">Unidades mínimas para mostrarse disponible.</p>
+            </div>
+            <div class="full">
+              <label for="imagenes">Imágenes (una ruta por línea)</label>
+              <textarea id="imagenes" placeholder="productos/mi-producto/images/hero.avif&#10;productos/mi-producto/images/detalle.avif"></textarea>
+            </div>
+            <div class="full">
+              <label for="url">URL propuesta</label>
+              <input type="text" id="url" placeholder="productos/mi-producto/" />
+            </div>
+            <div class="full">
+              <label for="extra">Notas para el asistente</label>
+              <textarea id="extra" placeholder="Cualquier cosa que deba saber: referencias, competencia, restricciones, plazos…"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Inventario</legend>
+          <div class="grid">
+            <div>
+              <label for="cantidad">Unidades disponibles</label>
+              <input type="number" id="cantidad" min="0" step="1" placeholder="244" />
+            </div>
+            <div>
+              <label for="disponible">Disponible en la web</label>
+              <select id="disponible">
+                <option value="SI">SI — se muestra</option>
+                <option value="NO">NO — agotado</option>
+              </select>
+            </div>
+            <div>
+              <label for="padre">ID del producto padre</label>
+              <input type="text" id="padre" inputmode="numeric" placeholder="Solo si es un complemento" />
+            </div>
+            <div>
+              <label for="proveedor">Proveedor / Dropi</label>
+              <input type="text" id="proveedor" placeholder="Dropi · nombre del proveedor" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Combos y variantes</legend>
+          <div class="grid">
+            <div>
+              <label for="comboDos">Etiqueta del combo de 2</label>
+              <input type="text" id="comboDos" placeholder="Más elegido" />
+            </div>
+            <div>
+              <label for="comboTres">Etiqueta del combo de 3</label>
+              <input type="text" id="comboTres" placeholder="Mejor precio" />
+            </div>
+            <div class="full">
+              <label for="variantes">Otras variantes o versiones</label>
+              <textarea id="variantes" placeholder="Ej. Pro ($118.000) y Mini ($64.000), ambas pendientes de precio real."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preguntas frecuentes</legend>
+          <div class="addons" id="faqs"></div>
+          <div style="margin-top:12px">
+            <button class="btn btn--ghost btn--sm" type="button" id="addFaq">+ Añadir pregunta</button>
+          </div>
+          <p class="note">Estas preguntas alimentan el acordeón de la ficha y el JSON-LD <code>FAQPage</code>.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Prueba social</legend>
+          <div class="grid">
+            <div>
+              <label for="rating">Calificación</label>
+              <input type="text" id="rating" placeholder="4.8" />
+            </div>
+            <div>
+              <label for="resenas">Número de reseñas</label>
+              <input type="number" id="resenas" min="0" step="1" placeholder="32" />
+            </div>
+            <div class="full">
+              <label for="resenasTexto">Reseñas destacadas</label>
+              <textarea id="resenasTexto" placeholder="Una por línea: «texto» — Nombre"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>SEO y campaña</legend>
+          <div class="grid">
+            <div class="full">
+              <label for="metaTitulo">Meta título <span id="cntTitulo" class="note" style="float:right"></span></label>
+              <input type="text" id="metaTitulo" maxlength="80" placeholder="Almohada cervical 5 zonas | Lemon Shake" />
+            </div>
+            <div class="full">
+              <label for="metaDesc">Meta descripción <span id="cntDesc" class="note" style="float:right"></span></label>
+              <input type="text" id="metaDesc" maxlength="200" placeholder="Duerme sin dolor de cuello con 5 zonas de soporte. Envío gratis a Colombia." />
+            </div>
+            <div>
+              <label for="keywords">Palabras clave</label>
+              <input type="text" id="keywords" placeholder="almohada cervical, dolor de cuello, dormir mejor" />
+            </div>
+            <div>
+              <label for="sck">Atribución <code>sck</code></label>
+              <input type="text" id="sck" placeholder="Solo cursos Hotmart: velas, sushi…" />
+            </div>
+            <div class="full">
+              <label for="utm">Campaña / UTM de referencia</label>
+              <input type="text" id="utm" placeholder="utm_source=facebook&amp;utm_campaign=lanzamiento" />
+            </div>
+            <div>
+              <label for="competenciaUrl">Competencia (URL)</label>
+              <input type="text" id="competenciaUrl" placeholder="https://…" />
+            </div>
+            <div>
+              <label for="competenciaPrecio">Precio de la competencia</label>
+              <input type="number" id="competenciaPrecio" min="0" step="100" placeholder="99000" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Operación y pagos</legend>
+          <div class="grid">
+            <div>
+              <label for="contraentrega">¿Contraentrega?</label>
+              <select id="contraentrega">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label for="abonoPct">Abono contraentrega (%)</label>
+              <input type="number" id="abonoPct" min="0" max="100" step="1" placeholder="20" />
+            </div>
+            <div>
+              <label for="codMin">Contraentrega desde</label>
+              <input type="number" id="codMin" min="0" step="1000" placeholder="70000" />
+            </div>
+            <div>
+              <label for="codMax">Contraentrega hasta</label>
+              <input type="number" id="codMax" min="0" step="1000" placeholder="250000" />
+            </div>
+            <div>
+              <label for="plazo">Plazo de entrega</label>
+              <input type="text" id="plazo" placeholder="2 a 5 días hábiles" />
+            </div>
+            <div>
+              <label for="transportadora">Transportadora</label>
+              <input type="text" id="transportadora" placeholder="Nombre o «por definir»" />
+            </div>
+          </div>
+        </fieldset>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn--primary" type="submit">Generar brief</button>
+          <button class="btn btn--ghost" type="button" id="example">Cargar ejemplo</button>
+          <button class="btn btn--ghost" type="button" id="exportJson">Exportar JSON</button>
+          <button class="btn btn--ghost" type="button" id="importJson">Importar JSON</button>
+          <button class="btn btn--ghost" type="button" id="reset">Limpiar</button>
+        </div>
+        <input type="file" id="fileInput" accept="application/json" class="sr-only" />
+      </form>
+
+      <aside class="out" aria-live="polite">
+        <div class="out-head">
+          <h2>Brief en Markdown</h2>
+          <div class="out-actions">
+            <button class="btn btn--ghost btn--sm" type="button" id="copy">Copiar</button>
+            <button class="btn btn--ghost btn--sm" type="button" id="download">Descargar .md</button>
+          </div>
+        </div>
+        <pre id="md">Rellena el formulario y pulsa «Generar brief».</pre>
+        <p class="status" id="status"></p>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var $ = function (id) { return document.getElementById(id); };
+    var STORE_KEY = 'ls-product-brief-draft';
+    var FIELDS = ['nombre','id','sku','categoria','tipo','moneda','precio','precioAnterior','costo',
+                  'descVolPct','descVolUds','descDiaPct','descDiaDias','descAlcance','titulo','subtitulo',
+                  'descripcion','beneficios','publico','regalo','regaloSku','regaloValor','badge','umbral',
+                  'imagenes','url','extra',
+                  'cantidad','disponible','padre','proveedor','comboDos','comboTres','variantes',
+                  'rating','resenas','resenasTexto','metaTitulo','metaDesc','keywords','sck','utm',
+                  'competenciaUrl','competenciaPrecio','contraentrega','abonoPct','codMin','codMax',
+                  'plazo','transportadora'];
+
+    /* ---------- Complementos dinámicos ---------- */
+    var addonsEl = $('addons');
+    var addonSeq = 0;
+
+    function addonRow(data) {
+      data = data || {};
+      addonSeq++;
+      var wrap = document.createElement('div');
+      wrap.className = 'addon';
+      wrap.innerHTML =
+        '<div class="addon-head"><span>Complemento</span>' +
+        '<button class="btn btn--danger" type="button" data-remove>Quitar</button></div>' +
+        '<div class="row-2">' +
+          '<div><label>Nombre</label><input type="text" data-f="nombre" placeholder="Cojín Ortopédico Pierna"></div>' +
+          '<div><label>SKU</label><input type="text" data-f="sku" placeholder="TFL-1418543"></div>' +
+          '<div><label>Precio</label><input type="number" min="0" step="100" data-f="precio" placeholder="32000"></div>' +
+          '<div><label>ID</label><input type="text" data-f="id" placeholder="1418543" inputmode="numeric"></div>' +
+        '</div>' +
+        '<div><label>Descripción corta</label><input type="text" data-f="desc" placeholder="Eleva las piernas y alivia la presión lumbar."></div>' +
+        '<div class="addon-head"><span>Inventario en la hoja</span></div>' +
+        '<div class="row-2">' +
+          '<div><label>Cantidad</label><input type="number" min="0" step="1" data-f="cantidad" placeholder="478"></div>' +
+          '<div><label>Disponible</label><select data-f="disponible"><option value="SI">SI</option><option value="NO">NO</option></select></div>' +
+        '</div>';
+
+      wrap.querySelector('[data-remove]').addEventListener('click', function () {
+        wrap.remove();
+        save();
+      });
+      if (data && data.nombre) {
+        Object.keys(data).forEach(function (k) {
+          var el = wrap.querySelector('[data-f="' + k + '"]');
+          if (el) el.value = data[k];
+        });
+      }
+      addonsEl.appendChild(wrap);
+      return wrap;
+    }
+
+    function readAddons() {
+      return Array.prototype.map.call(addonsEl.querySelectorAll('.addon'), function (row) {
+        var o = {};
+        Array.prototype.forEach.call(row.querySelectorAll('[data-f]'), function (el) {
+          o[el.getAttribute('data-f')] = el.value.trim();
+        });
+        return o;
+      }).filter(function (o) { return o.nombre || o.sku || o.precio; });
+    }
+
+    $('addAddon').addEventListener('click', function () { addonRow(); save(); });
+
+    /* ---------- FAQ dinámicas ---------- */
+    var faqsEl = $('faqs');
+
+    function faqRow(data) {
+      data = data || {};
+      var wrap = document.createElement('div');
+      wrap.className = 'addon';
+      wrap.innerHTML =
+        '<div class="addon-head"><span>Pregunta</span>' +
+        '<button class="btn btn--danger" type="button" data-remove>Quitar</button></div>' +
+        '<div><label>Pregunta</label><input type="text" data-f="q" placeholder="¿Necesito experiencia previa?"></div>' +
+        '<div><label>Respuesta</label><textarea data-f="a" rows="2" placeholder="No. Empiezas desde cero…"></textarea></div>';
+      wrap.querySelector('[data-remove]').addEventListener('click', function () { wrap.remove(); save(); });
+      if (data.q) wrap.querySelector('[data-f="q"]').value = data.q;
+      if (data.a) wrap.querySelector('[data-f="a"]').value = data.a;
+      faqsEl.appendChild(wrap);
+      return wrap;
+    }
+
+    function readFaqs() {
+      return Array.prototype.map.call(faqsEl.querySelectorAll('.addon'), function (row) {
+        return {
+          q: (row.querySelector('[data-f="q"]') || {}).value ? row.querySelector('[data-f="q"]').value.trim() : '',
+          a: (row.querySelector('[data-f="a"]') || {}).value ? row.querySelector('[data-f="a"]').value.trim() : ''
+        };
+      }).filter(function (o) { return o.q || o.a; });
+    }
+
+    $('addFaq').addEventListener('click', function () { faqRow(); save(); });
+
+    /* ---------- Borrador ---------- */
+    function save() {
+      try {
+        var data = {};
+        FIELDS.forEach(function (f) { data[f] = $(f) ? $(f).value : ''; });
+        data.addons = readAddons();
+        data.faqs = readFaqs();
+        localStorage.setItem(STORE_KEY, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function restore() {
+      var raw = null;
+      try { raw = localStorage.getItem(STORE_KEY); } catch (e) {}
+      if (!raw) { addonRow(); faqRow(); return; }
+      try {
+        var d = JSON.parse(raw);
+        FIELDS.forEach(function (f) { if (d[f] != null && $(f)) $(f).value = d[f]; });
+        (d.addons && d.addons.length ? d.addons : [{}]).forEach(function (a) { addonRow(a); });
+        (d.faqs || []).forEach(function (f) { faqRow(f); });
+        if (!d.faqs || !d.faqs.length) faqRow();
+      } catch (e) { addonRow(); faqRow(); }
+    }
+
+    FIELDS.forEach(function (f) {
+      var el = $(f);
+      if (el) el.addEventListener('input', save);
+    });
+
+    /* ---------- Markdown ---------- */
+    function money(v, cur) {
+      if (!v) return '—';
+      var n = Number(v);
+      if (!isFinite(n)) return '—';
+      var s = n.toLocaleString('es-CO', { maximumFractionDigits: 0 });
+      return '$ ' + s + ' ' + (cur || 'COP');
+    }
+
+    function catLabel(v) {
+      var sel = $('categoria');
+      if (!sel || !v) return v || '—';
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === v) return sel.options[i].textContent;
+      }
+      return v;
+    }
+
+    function volPrice(base, pct, units, n) {
+      if (!base || !units || units < 2) return null;
+      n = Number(n);
+      var p = n <= 1 ? 0 : Number(pct) * (n - 1) / (units - 1);
+      return Math.round((base * n * (1 - p / 100)) / 100) * 100;
+    }
+
+    var AUTO = '_por completar con IA_';
+
+    function buildMarkdown() {
+      var v = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
+      var A = function (s) { return s || AUTO; };
+      var cur = v('moneda') || 'COP';
+      var base = Number(v('precio')) || 0;
+      var pct = Number(v('descVolPct')) || 0;
+      var uds = Number(v('descVolUds')) || 0;
+      var imgs = v('imagenes').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+      var benef = v('beneficios').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+      var addons = readAddons();
+      var faqs = readFaqs();
+      var id = v('id');
+      var sku = v('sku');
+      var faltan = [];
+
+      function check(label, value) { if (!value) faltan.push(label); }
+
+      var L = [];
+      L.push('# Nuevo producto — ' + (v('nombre') || '(sin nombre)'));
+      L.push('');
+      L.push('> Brief generado desde `productos/template_dropshipping.html`.');
+      L.push('>');
+      L.push('> **Campos vacíos.** Todo lo marcado como ' + AUTO + ' no se rellenó en el formulario:');
+      L.push('> se completará con IA a partir de los datos que sí están escritos aquí.');
+      L.push('');
+
+      L.push('## 1. Identidad');
+      L.push('');
+      check('nombre', v('nombre')); check('ID de producto', id); check('SKU', sku);
+      check('categoría', v('categoria')); check('URL propuesta', v('url'));
+      L.push('| Campo | Valor |');
+      L.push('|---|---|');
+      L.push('| Nombre | ' + A(v('nombre')) + ' |');
+      L.push('| ID de producto | ' + A(id) + ' |');
+      L.push('| SKU | ' + A(sku) + ' |');
+      L.push('| Categoría | ' + (v('categoria') ? catLabel(v('categoria')) : AUTO) + ' |');
+      L.push('| Entrega | ' + (v('tipo') === 'digital' ? 'Digital (correo)' : 'Física (envío)') + ' |');
+      L.push('| URL propuesta | ' + A(v('url')) + ' |');
+      L.push('');
+
+      L.push('## 2. Precio');
+      L.push('');
+      check('precio base', v('precio')); check('precio anterior', v('precioAnterior'));
+      check('costo', v('costo'));
+      L.push('| Concepto | Valor |');
+      L.push('|---|---|');
+      L.push('| Precio base (1 unidad) | ' + (base ? money(base, cur) : AUTO) + ' |');
+      L.push('| Precio anterior (tachado) | ' + (v('precioAnterior') ? money(v('precioAnterior'), cur) : AUTO) + ' |');
+      if (v('costo')) {
+        var margen = base - Number(v('costo'));
+        var margenPct = base ? Math.round((margen / base) * 100) : 0;
+        L.push('| Costo | ' + money(v('costo'), cur) + ' |');
+        L.push('| Margen bruto | ' + money(margen, cur) + ' (' + margenPct + ' %) |');
+      } else {
+        L.push('| Costo | ' + AUTO + ' |');
+        L.push('| Margen bruto | ' + AUTO + ' |');
+      }
+      L.push('');
+
+      L.push('### Descuentos');
+      L.push('');
+      if (pct && uds) {
+        L.push('- **Volumen:** hasta ' + pct + ' % en ' + uds + ' unidades.');
+        var filas = [1, 2, 3, uds];
+        var uniq = filas.filter(function (n, i) { return filas.indexOf(n) === i && n >= 1; });
+        uniq.forEach(function (n) {
+          var pr = volPrice(base, pct, uds, n);
+          if (pr) L.push('  - ' + n + ' ud' + (n > 1 ? 's' : '') + ' → ' + money(pr, cur));
+        });
+      } else {
+        L.push('- **Volumen:** ' + AUTO);
+        faltan.push('descuento por volumen');
+      }
+      if (v('descDiaPct')) {
+        L.push('- **Fecha:** ' + v('descDiaPct') + ' % los ' + (v('descDiaDias') || AUTO) + '.');
+      } else {
+        L.push('- **Fecha:** ' + AUTO);
+        faltan.push('descuento por fecha');
+      }
+      L.push('- **Alcance:** ' + A(v('descAlcance')));
+      L.push('');
+
+      L.push('## 3. Complementos');
+      L.push('');
+      if (!addons.length) {
+        L.push(AUTO + ' — no se añadió ningún complemento. Se propondrán alternativas coherentes con el producto.');
+        faltan.push('complementos');
+      } else {
+        L.push('| Nombre | SKU | ID | Precio | Cantidad | Disponible | Descripción |');
+        L.push('|---|---|---|---:|---:|---|---|');
+        addons.forEach(function (a) {
+          L.push('| ' + A(a.nombre) + ' | ' + A(a.sku) + ' | ' + A(a.id) + ' | ' +
+                 (a.precio ? money(a.precio, cur) : AUTO) + ' | ' + A(a.cantidad) + ' | ' +
+                 (a.disponible || 'SI') + ' | ' + (a.desc || AUTO).replace(/\|/g, '/') + ' |');
+        });
+      }
+      L.push('');
+
+      L.push('## 4. Textos');
+      L.push('');
+      check('título del hero', v('titulo')); check('subtítulo', v('subtitulo'));
+      check('descripción', v('descripcion')); check('beneficios', v('beneficios'));
+      check('público objetivo', v('publico'));
+      L.push('**Título del hero:** ' + A(v('titulo')));
+      L.push('');
+      L.push('**Subtítulo:** ' + A(v('subtitulo')));
+      L.push('');
+      L.push('**Descripción:**');
+      L.push('');
+      L.push(v('descripcion') || AUTO);
+      L.push('');
+      L.push('**Beneficios:**');
+      L.push('');
+      if (benef.length) benef.forEach(function (b) { L.push('- ' + b); });
+      else L.push('- ' + AUTO);
+      L.push('');
+      L.push('**Público objetivo:**');
+      L.push('');
+      L.push(v('publico') || AUTO);
+      L.push('');
+
+      L.push('## 5. Regalo');
+      L.push('');
+      if (v('regalo')) {
+        L.push('- **Incluye:** ' + v('regalo'));
+        L.push('- **SKU:** ' + A(v('regaloSku')));
+        L.push('- **Valor declarado:** ' + (v('regaloValor') ? money(v('regaloValor'), cur) : AUTO));
+        L.push('- **Costo para el cliente:** $ 0');
+        if (!v('regaloSku')) faltan.push('SKU del regalo');
+      } else {
+        L.push(AUTO + ' — no se definió obsequio. Se propondrá uno de bajo costo y alto valor percibido.');
+        faltan.push('regalo');
+      }
+      L.push('');
+
+      L.push('## 6. Presentación');
+      L.push('');
+      L.push('- **Etiqueta de tarjeta:** ' + (v('badge') || AUTO));
+      L.push('- **Umbral de inventario:** ' + (v('umbral') || '25') + ' unidades');
+      L.push('- **Imágenes:**');
+      if (imgs.length) imgs.forEach(function (i) { L.push('  - `' + i + '`'); });
+      else { L.push('  - ' + AUTO); faltan.push('imágenes'); }
+      L.push('');
+
+      L.push('## 7. Fila para la hoja de inventario');
+      L.push('');
+      L.push('```text');
+      L.push('valor_referencia | producto id | producto_padre | precio_dropi | precio_sugerido | cantidad | umbral | disponibilidad_web | uri');
+      L.push((sku ? 'SKU: ' + sku : 'SKU: ' + AUTO) + ' | ' + A(id) + ' | ' + (v('padre') || '') + ' | ' +
+             (v('costo') || AUTO) + ' | ' + (base || AUTO) + ' | ' + (v('cantidad') || AUTO) + ' | ' +
+             (v('umbral') || '25') + ' | ' + (v('disponible') || 'SI') + ' | ' + A(v('url')));
+      addons.forEach(function (a) {
+        L.push((a.sku ? 'SKU: ' + a.sku : 'SKU: ' + AUTO) + ' | ' + A(a.id) + ' | ' + A(id) + ' | ' +
+               (a.precio || AUTO) + ' | ' + (a.precio || AUTO) + ' | ' + A(a.cantidad) + ' | ' +
+               (v('umbral') || '25') + ' | ' + (a.disponible || 'SI') + ' | ' + A(v('url')));
+      });
+      L.push('```');
+      L.push('');
+
+      L.push('## 8. Combos y variantes');
+      L.push('');
+      check('etiqueta del combo de 2', v('comboDos'));
+      check('etiqueta del combo de 3', v('comboTres'));
+      L.push('- **2 unidades:** ' + (v('comboDos') || AUTO));
+      L.push('- **3 unidades:** ' + (v('comboTres') || AUTO));
+      L.push('- **Otras variantes:** ' + (v('variantes') || AUTO));
+      L.push('');
+
+      L.push('## 9. Inventario');
+      L.push('');
+      check('unidades disponibles', v('cantidad')); check('proveedor', v('proveedor'));
+      L.push('| Campo | Valor |');
+      L.push('|---|---|');
+      L.push('| Unidades disponibles | ' + A(v('cantidad')) + ' |');
+      L.push('| Disponibilidad web | ' + (v('disponible') || 'SI') + ' |');
+      L.push('| Umbral | ' + (v('umbral') || '25') + ' |');
+      L.push('| Producto padre | ' + (v('padre') || '— (es principal)') + ' |');
+      L.push('| Proveedor | ' + A(v('proveedor')) + ' |');
+      L.push('');
+
+      L.push('## 10. Preguntas frecuentes');
+      L.push('');
+      if (faqs.length) {
+        faqs.forEach(function (f, i) {
+          L.push((i + 1) + '. **' + A(f.q) + '**');
+          L.push('   ' + A(f.a));
+          L.push('');
+        });
+        faqs.forEach(function (f, i) {
+          if (!f.a) faltan.push('respuesta de la FAQ ' + (i + 1));
+        });
+      } else {
+        L.push(AUTO + ' — se redactarán 5–7 preguntas reales a partir del producto y su público.');
+        faltan.push('preguntas frecuentes');
+      }
+
+      L.push('## 11. Prueba social');
+      L.push('');
+      if (v('rating') || v('resenas')) {
+        L.push('- **Calificación:** ' + (v('rating') || AUTO) + ' / 5');
+        L.push('- **Reseñas:** ' + (v('resenas') || AUTO));
+      } else {
+        L.push(AUTO + ' — se propondrá una calificación y un número de reseñas coherentes con el resto del sitio.');
+        faltan.push('prueba social');
+      }
+      if (v('resenasTexto')) {
+        L.push('');
+        v('resenasTexto').split('\n').forEach(function (r) { if (r.trim()) L.push('- ' + r.trim()); });
+      } else {
+        L.push('');
+        L.push('- ' + AUTO);
+        faltan.push('reseñas destacadas');
+      }
+      L.push('');
+
+      L.push('## 12. SEO y campaña');
+      L.push('');
+      check('meta título', v('metaTitulo')); check('meta descripción', v('metaDesc'));
+      check('palabras clave', v('keywords')); check('competencia', v('competenciaUrl'));
+      L.push('| Campo | Valor |');
+      L.push('|---|---|');
+      L.push('| Meta título | ' + A(v('metaTitulo')) + ' |');
+      L.push('| Meta descripción | ' + A(v('metaDesc')) + ' |');
+      L.push('| Palabras clave | ' + A(v('keywords')) + ' |');
+      L.push('| Atribución sck | ' + (v('sck') || '— (solo cursos Hotmart)') + ' |');
+      L.push('| UTM | ' + (v('utm') || '—') + ' |');
+      L.push('| Competencia | ' + (v('competenciaUrl') || AUTO) + (v('competenciaPrecio') ? ' · ' + money(v('competenciaPrecio'), cur) : '') + ' |');
+      L.push('');
+      if (v('competenciaPrecio') && base) {
+        var dif = base - Number(v('competenciaPrecio'));
+        L.push('> Diferencia frente a la competencia: **' + (dif >= 0 ? '+' : '−') + money(Math.abs(dif), cur) + '** (' + (dif >= 0 ? 'más caro' : 'más barato') + ').');
+        L.push('');
+      }
+
+      L.push('## 13. Operación y pagos');
+      L.push('');
+      check('plazo de entrega', v('plazo')); check('transportadora', v('transportadora'));
+      L.push('| Campo | Valor |');
+      L.push('|---|---|');
+      L.push('| Medios | Tarjeta/PSE (MercadoPago) · WhatsApp · ' + (v('contraentrega') === 'no' ? 'sin contraentrega' : 'contraentrega') + ' |');
+      if (v('contraentrega') !== 'no') {
+        L.push('| Abono | ' + (v('abonoPct') || '20') + ' % |');
+        L.push('| Rango contraentrega | ' + (v('codMin') ? money(v('codMin'), cur) : '$ 70.000') + ' – ' + (v('codMax') ? money(v('codMax'), cur) : '$ 250.000') + ' |');
+      }
+      L.push('| Plazo de entrega | ' + (v('plazo') || AUTO) + ' |');
+      L.push('| Transportadora | ' + (v('transportadora') || AUTO) + ' |');
+      L.push('');
+
+      if (v('extra')) {
+        L.push('## 14. Notas para el asistente');
+        L.push('');
+        L.push(v('extra'));
+        L.push('');
+      }
+
+      L.push('## ' + (v('extra') ? '15' : '14') + '. Campos por completar');
+      L.push('');
+      if (faltan.length) {
+        L.push('Estos campos quedaron vacíos en el formulario. **Se completarán con IA** a partir de lo que sí está escrito:');
+        L.push('');
+        faltan.forEach(function (f) { L.push('- ' + f); });
+      } else {
+        L.push('Ninguno: el brief está completo.');
+      }
+      L.push('');
+
+      L.push('## Pendiente de completar');
+      L.push('');
+      L.push('- [ ] JSON-LD `Product` + `Offer` (nombre, precio, disponibilidad, imágenes)');
+      L.push('- [ ] FAQ con 5–7 preguntas reales del producto');
+      L.push('- [ ] Meta título y descripción (≤ 60 / ≤ 155 caracteres)');
+      L.push('- [ ] Open Graph 1200×630');
+      L.push('- [ ] Imágenes optimizadas en AVIF + `width`/`height`');
+      L.push('- [ ] Textos legales: garantía 7 días, retracto 3 días hábiles');
+      L.push('- [ ] `data-sku` / `data-uri` en el `<body>` de la ficha');
+      L.push('- [ ] Fila en la hoja de inventario (padre + complementos)');
+      L.push('- [ ] Enlace desde `index.html` (tarjeta `store-card`)');
+      L.push('- [ ] Alta en `sitemap.xml` y `llms.txt`');
+      L.push('- [ ] Precio y complementos en `catalog.json` del Worker');
+      L.push('');
+
+      return L.join('\n');
+    }
+
+    /* ---------- Acciones ---------- */
+    var statusEl = $('status');
+    var mdEl = $('md');
+    var lastMd = '';
+
+    function setStatus(msg, kind) {
+      statusEl.textContent = msg || '';
+      statusEl.className = 'status' + (kind ? ' ' + kind : '');
+    }
+
+    $('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var esenciales = ['nombre','id','precio','categoria','titulo'].filter(function (f) { return !v2(f); });
+      lastMd = buildMarkdown();
+      mdEl.textContent = lastMd;
+      var vacios = (lastMd.match(/_por completar con IA_/g) || []).length;
+      if (esenciales.length) {
+        setStatus('Brief generado, pero faltan ' + esenciales.length + ' datos base (' + esenciales.join(', ') +
+                  '). Todo lo vacío se completará con IA.', 'err');
+      } else if (vacios) {
+        setStatus('Brief generado · ' + vacios + ' campo(s) para completar con IA.', 'ok');
+      } else {
+        setStatus('Brief completo · ' + lastMd.split('\n').length + ' líneas.', 'ok');
+      }
+      toast('Brief generado');
+      save();
+    });
+
+    function v2(id) { var el = $(id); return el ? el.value.trim() : ''; }
+
+    $('copy').addEventListener('click', function () {
+      if (!lastMd) { setStatus('Genera el brief primero.', 'err'); return; }
+      var done = function () { setStatus('Copiado al portapapeles.', 'ok'); toast('Copiado'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(lastMd).then(done, fallback);
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = lastMd; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { setStatus('No se pudo copiar. Selecciona el texto a mano.', 'err'); }
+        ta.remove();
+      }
+    });
+
+    $('download').addEventListener('click', function () {
+      if (!lastMd) { setStatus('Genera el brief primero.', 'err'); return; }
+      var slug = (v2('nombre') || 'producto').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      var blob = new Blob([lastMd], { type: 'text/markdown;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'brief-' + slug + '.md';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      toast('Descargado');
+    });
+
+    /* ---------- Ejemplo: la almohada ---------- */
+    $('example').addEventListener('click', function () {
+      var demo = {
+        nombre: 'Cojín Cervical Pro', id: '2122714', sku: 'SYNAPTICS-2122714',
+        categoria: 'hogar', tipo: 'fisico', moneda: 'COP',
+        precio: '84000', precioAnterior: '119000', costo: '28900',
+        titulo: 'Duerme mejor desde esta noche',
+        subtitulo: 'Cojín cervical de 5 zonas que sostiene tu cuello y te ayuda a descansar sin dolor',
+        descripcion: 'Cojín ergonómico de 5 zonas con memoria que se adapta a la curva del cuello. Antibacteriano y antiácaros.',
+        beneficios: '5 zonas de soporte\nAntibacteriano y antiácaros\nRecupera su forma en 5–15 s\nFunda lavable',
+        publico: 'Adultos con dolor cervical o de hombros, que duermen mal o despiertan con tensión.',
+        regalo: 'Libro digital «El contador de ovejas»', regaloSku: 'CONTADORE-035', regaloValor: '35000',
+        badge: 'Top ventas', umbral: '25', cantidad: '244', disponible: 'SI',
+        url: 'productos/cojin-cervical-pro/',
+        imagenes: 'productos/cojin-cervical-pro/images/hero.avif\nproductos/cojin-cervical-pro/images/detalle.avif',
+        comboDos: 'Más elegido', comboTres: 'Mejor precio',
+        rating: '4.8', resenas: '32',
+        resenasTexto: '«Dormí sin dolor por primera vez en meses» — Ana G.',
+        metaTitulo: 'Cojín cervical 5 zonas | Lemon Shake',
+        metaDesc: 'Duerme sin dolor de cuello con 5 zonas de soporte. Envío gratis a Colombia.',
+        keywords: 'cojín cervical, dolor de cuello, dormir mejor',
+        contraentrega: 'si', abonoPct: '20', codMin: '70000', codMax: '250000',
+        plazo: '2 a 5 días hábiles', transportadora: 'por definir'
+      };
+      FIELDS.forEach(function (f) { if (demo[f] != null && $(f)) $(f).value = demo[f]; });
+      addonsEl.innerHTML = '';
+      addonRow({ nombre: 'Cojín Ortopédico Pierna', sku: 'TFL-1418543', precio: '32000', id: '1418543', cantidad: '478', disponible: 'SI', desc: 'Eleva las piernas y alivia la presión lumbar.' });
+      faqsEl.innerHTML = '';
+      faqRow({ q: '¿Qué incluye mi pedido?', a: 'El producto que elegiste, el libro digital de regalo y el envío sin costo.' });
+      faqRow({ q: '¿Cuánto tarda el envío?', a: 'Entre 2 y 5 días hábiles a toda Colombia, con guía de seguimiento.' });
+      save();
+      toast('Ejemplo cargado');
+      updateCounters();
+    });
+
+    /* ---------- Exportar / importar JSON ---------- */
+    $('exportJson').addEventListener('click', function () {
+      var data = {};
+      FIELDS.forEach(function (f) { data[f] = $(f) ? $(f).value : ''; });
+      data.addons = readAddons();
+      data.faqs = readFaqs();
+      var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'producto-' + (data.id || 'nuevo') + '.json';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      toast('JSON exportado');
+    });
+
+    $('importJson').addEventListener('click', function () { $('fileInput').click(); });
+    $('fileInput').addEventListener('change', function (e) {
+      var file = e.target.files && e.target.files[0];
+      if (!file) return;
+      var fr = new FileReader();
+      fr.onload = function () {
+        try {
+          var d = JSON.parse(fr.result);
+          FIELDS.forEach(function (f) { if (d[f] != null && $(f)) $(f).value = d[f]; });
+          addonsEl.innerHTML = '';
+          (d.addons && d.addons.length ? d.addons : [{}]).forEach(function (a) { addonRow(a); });
+          faqsEl.innerHTML = '';
+          (d.faqs && d.faqs.length ? d.faqs : [{}]).forEach(function (f) { faqRow(f); });
+          save(); updateCounters();
+          toast('JSON importado');
+        } catch (err) {
+          setStatus('El archivo no es un JSON válido.', 'err');
+        }
+      };
+      fr.readAsText(file);
+      e.target.value = '';
+    });
+
+    /* ---------- Contadores SEO ---------- */
+    function updateCounters() {
+      var mt = $('metaTitulo'), md = $('metaDesc');
+      if (mt) {
+        var a = mt.value.length;
+        $('cntTitulo').textContent = a + ' / 60';
+        $('cntTitulo').style.color = a > 60 ? 'var(--danger)' : 'var(--muted)';
+      }
+      if (md) {
+        var b = md.value.length;
+        $('cntDesc').textContent = b + ' / 155';
+        $('cntDesc').style.color = b > 155 ? 'var(--danger)' : 'var(--muted)';
+      }
+    }
+    ['metaTitulo', 'metaDesc'].forEach(function (f) {
+      var el = $(f);
+      if (el) el.addEventListener('input', updateCounters);
+    });
+
+    $('reset').addEventListener('click', function () {
+      if (!confirm('¿Borrar el formulario y el borrador guardado?')) return;
+      $('form').reset();
+      addonsEl.innerHTML = '';
+      faqsEl.innerHTML = '';
+      addonRow();
+      faqRow();
+      lastMd = '';
+      mdEl.textContent = 'Rellena el formulario y pulsa «Generar brief».';
+      setStatus('');
+      try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    });
+
+    /* ---------- Tema ---------- */
+    $('themeToggle').addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('jh-theme', next); } catch (e) {}
+    });
+
+    var toastTimer;
+    function toast(msg) {
+      var t = $('toast');
+      t.textContent = msg;
+      t.classList.add('on');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { t.classList.remove('on'); }, 1900);
+    }
+
+    restore();
+    updateCounters();
+  })();
+  </script>
+</body>
+</html>
