@@ -13,13 +13,18 @@ dist/
 # Fotos fuente (no se publican; los logos sí)
 pictures/*.jpeg
 
-# Notas internas
-analytics/man.md
-cursos/instrucciones.md
-PAYMENTS.md
-informe.md
-HOTFIX.MD
-payments/*.md
+# Notas internas (todas viven en documentation/)
+documentation/operacion/
+documentation/analytics/statcounter.md
+documentation/cursos/instrucciones.md
+documentation/pagos/
+documentation/hotfix-global.md
+
+# Scripts de sincronización con credenciales y tokens (no se publican)
+scripts-apps-script/
+
+# Grafo generado (se regenera con `graphify update .`)
+graphify-out/
 
 # Sistema y editores
 .DS_Store

@@ -511,6 +511,8 @@
     .final-cta__offer{font-weight:700}
     .final-cta__deadline{color:var(--text);font-size:0.6em}
     .countdown{display:flex;gap:12px;justify-content:center;margin:22px 0}
+    .countdown--three{margin-top:18px}
+    .final-cta__tz{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.08em;margin:14px 0 0}
     .countdown div{background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 16px;min-width:70px}
     .countdown strong{font-family:var(--font-display);font-size:1.7rem;display:block;color:var(--accent-text)}
     .countdown small{color:var(--muted);font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em}
@@ -1243,12 +1245,18 @@
         <div class="card">
           <span class="badge">⏳ Unidades reducidas</span>
           <h2><span class="final-cta__offer">El precio baja hoy 10%</span><br /><span class="final-cta__deadline" id="finalCtaDate"></span></h2>
-          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento">
+          <div class="countdown" id="countdown" aria-label="Tiempo para el próximo descuento" style="display:none" aria-hidden="true">
             <div><strong id="cdD">00</strong><small>Días</small></div>
             <div><strong id="cdH">00</strong><small>Horas</small></div>
             <div><strong id="cdM">00</strong><small>Min</small></div>
             <div><strong id="cdS">00</strong><small>Seg</small></div>
           </div>
+          <div class="countdown countdown--three" id="countdownDay" role="timer" aria-label="Tiempo restante del día">
+            <div><strong id="cd3H">--</strong><small>Horas</small></div>
+            <div><strong id="cd3M">--</strong><small>Min</small></div>
+            <div><strong id="cd3S">--</strong><small>Seg</small></div>
+          </div>
+          <p class="final-cta__tz">Zona Horaria: (UTC/GMT -05:00) Bogotá</p>
         </div>
       </div>
     </section>
@@ -3022,6 +3030,30 @@
       setTimeout(tickCountdown, 1000);
     }
     tickCountdown();
+
+    /* ---------- Countdown del día (00:00 → 00:00 del día siguiente) ----------
+       Corre siempre, aunque la promo no esté activa. Bogotá es UTC-5 fijo
+       (sin horario de verano), así que basta con restar el desfase. */
+    var cd3H = document.getElementById('cd3H'),
+        cd3M = document.getElementById('cd3M'),
+        cd3S = document.getElementById('cd3S');
+    var BOGOTA_OFFSET_MS = 5 * 3600 * 1000;
+    function dayRemainingMs(now) {
+      var b = new Date(now - BOGOTA_OFFSET_MS);
+      var elapsed = b.getUTCHours() * 3600 + b.getUTCMinutes() * 60 + b.getUTCSeconds();
+      return 86400000 - (elapsed * 1000 + b.getUTCMilliseconds());
+    }
+    function tickDayCountdown() {
+      var diff = Math.max(0, Math.min(86399000, dayRemainingMs(Date.now())));
+      var H = pad2(Math.floor(diff / 3600000));
+      var M = pad2(Math.floor((diff % 3600000) / 60000));
+      var S = pad2(Math.floor((diff % 60000) / 1000));
+      if (cd3H && cd3H.textContent !== H) cd3H.textContent = H;
+      if (cd3M && cd3M.textContent !== M) cd3M.textContent = M;
+      if (cd3S && cd3S.textContent !== S) cd3S.textContent = S;
+      setTimeout(tickDayCountdown, 250);
+    }
+    tickDayCountdown();
 
     var sfSecret = document.querySelector('.sf-secret');
     if (sfSecret) {
